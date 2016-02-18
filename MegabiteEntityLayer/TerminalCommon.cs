@@ -12,5 +12,23 @@ namespace Hotel_POS.Resource
         public static string cafeName { get { return "Bunkerz"; } }
         public static User_Master LoggedInUser { get; set; }
         public static Customer_Master currentCustomer { get; set; }
+        public static Dictionary<string, List<String>> menuDictionary = new Dictionary<string, List<string>>() { 
+            {"user",new List<String>() { "users","changePassword" }},
+            {"menu",new List<String>() { "category","item" }},
+            {"orders",new List<String>() { "NewOrder" }},
+            {"reports",new List<String>() { "transactionReport" }},
+            {"logout",new List<String>() { "Logout" }}
+        };
+
+        public static List<String> adminRoleMenu = new List<string>() { "Users", 
+                                         "ChangePasswordMenuItem", 
+                                         "MenuCategory", 
+                                         "Menu", 
+                                         "NewOrder", 
+                                         "TransactionReport", 
+                                         "Logout" };
+
+        public static List<String> operatorRoleMenu = new List<string>() {  "NewOrder",  
+                                              "changePassword","Logout" };
     }
 }

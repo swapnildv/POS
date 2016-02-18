@@ -7,148 +7,124 @@
         Height="450"
         Width="700"
         Loaded="Window_Loaded"
+        xmlns:local="clr-namespace:Hotel_POS.User_Controls"
         Icon="/Hotel_POS;component/Images/Restaurant%20Blue.ico">
-    <DockPanel>
-        <!-- Header Area-->
-        <Border Height="50"
-                DockPanel.Dock="Top"
+    <Grid>
+        <StackPanel>
+            <Border Height="50"
                 BorderBrush="{DynamicResource BorderBrush}"
                 BorderThickness="0,0,0,1"
                 x:Name="HeaderBorder"
                 Padding="10,0,10,0">
-            <DockPanel x:Name="Header">
-                <StackPanel Orientation="Horizontal">
-                    
-                </StackPanel>
-                <StackPanel Orientation="Vertical"
+                <DockPanel x:Name="Header">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Name="lblUserID"
+                                   Visibility="Collapsed" />
+                        <Label Name="lblRoleID"
+                                   Visibility="Collapsed" />
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical"
                             DockPanel.Dock="Right"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Bottom">
-                    <Label x:Name="lblCompanyID"
+                        <Label x:Name="lblCompanyID"
                            Visibility="Collapsed"
                            FontFamily="Arial"
                            FontSize="4"
                            FontWeight="Bold"
                            Content="" />
-                    <Label x:Name="lblUserName"
+                        <Label x:Name="lblUserName"
                            Foreground="Chocolate"
                            FontFamily="Arial"
                            FontSize="16"
                            FontWeight="Bold"
                            Content="Welcome, Nitin" />
-                </StackPanel>
-            </DockPanel>
-        </Border>
-        <!-- Menu Area -->
-        <Border x:Name="ManageMenu"
+                    </StackPanel>
+                </DockPanel>
+            </Border>
+            <Border x:Name="ManageMenu"
                 VerticalAlignment="Top"
-                DockPanel.Dock="Top"
-                Margin="0,5,0,5">
-            <Menu VerticalAlignment="Bottom"
+                Margin="0,5,0,5" HorizontalAlignment="Left">
+                <Menu VerticalAlignment="Bottom"
                   x:Name="MenuBar"
                   Margin="5,0,0,0">
-                <MenuItem Header="User"
+                    <MenuItem Header="User"
                           x:Name="User">
-                    <MenuItem  Header="_Users"
+                        <MenuItem  Header="_Users"
                                x:Name="Users"
                                Click="Users_Click" />
-                    <MenuItem  Header="_Change Password"
+                        <MenuItem  Header="_Change Password"
                                x:Name="ChangePasswordMenuItem"
                                Click="ChangePassword_Click" />
-                </MenuItem>
-                <MenuItem  Header="_Company"
+                    </MenuItem>
+                    <MenuItem  Header="_Company"
                            x:Name="CompanyMenu">
-                    <MenuItem   Header="_Company"
+                        <MenuItem   Header="_Company"
                                 x:Name="Company"
                                 Click="Company_Click" />
-                    <MenuItem  Header="_Manage Employee"
+                        <MenuItem  Header="_Manage Employee"
                                x:Name="Manage_Employee"
                                Click="ManageEmployee_Click" />
-                </MenuItem>
-                <MenuItem Header="_Menu"
+                    </MenuItem>
+                    <MenuItem Header="_Menu"
                           x:Name="ItemMenu">
-                    <MenuItem Header="_Category"
+                        <MenuItem Header="_Category"
                               x:Name="MenuCategory"
                               Click="MenuCategory_Click" />
-                    <MenuItem  Header="_Item"
+                        <MenuItem  Header="_Item"
                                x:Name="Menu"
                                Click="MenuItem_Click" />
-                </MenuItem>
-                <MenuItem Visibility="Collapsed" Header="_Card"
+                    </MenuItem>
+                    <MenuItem Visibility="Collapsed" Header="_Card"
                           x:Name="Card">
-                    <MenuItem Header="_Assign Card"
+                        <MenuItem Header="_Assign Card"
                               x:Name="CardAssign"
                               Click="CardAssign_Click" />
-                    <MenuItem Header="_Load Card"
+                        <MenuItem Header="_Load Card"
                               x:Name="LoadCard"
                               Click="LoadCard_Click" />
-                    <MenuItem Header="_Format Card"
+                        <MenuItem Header="_Format Card"
                               x:Name="FormatCard"
                               Click="FormatCard_Click" />
-                </MenuItem>
-                <MenuItem Header="_Orders"
+                    </MenuItem>
+                    <MenuItem Header="_Orders"
                           x:Name="OrderMenu">
-                    <MenuItem  Header="_New Order"
+                        <MenuItem  Header="_New Order"
                                x:Name="NewOrder"
                                Click="Order_Click" />
-                </MenuItem>
-                <MenuItem Header="_Reports"
+                    </MenuItem>
+                    <MenuItem Header="_Reports"
                           x:Name="Reports">
-                    <MenuItem   Header="_Employee Ledger"
+                        <MenuItem   Header="_Employee Ledger"
                                 Click="employeeLedger_Click"
                                 x:Name="employeeLedger" />
-                    <MenuItem   Header="_Transaction"
+                        <MenuItem   Header="_Transaction"
                                 Click="TransactionReport_Click"
                                 x:Name="TransactionReport" />
-                    <MenuItem   Header="_Load"
+                        <MenuItem   Header="_Load"
                                 Click="LoadReport_Click"
                                 x:Name="LoadReport" />
-                </MenuItem>
-                <MenuItem Header="_Database"
+                    </MenuItem>
+                    <MenuItem Header="_Database"
                           x:Name="Get_Database">
-                    <MenuItem  Header="Export to Excel"
+                        <MenuItem  Header="Export to Excel"
                                x:Name="Export"
                                Click="Get_Database_Click" />
-                    <MenuItem  Header="Get Data"
+                        <MenuItem  Header="Get Data"
                                x:Name="Get_Data"
                                Click="GEt_Data_Click" />
-                </MenuItem>
-                <MenuItem Header="_Change Login"
+                    </MenuItem>
+                    <MenuItem Header="_Change Login"
                           x:Name="Change_Login"
                           Click="Change_Login_Click" />
-                <MenuItem Header="_Logout"
+                    <MenuItem Header="_Logout"
                           x:Name="Logout"
                           Click="Logout_Click" />
-            </Menu>
-        </Border>
-        <Grid x:Name="MainGrid"
-              DockPanel.Dock="Top">
-            <!-- Main Area -->
-            <Grid  x:Name="MainPane"
-                   Margin="0">
-                <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
-                <Border  x:Name="MainBorder"
-                         Background="{DynamicResource MainGradientBrush}"
-                         Style="{DynamicResource BorderStyle}">
-                    <Grid x:Name="gridMainArea">
-                        <StackPanel>
-                            <StackPanel.Background>
-                                <LinearGradientBrush EndPoint="0.5,1"
-                                                     StartPoint="0.5,0">
-                                    <GradientStop Color="CornflowerBlue"
-                                                  Offset="0.878" />
-                                    <GradientStop Color="#FF404F6F"
-                                                  Offset="0.134" />
-                                </LinearGradientBrush>
-                            </StackPanel.Background>
-                            <Label Name="lblUserID"
-                                   Visibility="Collapsed" />
-                            <Label Name="lblRoleID"
-                                   Visibility="Collapsed" />
-                        </StackPanel>
-                    </Grid>
-                </Border>
+                </Menu>
+            </Border>
+            <Grid x:Name="MainGrid">
             </Grid>
-        </Grid>
-    </DockPanel>
+        </StackPanel>
+        <local:ProgressControl x:Name="progressControl" Visibility="Collapsed"></local:ProgressControl>
+    </Grid>
 </Window>

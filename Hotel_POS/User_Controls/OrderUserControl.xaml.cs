@@ -16,26 +16,41 @@ using Hotel_POS.Resource;
 using MegabiteEntityLayer;
 using POS_Business;
 
-namespace Hotel_POS
+namespace Hotel_POS.User_Controls
 {
     /// <summary>
-    /// Interaction logic for Order_L.xaml
+    /// Interaction logic for OrderUserControl.xaml
     /// </summary>
-    public partial class Order_L : Window
+    public partial class OrderUserControl : UserControl
     {
-        /// <summary>
-        /// Background worker for placing order.
-        /// </summary>
-        private BackgroundWorker bwPlaceOrder = new BackgroundWorker();
-
-        public Order_L()
+        public OrderUserControl()
         {
-            InitializeComponent();
+             InitializeComponent();
             bwPlaceOrder.WorkerReportsProgress = true;
             bwPlaceOrder.WorkerSupportsCancellation = true;
             bwPlaceOrder.DoWork += bwPlaceOrder_DoWork;
             bwPlaceOrder.ProgressChanged += bwPlaceOrder_ProgressChanged;
             bwPlaceOrder.RunWorkerCompleted += bwPlaceOrder_RunWorkerCompleted;
+    }
+
+         /// <summary>
+        /// Background worker for placing order.
+        /// </summary>
+        private BackgroundWorker bwPlaceOrder = new BackgroundWorker();
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                //BL_Menu obj = new BL_Menu();
+                MainMenuListBox.ItemsSource = new BL_Menu().get_Item_Group_List().Where(c => c.Is_Active == true);
+                ItemListBox.ItemsSource = new BL_Menu().GetMenuCart();
+            }
+            catch (Exception ex)
+            {
+                Log.Write(ex);
+                MessageBox.Show(TerminalCommon.errorMessage, TerminalCommon.cafeName);
+            }
         }
 
         private void customerNameTextBox_GotFocus(object sender, RoutedEventArgs e)
@@ -53,21 +68,6 @@ namespace Hotel_POS
                     else
                         customerNameTextBox.Focus();
                 }));
-            }
-            catch (Exception ex)
-            {
-                Log.Write(ex);
-                MessageBox.Show(TerminalCommon.errorMessage, TerminalCommon.cafeName);
-            }
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                //BL_Menu obj = new BL_Menu();
-                MainMenuListBox.ItemsSource = new BL_Menu().get_Item_Group_List().Where(c => c.Is_Active == true);
-                ItemListBox.ItemsSource = new BL_Menu().GetMenuCart();
             }
             catch (Exception ex)
             {
@@ -96,7 +96,6 @@ namespace Hotel_POS
         {
             try
             {
-                quantityBorder.Visibility = Visibility.Visible;
                 itemQuantity.Text = "1";
                 AddItemButton.Focus();
             }
@@ -112,7 +111,6 @@ namespace Hotel_POS
         {
             try
             {
-                quantityBorder.Visibility = System.Windows.Visibility.Collapsed;
                 MegabiteEntityLayer.Item_Group_Master masterMenu = (MegabiteEntityLayer.Item_Group_Master)MainMenuListBox.SelectedItem; // Get selected menu group.
                 MegabiteEntityLayer.Item_Master subMenu = (MegabiteEntityLayer.Item_Master)SubMainMenuListBox.SelectedItem; // Get selected sub menu.
 
@@ -139,9 +137,11 @@ namespace Hotel_POS
                 if (TerminalCommon.currentCustomer == null)
                     TerminalCommon.currentCustomer = new Customer_Master() { cust_MobileNo = customerMobileTextBox.Text.Trim(), 
                                                                              cust_Name = customerNameTextBox.Text.Trim() };
-
                 if (bwPlaceOrder.IsBusy != true)
                 {
+                    MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
+
+                    if (mainWindow != null) mainWindow.progressControl.Visibility = System.Windows.Visibility.Visible;
                     bwPlaceOrder.RunWorkerAsync();
                 }
             }
@@ -182,6 +182,7 @@ namespace Hotel_POS
                 else
                 {
                     e.Result = new BL_Transaction().SubmitOrder();
+                    
                 }
             }
             catch (Exception ex)
@@ -197,34 +198,39 @@ namespace Hotel_POS
         }
         void bwPlaceOrder_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
-            if ((e.Cancelled == true))
+            try
             {
-                // this.tbProgress.Text = "Canceled!";
+                //Hide Progress Window
+                MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
+                if (mainWindow != null) mainWindow.progressControl.Visibility = System.Windows.Visibility.Collapsed;
+                if ((e.Cancelled == true))
+                {
+                    // this.tbProgress.Text = "Canceled!";
+                }
+
+                else if (!(e.Error == null))
+                {
+                    //this.tbProgress.Text = ("Error: " + e.Error.Message);
+                }
+
+                else
+                {
+                    Printing.PrintPaymentSlip(e.Result.ToString());
+                    new BL_Menu().ClearMenuCart();
+                    TerminalCommon.currentCustomer = null;
+                    MainMenuListBox.SelectedIndex = 0;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Write(ex);
+                MessageBox.Show(TerminalCommon.errorMessage, TerminalCommon.cafeName);
             }
 
-            else if (!(e.Error == null))
-            {
-                //this.tbProgress.Text = ("Error: " + e.Error.Message);
-            }
-
-            else
-            {
-                Printing.PrintPaymentSlip(e.Result.ToString());
-                new BL_Menu().ClearMenuCart();
-                TerminalCommon.currentCustomer = null;
-                MainMenuListBox.SelectedIndex = 0;
-
-            }
         }
 
 
         #endregion
-
-
-
-
-
-
     }
 }

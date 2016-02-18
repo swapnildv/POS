@@ -22,6 +22,8 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using Hotel_POS;
 using Hotel_POS.Reports;
+using Hotel_POS.User_Controls;
+using Hotel_POS.Resource;
 namespace Hotel_POS
 {
     /// <summary>
@@ -33,10 +35,50 @@ namespace Hotel_POS
         public Int32 User_ID;
         public Int32 Role_ID;
 
-        public string[] Menus = { "Company", "Get_Data", "Manage_Employee", "Users", "Menu", "MenuCategory", "CardAssign", "LoadCard", "OrderMenu", "NewOrder", "Reports", "employeeLedger", "TransactionReport", "LoadReport", "ChangePasswordMenuItem", "FormatCard" };
-        public string[] MenusAdmin = { "Company", "Get_Data", "Manage_Employee", "Users", "Menu", "MenuCategory", "CardAssign", "LoadCard", "OrderMenu", "NewOrder", "Reports", "employeeLedger", "TransactionReport", "LoadReport", "ChangePasswordMenuItem" };
-        public string[] MenusManager = { "Manage_Employee", "Menu", "MenuCategory", "CardAssign", "LoadCard", "OrderMenu", "NewOrder", "ChangePasswordMenuItem" };
-        public string[] MenusTransaction = { "Manage_Employee", "Menu", "MenuCategory", "CardAssign", "LoadCard", "OrderMenu", "NewOrder", "Reports", "ChangePasswordMenuItem" };
+        public string[] Menus = { "Company", 
+                                   "Get_Data", 
+                                   "Manage_Employee", 
+                                   "Users", 
+                                   "Menu", 
+                                   "MenuCategory", 
+                                   "CardAssign", 
+                                   "LoadCard", 
+                                   "OrderMenu", 
+                                   "NewOrder", 
+                                   "Reports", 
+                                   "employeeLedger", 
+                                   "TransactionReport", 
+                                   "LoadReport", 
+                                   "ChangePasswordMenuItem", 
+                                   "FormatCard" };
+
+        public string[] MenusAdmin = { "Company", 
+                                         "Get_Data", 
+                                         "Manage_Employee", 
+                                         "Users", 
+                                         "Menu", 
+                                         "MenuCategory", 
+                                         "CardAssign", 
+                                         "LoadCard", 
+                                         "OrderMenu", 
+                                         "NewOrder", 
+                                         "Reports", 
+                                         "employeeLedger", 
+                                         "TransactionReport", 
+                                         "LoadReport", 
+                                         "ChangePasswordMenuItem" };
+
+        public string[] MenusManager = { "Manage_Employee", 
+                                          "Menu", 
+                                          "MenuCategory", 
+                                          "CardAssign", 
+                                          "LoadCard", 
+                                          "OrderMenu", 
+                                          "NewOrder", 
+                                          "ChangePasswordMenuItem" };
+
+        public string[] MenusTransaction = {  "NewOrder",  
+                                              "ChangePasswordMenuItem" };
 
         #endregion
         public MainWindow()
@@ -55,24 +97,32 @@ namespace Hotel_POS
             {
                 User_ID = Convert.ToInt32(lblUserID.Content.ToString());
                 Role_ID = Convert.ToInt32(lblRoleID.Content.ToString());
-
+                switch (TerminalCommon.LoggedInUser.Role_ID)
+                {
+                    case 2:
+                        shuffleMenus(TerminalCommon.operatorRoleMenu);
+                        break;
+                    case 3:
+                        shuffleMenus(TerminalCommon.adminRoleMenu);
+                        break;
+                }
                 this.WindowState = System.Windows.WindowState.Maximized;
 
-                if (Role_ID == 3)
-                {
-                    Load_RoleWiseMenus(MenusAdmin);
+                //if (Role_ID == 3)
+                //{
+                //    Load_RoleWiseMenus(MenusAdmin);
 
-                }
-                else if (Role_ID == 2)
-                {
-                    Load_RoleWiseMenus(MenusTransaction);
+                //}
+                //else if (Role_ID == 2)
+                //{
+                //    Load_RoleWiseMenus(MenusTransaction);
 
-                }
-                else if (Role_ID == 1)
-                {
-                    Load_RoleWiseMenus(MenusManager);
+                //}
+                //else if (Role_ID == 1)
+                //{
+                //    Load_RoleWiseMenus(MenusManager);
 
-                }
+                //}
             }
             catch (Exception ex)
             {
@@ -144,27 +194,13 @@ namespace Hotel_POS
         {
             try
             {
-                this.Cursor = Cursors.Wait;
-
-                //Order objOrderWindow = new Order();
-                //objOrderWindow.Owner = this;
-                //objOrderWindow.ShowDialog();
-
-                //objOrderWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-
-                Order_L objOrderWindow = new Order_L();
-                objOrderWindow.Owner = this;
-                objOrderWindow.ShowDialog();
-
-                objOrderWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-                this.Cursor = Cursors.Arrow;
+                MainGrid.Children.Clear();
+                MainGrid.Children.Add(new OrderUserControl());
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
             }
         }
 
@@ -462,13 +498,36 @@ namespace Hotel_POS
                     {
                         subitem.Visibility = System.Windows.Visibility.Collapsed;
                     }
-
                 }
 
             }
         }
 
+        private void shuffleMenus(List<string> menu)
+        {
+            int submenuCount = 0;
+            foreach (MenuItem menuItem in MenuBar.Items)
+            {
+                var submenus = menuItem.Items;
 
+                foreach (MenuItem subitem in submenus)
+                {
+                    if (menu.Contains(subitem.Name))
+                    {
+                        submenuCount++;
+                        subitem.Visibility = System.Windows.Visibility.Visible;
+                    }
+                    else
+                        subitem.Visibility = System.Windows.Visibility.Collapsed;
+
+                }
+                if (submenuCount > 0 || menuItem.Name == "Logout")
+                    menuItem.Visibility = System.Windows.Visibility.Visible;
+                else
+                    menuItem.Visibility = System.Windows.Visibility.Collapsed;
+                submenuCount = 0;
+            }
+        }
         #endregion
     }
 }

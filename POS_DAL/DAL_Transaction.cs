@@ -192,7 +192,7 @@ namespace POS_DAL
         {
             //Add customer Entry.
             var cust = dc.Customer_Master.Where(a => a.cust_MobileNo == TerminalCommon.currentCustomer.cust_MobileNo).SingleOrDefault();
-            if (cust == null)
+            if (cust == null && TerminalCommon.currentCustomer.cust_MobileNo != "")
             {
                 dc.Customer_Master.AddObject(TerminalCommon.currentCustomer);
                 dc.SaveChanges();

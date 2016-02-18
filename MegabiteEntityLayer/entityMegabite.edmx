@@ -1,0 +1,899 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CafeteriaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="CafeteriaModelStoreContainer">
+          <EntitySet Name="Card_Details" EntityType="CafeteriaModel.Store.Card_Details" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Card_Ledger" EntityType="CafeteriaModel.Store.Card_Ledger" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Card_Master" EntityType="CafeteriaModel.Store.Card_Master" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Card_Status_Master" EntityType="CafeteriaModel.Store.Card_Status_Master" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Company_Master" EntityType="CafeteriaModel.Store.Company_Master" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Customer_Master" EntityType="CafeteriaModel.Store.Customer_Master" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Employee_Master" EntityType="CafeteriaModel.Store.Employee_Master" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Grade_Master" EntityType="CafeteriaModel.Store.Grade_Master" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Item_Group_Master" EntityType="CafeteriaModel.Store.Item_Group_Master" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Item_Master" EntityType="CafeteriaModel.Store.Item_Master" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Role_Master" EntityType="CafeteriaModel.Store.Role_Master" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="schema_info" EntityType="CafeteriaModel.Store.schema_info" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="scope_config" EntityType="CafeteriaModel.Store.scope_config" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="scope_info" EntityType="CafeteriaModel.Store.scope_info" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Transaction_Details" EntityType="CafeteriaModel.Store.Transaction_Details" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Transaction_Master" EntityType="CafeteriaModel.Store.Transaction_Master" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User_Master" EntityType="CafeteriaModel.Store.User_Master" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Card_Details">
+          <Key>
+            <PropertyRef Name="Card_Detail_ID" />
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="Card_Detail_ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Card_ID" Type="bigint" />
+          <Property Name="Amount_Loaded" Type="float" />
+          <Property Name="Loaded_Datetime" Type="datetime" />
+          <Property Name="Loaded_By" Type="int" />
+          <Property Name="Transafered_From_Card" Type="bigint" />
+          <Property Name="RFID_No" Type="varchar" MaxLength="50" />
+          <Property Name="Employee_ID" Type="int" />
+          <Property Name="Closing_Balance" Type="float" />
+          <Property Name="Company_ID" Type="int" Nullable="false" />
+          <Property Name="Created_DateTime" Type="datetime" />
+          <Property Name="Updated_DateTime" Type="datetime" />
+          <Property Name="Created_By" Type="int" />
+          <Property Name="Updated_By" Type="int" />
+        </EntityType>
+        <EntityType Name="Card_Ledger">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RFID_NO" Type="varchar" MaxLength="50" />
+          <Property Name="Employee_ID" Type="int" />
+          <Property Name="TR_Remark" Type="varchar" MaxLength="150" />
+          <Property Name="TR_Type" Type="varchar" MaxLength="10" />
+          <Property Name="TR_Date" Type="datetime" />
+          <Property Name="Debit" Type="float" />
+          <Property Name="Credit" Type="float" />
+          <Property Name="User_ID" Type="int" />
+          <Property Name="Ref" Type="varchar" MaxLength="50" />
+          <Property Name="Payment_Type" Type="varchar" MaxLength="20" />
+          <Property Name="Closing_Balance" Type="float" />
+          <Property Name="Company_ID" Type="int" Nullable="false" />
+          <Property Name="Created_DateTime" Type="datetime" />
+          <Property Name="Updated_DateTime" Type="datetime" />
+          <Property Name="Created_By" Type="int" />
+          <Property Name="Updated_By" Type="int" />
+        </EntityType>
+        <EntityType Name="Card_Master">
+          <Key>
+            <PropertyRef Name="Card_ID" />
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="Card_ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RFID_No" Type="varchar" MaxLength="50" />
+          <Property Name="Employee_ID" Type="int" />
+          <Property Name="Current_Balance" Type="float" />
+          <Property Name="Card_Assigned_Date" Type="date" />
+          <Property Name="Is_Active" Type="bit" />
+          <Property Name="Card_Status_ID" Type="int" />
+          <Property Name="Created_DateTime" Type="datetime" />
+          <Property Name="Updated_DateTime" Type="datetime" />
+          <Property Name="Created_By" Type="int" />
+          <Property Name="Updated_By" Type="int" />
+          <Property Name="Company_ID" Type="int" Nullable="false" />
+          <Property Name="Is_Deleted" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="Card_Status_Master">
+          <Key>
+            <PropertyRef Name="Card_Status_ID" />
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="Card_Status_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Card_Status" Type="varchar" MaxLength="50" />
+          <Property Name="Company_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Company_Master">
+          <Key>
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="Company_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Company_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Company_Address" Type="varchar" MaxLength="150" />
+          <Property Name="Company_Logo" Type="image" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="15" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Contact_Person" Type="varchar" MaxLength="100" />
+          <Property Name="Contact_Person_Phone" Type="varchar" MaxLength="15" />
+          <Property Name="Contact_Person_Email" Type="varchar" MaxLength="50" />
+          <Property Name="Is_Active" Type="bit" />
+          <Property Name="Created_DateTime" Type="datetime" />
+          <Property Name="Updated_DateTime" Type="datetime" />
+          <Property Name="Remark" Type="varchar" MaxLength="150" />
+          <Property Name="Created_By" Type="int" />
+          <Property Name="Updated_By" Type="int" />
+        </EntityType>
+        <EntityType Name="Customer_Master">
+          <Key>
+            <PropertyRef Name="cust_id" />
+          </Key>
+          <Property Name="cust_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="cust_Name" Type="varchar" MaxLength="50" />
+          <Property Name="cust_MobileNo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Employee_Master">
+          <Key>
+            <PropertyRef Name="Employee_ID" />
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="Employee_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Employee_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Company_ID" Type="int" Nullable="false" />
+          <Property Name="Department" Type="varchar" MaxLength="50" />
+          <Property Name="Designation" Type="varchar" MaxLength="50" />
+          <Property Name="Grade_ID" Type="int" />
+          <Property Name="Phone" Type="varchar" MaxLength="15" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Is_Active" Type="bit" />
+          <Property Name="Created_DateTime" Type="datetime" />
+          <Property Name="Updated_DateTime" Type="datetime" />
+          <Property Name="Remark" Type="varchar" MaxLength="150" />
+          <Property Name="RFID_NO" Type="varchar" MaxLength="50" />
+          <Property Name="Card_ID" Type="bigint" />
+          <Property Name="Created_By" Type="int" />
+          <Property Name="Updated_By" Type="int" />
+        </EntityType>
+        <EntityType Name="Grade_Master">
+          <Key>
+            <PropertyRef Name="Grade_ID" />
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="Grade_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Grade_Name" Type="varchar" MaxLength="20" />
+          <Property Name="Grade_Limit" Type="float" />
+          <Property Name="Company_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item_Group_Master">
+          <Key>
+            <PropertyRef Name="Item_Group_ID" />
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="Item_Group_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Item_Group_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Is_Active" Type="bit" />
+          <Property Name="Item_Group_GUID" Type="uniqueidentifier" />
+          <Property Name="Company_ID" Type="int" Nullable="false" />
+          <Property Name="Created_DateTime" Type="datetime" />
+          <Property Name="Updated_DateTime" Type="datetime" />
+          <Property Name="Created_By" Type="int" />
+          <Property Name="Updated_By" Type="int" />
+        </EntityType>
+        <EntityType Name="Item_Master">
+          <Key>
+            <PropertyRef Name="Item_ID" />
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="Item_ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Item_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Item_Unit_Price" Type="float" />
+          <Property Name="Is_Active" Type="bit" />
+          <Property Name="Created_DateTime" Type="datetime" />
+          <Property Name="Updated_DateTime" Type="datetime" />
+          <Property Name="Created_By" Type="int" />
+          <Property Name="Updated_By" Type="int" />
+          <Property Name="Item_Type_ID" Type="int" />
+          <Property Name="Item_Group_GUID" Type="uniqueidentifier" />
+          <Property Name="Company_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role_Master">
+          <Key>
+            <PropertyRef Name="Role_ID" />
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="Role_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Role_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Company_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="schema_info">
+          <Key>
+            <PropertyRef Name="schema_major_version" />
+            <PropertyRef Name="schema_minor_version" />
+          </Key>
+          <Property Name="schema_major_version" Type="int" Nullable="false" />
+          <Property Name="schema_minor_version" Type="int" Nullable="false" />
+          <Property Name="schema_extended_info" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="scope_config">
+          <Key>
+            <PropertyRef Name="config_id" />
+          </Key>
+          <Property Name="config_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="config_data" Type="xml" Nullable="false" />
+          <Property Name="scope_status" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="scope_info">
+          <Key>
+            <PropertyRef Name="sync_scope_name" />
+          </Key>
+          <Property Name="scope_local_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="scope_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="sync_scope_name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="scope_sync_knowledge" Type="varbinary(max)" />
+          <Property Name="scope_tombstone_cleanup_knowledge" Type="varbinary(max)" />
+          <Property Name="scope_timestamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="scope_config_id" Type="uniqueidentifier" />
+          <Property Name="scope_restore_count" Type="int" Nullable="false" />
+          <Property Name="scope_user_comment" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Transaction_Details">
+          <Key>
+            <PropertyRef Name="Transaction_Detail_ID" />
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="Transaction_Detail_ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Transaction_Master_ID" Type="bigint" />
+          <Property Name="Item_ID" Type="bigint" />
+          <Property Name="Item_Unit_Price" Type="float" />
+          <Property Name="Item_Quantity" Type="int" />
+          <Property Name="Item_Total_Cost" Type="float" />
+          <Property Name="Remark" Type="varchar" MaxLength="150" />
+          <Property Name="Company_ID" Type="int" Nullable="false" />
+          <Property Name="Created_DateTime" Type="datetime" />
+          <Property Name="Updated_DateTime" Type="datetime" />
+          <Property Name="Created_By" Type="int" />
+          <Property Name="Updated_By" Type="int" />
+        </EntityType>
+        <EntityType Name="Transaction_Master">
+          <Key>
+            <PropertyRef Name="Transaction_Master_ID" />
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="Transaction_Master_ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Transaction_Date" Type="datetime" />
+          <Property Name="Order_No" Type="varchar" MaxLength="50" />
+          <Property Name="Card_ID" Type="bigint" />
+          <Property Name="RFID_No" Type="varchar" MaxLength="50" />
+          <Property Name="Transaction_Amount" Type="float" />
+          <Property Name="Card_Closing_Balance" Type="float" />
+          <Property Name="Created_By" Type="int" />
+          <Property Name="Created_DateTime" Type="datetime" />
+          <Property Name="IP_Address" Type="varchar" MaxLength="50" />
+          <Property Name="Remark" Type="varchar" MaxLength="150" />
+          <Property Name="Employee_ID" Type="bigint" />
+          <Property Name="PaidBy_Card" Type="bit" />
+          <Property Name="Company_ID" Type="int" Nullable="false" />
+          <Property Name="Updated_DateTime" Type="datetime" />
+          <Property Name="Updated_By" Type="int" />
+          <Property Name="cust_id" Type="int" />
+        </EntityType>
+        <EntityType Name="User_Master">
+          <Key>
+            <PropertyRef Name="User_ID" />
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="User_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="User_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Real_Name" Type="varchar" MaxLength="150" />
+          <Property Name="Mobile" Type="varchar" MaxLength="15" />
+          <Property Name="Password" Type="varchar" MaxLength="150" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Company_ID" Type="bigint" Nullable="false" />
+          <Property Name="Is_Active" Type="bit" />
+          <Property Name="Created_DateTime" Type="datetime" />
+          <Property Name="Updated_DateTime" Type="datetime" />
+          <Property Name="Role_ID" Type="int" />
+          <Property Name="Created_By" Type="int" />
+          <Property Name="Updated_By" Type="int" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CafeteriaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="MegabiteCafeteriaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Card_Details" EntityType="CafeteriaModel.Card_Details" />
+          <EntitySet Name="Card_Ledger" EntityType="CafeteriaModel.Card_Ledger" />
+          <EntitySet Name="Card_Master" EntityType="CafeteriaModel.Card_Master" />
+          <EntitySet Name="Card_Status_Master" EntityType="CafeteriaModel.Card_Status_Master" />
+          <EntitySet Name="Company_Master" EntityType="CafeteriaModel.Company_Master" />
+          <EntitySet Name="Employee_Master" EntityType="CafeteriaModel.Employee_Master" />
+          <EntitySet Name="Grade_Master" EntityType="CafeteriaModel.Grade_Master" />
+          <EntitySet Name="Item_Group_Master" EntityType="CafeteriaModel.Item_Group_Master" />
+          <EntitySet Name="Item_Master" EntityType="CafeteriaModel.Item_Master" />
+          <EntitySet Name="Role_Master" EntityType="CafeteriaModel.Role_Master" />
+          <EntitySet Name="schema_info" EntityType="CafeteriaModel.schema_info" />
+          <EntitySet Name="scope_config" EntityType="CafeteriaModel.scope_config" />
+          <EntitySet Name="scope_info" EntityType="CafeteriaModel.scope_info" />
+          <EntitySet Name="Transaction_Details" EntityType="CafeteriaModel.Transaction_Details" />
+          <EntitySet Name="Transaction_Master" EntityType="CafeteriaModel.Transaction_Master" />
+          <EntitySet Name="User_Master" EntityType="CafeteriaModel.User_Master" />
+          <EntitySet Name="Customer_Master" EntityType="CafeteriaModel.Customer_Master" />
+        </EntityContainer>
+        <EntityType Name="Card_Details">
+          <Key>
+            <PropertyRef Name="Card_Detail_ID" />
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="Card_Detail_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Card_ID" Type="Int64" />
+          <Property Name="Amount_Loaded" Type="Double" />
+          <Property Name="Loaded_Datetime" Type="DateTime" Precision="3" />
+          <Property Name="Loaded_By" Type="Int32" />
+          <Property Name="Transafered_From_Card" Type="Int64" />
+          <Property Name="RFID_No" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Employee_ID" Type="Int32" />
+          <Property Name="Closing_Balance" Type="Double" />
+          <Property Name="Company_ID" Type="Int32" Nullable="false" />
+          <Property Name="Created_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Updated_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Created_By" Type="Int32" />
+          <Property Name="Updated_By" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Card_Ledger">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RFID_NO" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Employee_ID" Type="Int32" />
+          <Property Name="TR_Remark" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="TR_Type" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="TR_Date" Type="DateTime" Precision="3" />
+          <Property Name="Debit" Type="Double" />
+          <Property Name="Credit" Type="Double" />
+          <Property Name="User_ID" Type="Int32" />
+          <Property Name="Ref" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Payment_Type" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Closing_Balance" Type="Double" />
+          <Property Name="Company_ID" Type="Int32" Nullable="false" />
+          <Property Name="Created_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Updated_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Created_By" Type="Int32" />
+          <Property Name="Updated_By" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Card_Master">
+          <Key>
+            <PropertyRef Name="Card_ID" />
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="Card_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RFID_No" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Employee_ID" Type="Int32" />
+          <Property Name="Current_Balance" Type="Double" />
+          <Property Name="Card_Assigned_Date" Type="DateTime" Precision="0" />
+          <Property Name="Is_Active" Type="Boolean" />
+          <Property Name="Card_Status_ID" Type="Int32" />
+          <Property Name="Created_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Updated_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Created_By" Type="Int32" />
+          <Property Name="Updated_By" Type="Int32" />
+          <Property Name="Company_ID" Type="Int32" Nullable="false" />
+          <Property Name="Is_Deleted" Type="Byte" />
+        </EntityType>
+        <EntityType Name="Card_Status_Master">
+          <Key>
+            <PropertyRef Name="Card_Status_ID" />
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="Card_Status_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Card_Status" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Company_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Company_Master">
+          <Key>
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="Company_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Company_Name" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Company_Address" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="Company_Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="State" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Country" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Contact_Person" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Contact_Person_Phone" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="Contact_Person_Email" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Is_Active" Type="Boolean" />
+          <Property Name="Created_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Updated_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="Created_By" Type="Int32" />
+          <Property Name="Updated_By" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Employee_Master">
+          <Key>
+            <PropertyRef Name="Employee_ID" />
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="Employee_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Employee_Name" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Company_ID" Type="Int32" Nullable="false" />
+          <Property Name="Department" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Designation" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Grade_ID" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Is_Active" Type="Boolean" />
+          <Property Name="Created_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Updated_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="RFID_NO" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Card_ID" Type="Int64" />
+          <Property Name="Created_By" Type="Int32" />
+          <Property Name="Updated_By" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Grade_Master">
+          <Key>
+            <PropertyRef Name="Grade_ID" />
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="Grade_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Grade_Name" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Grade_Limit" Type="Double" />
+          <Property Name="Company_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item_Group_Master">
+          <Key>
+            <PropertyRef Name="Item_Group_ID" />
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="Item_Group_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Item_Group_Name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Is_Active" Type="Boolean" />
+          <Property Name="Item_Group_GUID" Type="Guid" />
+          <Property Name="Company_ID" Type="Int32" Nullable="false" />
+          <Property Name="Created_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Updated_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Created_By" Type="Int32" />
+          <Property Name="Updated_By" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Item_Master">
+          <Key>
+            <PropertyRef Name="Item_ID" />
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="Item_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Item_Name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Item_Unit_Price" Type="Double" />
+          <Property Name="Is_Active" Type="Boolean" />
+          <Property Name="Created_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Updated_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Created_By" Type="Int32" />
+          <Property Name="Updated_By" Type="Int32" />
+          <Property Name="Item_Type_ID" Type="Int32" />
+          <Property Name="Item_Group_GUID" Type="Guid" />
+          <Property Name="Company_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role_Master">
+          <Key>
+            <PropertyRef Name="Role_ID" />
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="Role_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role_Name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Company_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="schema_info">
+          <Key>
+            <PropertyRef Name="schema_major_version" />
+            <PropertyRef Name="schema_minor_version" />
+          </Key>
+          <Property Name="schema_major_version" Type="Int32" Nullable="false" />
+          <Property Name="schema_minor_version" Type="Int32" Nullable="false" />
+          <Property Name="schema_extended_info" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="scope_config">
+          <Key>
+            <PropertyRef Name="config_id" />
+          </Key>
+          <Property Name="config_id" Type="Guid" Nullable="false" />
+          <Property Name="config_data" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="scope_status" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+        </EntityType>
+        <EntityType Name="scope_info">
+          <Key>
+            <PropertyRef Name="sync_scope_name" />
+          </Key>
+          <Property Name="scope_local_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="scope_id" Type="Guid" Nullable="false" />
+          <Property Name="sync_scope_name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="scope_sync_knowledge" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="scope_tombstone_cleanup_knowledge" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="scope_timestamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="scope_config_id" Type="Guid" />
+          <Property Name="scope_restore_count" Type="Int32" Nullable="false" />
+          <Property Name="scope_user_comment" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Transaction_Details">
+          <Key>
+            <PropertyRef Name="Transaction_Detail_ID" />
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="Transaction_Detail_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Transaction_Master_ID" Type="Int64" />
+          <Property Name="Item_ID" Type="Int64" />
+          <Property Name="Item_Unit_Price" Type="Double" />
+          <Property Name="Item_Quantity" Type="Int32" />
+          <Property Name="Item_Total_Cost" Type="Double" />
+          <Property Name="Remark" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="Company_ID" Type="Int32" Nullable="false" />
+          <Property Name="Created_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Updated_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Created_By" Type="Int32" />
+          <Property Name="Updated_By" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Transaction_Master">
+          <Key>
+            <PropertyRef Name="Transaction_Master_ID" />
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="Transaction_Master_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Transaction_Date" Type="DateTime" Precision="3" />
+          <Property Name="Order_No" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Card_ID" Type="Int64" />
+          <Property Name="RFID_No" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Transaction_Amount" Type="Double" />
+          <Property Name="Card_Closing_Balance" Type="Double" />
+          <Property Name="Created_By" Type="Int32" />
+          <Property Name="Created_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="IP_Address" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Remark" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="Employee_ID" Type="Int64" />
+          <Property Name="PaidBy_Card" Type="Boolean" />
+          <Property Name="Company_ID" Type="Int32" Nullable="false" />
+          <Property Name="Updated_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Updated_By" Type="Int32" />
+          <Property Type="Int32" Name="cust_id" />
+        </EntityType>
+        <EntityType Name="User_Master">
+          <Key>
+            <PropertyRef Name="User_ID" />
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="User_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_Name" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Real_Name" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="Mobile" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Company_ID" Type="Int64" Nullable="false" />
+          <Property Name="Is_Active" Type="Boolean" />
+          <Property Name="Created_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Updated_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Role_ID" Type="Int32" />
+          <Property Name="Created_By" Type="Int32" />
+          <Property Name="Updated_By" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Customer_Master">
+          <Key>
+            <PropertyRef Name="cust_id" />
+          </Key>
+          <Property Type="Int32" Name="cust_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="cust_Name" />
+          <Property Type="String" Name="cust_MobileNo" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CafeteriaModelStoreContainer" CdmEntityContainer="MegabiteCafeteriaEntities">
+          <EntitySetMapping Name="Card_Details">
+            <EntityTypeMapping TypeName="CafeteriaModel.Card_Details">
+              <MappingFragment StoreEntitySet="Card_Details">
+                <ScalarProperty Name="Card_Detail_ID" ColumnName="Card_Detail_ID" />
+                <ScalarProperty Name="Card_ID" ColumnName="Card_ID" />
+                <ScalarProperty Name="Amount_Loaded" ColumnName="Amount_Loaded" />
+                <ScalarProperty Name="Loaded_Datetime" ColumnName="Loaded_Datetime" />
+                <ScalarProperty Name="Loaded_By" ColumnName="Loaded_By" />
+                <ScalarProperty Name="Transafered_From_Card" ColumnName="Transafered_From_Card" />
+                <ScalarProperty Name="RFID_No" ColumnName="RFID_No" />
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+                <ScalarProperty Name="Closing_Balance" ColumnName="Closing_Balance" />
+                <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+                <ScalarProperty Name="Created_DateTime" ColumnName="Created_DateTime" />
+                <ScalarProperty Name="Updated_DateTime" ColumnName="Updated_DateTime" />
+                <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+                <ScalarProperty Name="Updated_By" ColumnName="Updated_By" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Card_Ledger">
+            <EntityTypeMapping TypeName="CafeteriaModel.Card_Ledger">
+              <MappingFragment StoreEntitySet="Card_Ledger">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RFID_NO" ColumnName="RFID_NO" />
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+                <ScalarProperty Name="TR_Remark" ColumnName="TR_Remark" />
+                <ScalarProperty Name="TR_Type" ColumnName="TR_Type" />
+                <ScalarProperty Name="TR_Date" ColumnName="TR_Date" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Ref" ColumnName="Ref" />
+                <ScalarProperty Name="Payment_Type" ColumnName="Payment_Type" />
+                <ScalarProperty Name="Closing_Balance" ColumnName="Closing_Balance" />
+                <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+                <ScalarProperty Name="Created_DateTime" ColumnName="Created_DateTime" />
+                <ScalarProperty Name="Updated_DateTime" ColumnName="Updated_DateTime" />
+                <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+                <ScalarProperty Name="Updated_By" ColumnName="Updated_By" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Card_Master">
+            <EntityTypeMapping TypeName="CafeteriaModel.Card_Master">
+              <MappingFragment StoreEntitySet="Card_Master">
+                <ScalarProperty Name="Card_ID" ColumnName="Card_ID" />
+                <ScalarProperty Name="RFID_No" ColumnName="RFID_No" />
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+                <ScalarProperty Name="Current_Balance" ColumnName="Current_Balance" />
+                <ScalarProperty Name="Card_Assigned_Date" ColumnName="Card_Assigned_Date" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+                <ScalarProperty Name="Card_Status_ID" ColumnName="Card_Status_ID" />
+                <ScalarProperty Name="Created_DateTime" ColumnName="Created_DateTime" />
+                <ScalarProperty Name="Updated_DateTime" ColumnName="Updated_DateTime" />
+                <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+                <ScalarProperty Name="Updated_By" ColumnName="Updated_By" />
+                <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+                <ScalarProperty Name="Is_Deleted" ColumnName="Is_Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Card_Status_Master">
+            <EntityTypeMapping TypeName="CafeteriaModel.Card_Status_Master">
+              <MappingFragment StoreEntitySet="Card_Status_Master">
+                <ScalarProperty Name="Card_Status_ID" ColumnName="Card_Status_ID" />
+                <ScalarProperty Name="Card_Status" ColumnName="Card_Status" />
+                <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Company_Master">
+            <EntityTypeMapping TypeName="CafeteriaModel.Company_Master">
+              <MappingFragment StoreEntitySet="Company_Master">
+                <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+                <ScalarProperty Name="Company_Name" ColumnName="Company_Name" />
+                <ScalarProperty Name="Company_Address" ColumnName="Company_Address" />
+                <ScalarProperty Name="Company_Logo" ColumnName="Company_Logo" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Contact_Person" ColumnName="Contact_Person" />
+                <ScalarProperty Name="Contact_Person_Phone" ColumnName="Contact_Person_Phone" />
+                <ScalarProperty Name="Contact_Person_Email" ColumnName="Contact_Person_Email" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+                <ScalarProperty Name="Created_DateTime" ColumnName="Created_DateTime" />
+                <ScalarProperty Name="Updated_DateTime" ColumnName="Updated_DateTime" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+                <ScalarProperty Name="Updated_By" ColumnName="Updated_By" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee_Master">
+            <EntityTypeMapping TypeName="CafeteriaModel.Employee_Master">
+              <MappingFragment StoreEntitySet="Employee_Master">
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+                <ScalarProperty Name="Employee_Name" ColumnName="Employee_Name" />
+                <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Grade_ID" ColumnName="Grade_ID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+                <ScalarProperty Name="Created_DateTime" ColumnName="Created_DateTime" />
+                <ScalarProperty Name="Updated_DateTime" ColumnName="Updated_DateTime" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="RFID_NO" ColumnName="RFID_NO" />
+                <ScalarProperty Name="Card_ID" ColumnName="Card_ID" />
+                <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+                <ScalarProperty Name="Updated_By" ColumnName="Updated_By" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grade_Master">
+            <EntityTypeMapping TypeName="CafeteriaModel.Grade_Master">
+              <MappingFragment StoreEntitySet="Grade_Master">
+                <ScalarProperty Name="Grade_ID" ColumnName="Grade_ID" />
+                <ScalarProperty Name="Grade_Name" ColumnName="Grade_Name" />
+                <ScalarProperty Name="Grade_Limit" ColumnName="Grade_Limit" />
+                <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_Group_Master">
+            <EntityTypeMapping TypeName="CafeteriaModel.Item_Group_Master">
+              <MappingFragment StoreEntitySet="Item_Group_Master">
+                <ScalarProperty Name="Item_Group_ID" ColumnName="Item_Group_ID" />
+                <ScalarProperty Name="Item_Group_Name" ColumnName="Item_Group_Name" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+                <ScalarProperty Name="Item_Group_GUID" ColumnName="Item_Group_GUID" />
+                <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+                <ScalarProperty Name="Created_DateTime" ColumnName="Created_DateTime" />
+                <ScalarProperty Name="Updated_DateTime" ColumnName="Updated_DateTime" />
+                <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+                <ScalarProperty Name="Updated_By" ColumnName="Updated_By" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_Master">
+            <EntityTypeMapping TypeName="CafeteriaModel.Item_Master">
+              <MappingFragment StoreEntitySet="Item_Master">
+                <ScalarProperty Name="Item_ID" ColumnName="Item_ID" />
+                <ScalarProperty Name="Item_Name" ColumnName="Item_Name" />
+                <ScalarProperty Name="Item_Unit_Price" ColumnName="Item_Unit_Price" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+                <ScalarProperty Name="Created_DateTime" ColumnName="Created_DateTime" />
+                <ScalarProperty Name="Updated_DateTime" ColumnName="Updated_DateTime" />
+                <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+                <ScalarProperty Name="Updated_By" ColumnName="Updated_By" />
+                <ScalarProperty Name="Item_Type_ID" ColumnName="Item_Type_ID" />
+                <ScalarProperty Name="Item_Group_GUID" ColumnName="Item_Group_GUID" />
+                <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role_Master">
+            <EntityTypeMapping TypeName="CafeteriaModel.Role_Master">
+              <MappingFragment StoreEntitySet="Role_Master">
+                <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+                <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
+                <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="schema_info">
+            <EntityTypeMapping TypeName="CafeteriaModel.schema_info">
+              <MappingFragment StoreEntitySet="schema_info">
+                <ScalarProperty Name="schema_major_version" ColumnName="schema_major_version" />
+                <ScalarProperty Name="schema_minor_version" ColumnName="schema_minor_version" />
+                <ScalarProperty Name="schema_extended_info" ColumnName="schema_extended_info" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="scope_config">
+            <EntityTypeMapping TypeName="CafeteriaModel.scope_config">
+              <MappingFragment StoreEntitySet="scope_config">
+                <ScalarProperty Name="config_id" ColumnName="config_id" />
+                <ScalarProperty Name="config_data" ColumnName="config_data" />
+                <ScalarProperty Name="scope_status" ColumnName="scope_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="scope_info">
+            <EntityTypeMapping TypeName="CafeteriaModel.scope_info">
+              <MappingFragment StoreEntitySet="scope_info">
+                <ScalarProperty Name="scope_local_id" ColumnName="scope_local_id" />
+                <ScalarProperty Name="scope_id" ColumnName="scope_id" />
+                <ScalarProperty Name="sync_scope_name" ColumnName="sync_scope_name" />
+                <ScalarProperty Name="scope_sync_knowledge" ColumnName="scope_sync_knowledge" />
+                <ScalarProperty Name="scope_tombstone_cleanup_knowledge" ColumnName="scope_tombstone_cleanup_knowledge" />
+                <ScalarProperty Name="scope_timestamp" ColumnName="scope_timestamp" />
+                <ScalarProperty Name="scope_config_id" ColumnName="scope_config_id" />
+                <ScalarProperty Name="scope_restore_count" ColumnName="scope_restore_count" />
+                <ScalarProperty Name="scope_user_comment" ColumnName="scope_user_comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transaction_Details">
+            <EntityTypeMapping TypeName="CafeteriaModel.Transaction_Details">
+              <MappingFragment StoreEntitySet="Transaction_Details">
+                <ScalarProperty Name="Transaction_Detail_ID" ColumnName="Transaction_Detail_ID" />
+                <ScalarProperty Name="Transaction_Master_ID" ColumnName="Transaction_Master_ID" />
+                <ScalarProperty Name="Item_ID" ColumnName="Item_ID" />
+                <ScalarProperty Name="Item_Unit_Price" ColumnName="Item_Unit_Price" />
+                <ScalarProperty Name="Item_Quantity" ColumnName="Item_Quantity" />
+                <ScalarProperty Name="Item_Total_Cost" ColumnName="Item_Total_Cost" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+                <ScalarProperty Name="Created_DateTime" ColumnName="Created_DateTime" />
+                <ScalarProperty Name="Updated_DateTime" ColumnName="Updated_DateTime" />
+                <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+                <ScalarProperty Name="Updated_By" ColumnName="Updated_By" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transaction_Master">
+            <EntityTypeMapping TypeName="CafeteriaModel.Transaction_Master">
+              <MappingFragment StoreEntitySet="Transaction_Master">
+                <ScalarProperty Name="cust_id" ColumnName="cust_id" />
+                <ScalarProperty Name="Transaction_Master_ID" ColumnName="Transaction_Master_ID" />
+                <ScalarProperty Name="Transaction_Date" ColumnName="Transaction_Date" />
+                <ScalarProperty Name="Order_No" ColumnName="Order_No" />
+                <ScalarProperty Name="Card_ID" ColumnName="Card_ID" />
+                <ScalarProperty Name="RFID_No" ColumnName="RFID_No" />
+                <ScalarProperty Name="Transaction_Amount" ColumnName="Transaction_Amount" />
+                <ScalarProperty Name="Card_Closing_Balance" ColumnName="Card_Closing_Balance" />
+                <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+                <ScalarProperty Name="Created_DateTime" ColumnName="Created_DateTime" />
+                <ScalarProperty Name="IP_Address" ColumnName="IP_Address" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+                <ScalarProperty Name="PaidBy_Card" ColumnName="PaidBy_Card" />
+                <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+                <ScalarProperty Name="Updated_DateTime" ColumnName="Updated_DateTime" />
+                <ScalarProperty Name="Updated_By" ColumnName="Updated_By" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Master">
+            <EntityTypeMapping TypeName="CafeteriaModel.User_Master">
+              <MappingFragment StoreEntitySet="User_Master">
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="Real_Name" ColumnName="Real_Name" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+                <ScalarProperty Name="Created_DateTime" ColumnName="Created_DateTime" />
+                <ScalarProperty Name="Updated_DateTime" ColumnName="Updated_DateTime" />
+                <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+                <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+                <ScalarProperty Name="Updated_By" ColumnName="Updated_By" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer_Master">
+            <EntityTypeMapping TypeName="CafeteriaModel.Customer_Master">
+              <MappingFragment StoreEntitySet="Customer_Master">
+                <ScalarProperty Name="cust_MobileNo" ColumnName="cust_MobileNo" />
+                <ScalarProperty Name="cust_Name" ColumnName="cust_Name" />
+                <ScalarProperty Name="cust_id" ColumnName="cust_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="entityMegabite" ZoomLevel="47">
+        <EntityTypeShape EntityType="CafeteriaModel.Card_Details" Width="1.5" PointX="0.75" PointY="0.75" Height="3.7109993489583326" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.Card_Ledger" Width="1.5" PointX="4.75" PointY="0.75" Height="4.2879036458333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.Card_Master" Width="1.5" PointX="6.75" PointY="0.75" Height="3.5186979166666656" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.Card_Status_Master" Width="1.5" PointX="4.75" PointY="6.75" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.Company_Master" Width="1.625" PointX="8.75" PointY="0.75" Height="4.4802050781250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.Employee_Master" Width="1.125" PointX="10.75" PointY="0.75" Height="4.0956022135416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.Grade_Master" Width="1.5" PointX="10.75" PointY="5.75" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.Item_Group_Master" Width="1.5" PointX="0.75" PointY="11.75" Height="2.7494921875000031" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.Item_Master" Width="1.5" PointX="12.75" PointY="0.75" Height="3.1340950520833388" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.Role_Master" Width="1.5" PointX="12.75" PointY="9.75" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.schema_info" Width="1.5" PointX="8.75" PointY="13.75" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.scope_config" Width="1.5" PointX="14.75" PointY="0.75" Height="1.5956835937500067" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.scope_info" Width="1.5" PointX="14.75" PointY="3.75" Height="2.7494921875000102" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.Transaction_Details" Width="1.5" PointX="14.75" PointY="7.75" Height="3.3263964843750102" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.Transaction_Master" Width="1.5" PointX="0.75" PointY="15.75" Height="4.0956022135416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.User_Master" Width="1.5" PointX="16.75" PointY="0.75" Height="3.5186979166666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeteriaModel.Customer_Master" Width="1.5" PointX="7.1599677778594044" PointY="28.183288944970485" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

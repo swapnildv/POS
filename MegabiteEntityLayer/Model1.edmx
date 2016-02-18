@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CafeteriaModel1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="CafeteriaModel1StoreContainer">
+          <EntitySet Name="Card_Details" EntityType="CafeteriaModel1.Store.Card_Details" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Card_Details">
+          <Key>
+            <PropertyRef Name="Card_Detail_ID" />
+          </Key>
+          <Property Name="Card_Detail_ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Card_ID" Type="bigint" />
+          <Property Name="Amount_Loaded" Type="float" />
+          <Property Name="Loaded_Datetime" Type="datetime" />
+          <Property Name="Loaded_By" Type="int" />
+          <Property Name="Transafered_From_Card" Type="bigint" />
+          <Property Name="RFID_No" Type="varchar" MaxLength="50" />
+          <Property Name="Employee_ID" Type="int" />
+          <Property Name="Closing_Balance" Type="float" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CafeteriaModel1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="CafeteriaEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Card_Details" EntityType="CafeteriaModel1.Card_Details" />
+        </EntityContainer>
+        <EntityType Name="Card_Details">
+          <Key>
+            <PropertyRef Name="Card_Detail_ID" />
+          </Key>
+          <Property Name="Card_Detail_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Card_ID" Type="Int64" />
+          <Property Name="Amount_Loaded" Type="Double" />
+          <Property Name="Loaded_Datetime" Type="DateTime" />
+          <Property Name="Loaded_By" Type="Int32" />
+          <Property Name="Transafered_From_Card" Type="Int64" />
+          <Property Name="RFID_No" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Employee_ID" Type="Int32" />
+          <Property Name="Closing_Balance" Type="Double" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CafeteriaModel1StoreContainer" CdmEntityContainer="CafeteriaEntities1">
+          <EntitySetMapping Name="Card_Details">
+            <EntityTypeMapping TypeName="CafeteriaModel1.Card_Details">
+              <MappingFragment StoreEntitySet="Card_Details">
+                <ScalarProperty Name="Card_Detail_ID" ColumnName="Card_Detail_ID" />
+                <ScalarProperty Name="Card_ID" ColumnName="Card_ID" />
+                <ScalarProperty Name="Amount_Loaded" ColumnName="Amount_Loaded" />
+                <ScalarProperty Name="Loaded_Datetime" ColumnName="Loaded_Datetime" />
+                <ScalarProperty Name="Loaded_By" ColumnName="Loaded_By" />
+                <ScalarProperty Name="Transafered_From_Card" ColumnName="Transafered_From_Card" />
+                <ScalarProperty Name="RFID_No" ColumnName="RFID_No" />
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+                <ScalarProperty Name="Closing_Balance" ColumnName="Closing_Balance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="CafeteriaModel1.Card_Details" Width="1.5" PointX="0.75" PointY="0.75" Height="2.7494921874999996" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

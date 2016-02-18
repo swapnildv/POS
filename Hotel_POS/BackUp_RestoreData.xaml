@@ -1,0 +1,94 @@
+﻿<Window x:Class="Hotel_POS.BackUp_RestoreData"
+        ShowInTaskbar="False"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+        Title="BackUp_RestoreData"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Icon="/Hotel_POS;component/Images/Restaurant%20Blue.ico">
+    <Grid Loaded="Window_Loaded"
+          Height="371">
+        <Grid Margin="10,10,12,0"
+              Height="363"
+              VerticalAlignment="Top">
+            <TabControl Height="351"
+                        HorizontalAlignment="Left"
+                        Margin="8,6,0,0"
+                        Name="tabControl1"
+                        Background="{DynamicResource LightBrush}"
+                        VerticalAlignment="Top"
+                        Width="743">
+                <TabItem Header="Back up Data"
+                         Name="tabItem1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="128*" />
+                            <ColumnDefinition Width="360*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Click="button1_Click"
+                                Style="{DynamicResource BlueButtonStyle}"
+                                Content="Select Folder"
+                                Height="35"
+                                HorizontalAlignment="Left"
+                                Margin="88,54,0,0"
+                                Name="btnSelectFolder"
+                                VerticalAlignment="Top"
+                                Width="97"
+                                Grid.Column="1"
+                                ToolTip="Click here to Select Folder..." />
+                        <TextBox Height="31"
+                                 HorizontalAlignment="Left"
+                                 Margin="34,54,0,0"
+                                 Name="txtFolderPath"
+                                 VerticalAlignment="Top"
+                                 Width="222"
+                                 Grid.ColumnSpan="2"
+                                 IsEnabled="False" />
+                        <Button Width=" 150"
+                                Click="btnBackupData_Click"
+                                Style="{DynamicResource BlueButtonStyle}"
+                                Content="Back Up Data"
+                                Height="35"
+                                HorizontalAlignment="Left"
+                                Margin="100,153,0,0"
+                                Name="btnBackupData"
+                                VerticalAlignment="Top"
+                                Grid.Column="1" />
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Resore Data"
+                         Name="tabItem2">
+                    <Grid>
+                        <Button Click="btnBrowse_Click"
+                                Style="{DynamicResource BlueButtonStyle}"
+                                Content="Browse .bak file .."
+                                Height="35"
+                                HorizontalAlignment="Right"
+                                Margin="0,40,304,0"
+                                Name="btnBrowse"
+                                VerticalAlignment="Top"
+                                Width="138" />
+                        <TextBox Height="31"
+                                 HorizontalAlignment="Left"
+                                 Margin="37,40,0,0"
+                                 Name="txtBackupFilePath"
+                                 VerticalAlignment="Top"
+                                 Width="222"
+                                 Text=""
+                                 IsUndoEnabled="False" />
+                        <Button Click="btnRestore_Click"
+                                Style="{DynamicResource BlueButtonStyle}"
+                                Content="Restore"
+                                Height="40"
+                                HorizontalAlignment="Left"
+                                Margin="291,138,0,0"
+                                Name="btnRestore"
+                                VerticalAlignment="Top"
+                                Width="105" />
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </Grid>
+</Window>

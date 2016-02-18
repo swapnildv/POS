@@ -35,57 +35,12 @@ namespace Hotel_POS
         public Int32 User_ID;
         public Int32 Role_ID;
 
-        public string[] Menus = { "Company", 
-                                   "Get_Data", 
-                                   "Manage_Employee", 
-                                   "Users", 
-                                   "Menu", 
-                                   "MenuCategory", 
-                                   "CardAssign", 
-                                   "LoadCard", 
-                                   "OrderMenu", 
-                                   "NewOrder", 
-                                   "Reports", 
-                                   "employeeLedger", 
-                                   "TransactionReport", 
-                                   "LoadReport", 
-                                   "ChangePasswordMenuItem", 
-                                   "FormatCard" };
 
-        public string[] MenusAdmin = { "Company", 
-                                         "Get_Data", 
-                                         "Manage_Employee", 
-                                         "Users", 
-                                         "Menu", 
-                                         "MenuCategory", 
-                                         "CardAssign", 
-                                         "LoadCard", 
-                                         "OrderMenu", 
-                                         "NewOrder", 
-                                         "Reports", 
-                                         "employeeLedger", 
-                                         "TransactionReport", 
-                                         "LoadReport", 
-                                         "ChangePasswordMenuItem" };
-
-        public string[] MenusManager = { "Manage_Employee", 
-                                          "Menu", 
-                                          "MenuCategory", 
-                                          "CardAssign", 
-                                          "LoadCard", 
-                                          "OrderMenu", 
-                                          "NewOrder", 
-                                          "ChangePasswordMenuItem" };
-
-        public string[] MenusTransaction = {  "NewOrder",  
-                                              "ChangePasswordMenuItem" };
 
         #endregion
         public MainWindow()
         {
             InitializeComponent();
-
-
 
         }
         #region Events
@@ -106,23 +61,9 @@ namespace Hotel_POS
                         shuffleMenus(TerminalCommon.adminRoleMenu);
                         break;
                 }
+                MainGrid.Children.Clear();
+                MainGrid.Children.Add(new OrderUserControl());
                 this.WindowState = System.Windows.WindowState.Maximized;
-
-                //if (Role_ID == 3)
-                //{
-                //    Load_RoleWiseMenus(MenusAdmin);
-
-                //}
-                //else if (Role_ID == 2)
-                //{
-                //    Load_RoleWiseMenus(MenusTransaction);
-
-                //}
-                //else if (Role_ID == 1)
-                //{
-                //    Load_RoleWiseMenus(MenusManager);
-
-                //}
             }
             catch (Exception ex)
             {
@@ -387,7 +328,6 @@ namespace Hotel_POS
             try
             {
                 this.Close();
-
             }
             catch (Exception ex)
             {

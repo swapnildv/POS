@@ -40,6 +40,7 @@ namespace Hotel_POS
 
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
+            txtUserName.Focus();
         }
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
@@ -76,15 +77,17 @@ namespace Hotel_POS
                         if (TerminalCommon.LoggedInUser != null)
                         {
                             TerminalCommon.LoggedInUser = TerminalCommon.LoggedInUser;
-                            MainWindow NavigateObj = new MainWindow();
+                            MainWindow NavigateObj = new MainWindow() { Owner = this };
                             NavigateObj.lblUserID.Content = TerminalCommon.LoggedInUser.User_ID.ToString();
                             NavigateObj.lblRoleID.Content = TerminalCommon.LoggedInUser.Role_ID.ToString();
                             //NavigateObj.lblRoleID.Content = objResponse.Company_Name.ToString();
                             NavigateObj.lblCompanyID.Content = TerminalCommon.LoggedInUser.Company_ID.ToString();
-
                             NavigateObj.lblUserName.Content = "Welcome, " + TerminalCommon.LoggedInUser.Real_Name.ToString();
-                            NavigateObj.Show();
-                            this.Close();
+                            NavigateObj.ShowDialog();
+                            this.Show();
+                            btnCancel_Click(null, null);
+                            txtUserName.Focus();
+                            //this.Close();
                         }
                         else
                         {

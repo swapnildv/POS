@@ -45,6 +45,7 @@ namespace Hotel_POS.User_Controls
                 //BL_Menu obj = new BL_Menu();
                 MainMenuListBox.ItemsSource = new BL_Menu().get_Item_Group_List().Where(c => c.Is_Active == true);
                 ItemListBox.ItemsSource = new BL_Menu().GetMenuCart();
+                customerMobileTextBox.Focus();
             }
             catch (Exception ex)
             {
@@ -57,17 +58,17 @@ namespace Hotel_POS.User_Controls
         {
             try
             {
-                this.Dispatcher.Invoke((Action)(() =>
-                {
-                    TerminalCommon.currentCustomer = new BL_UserMaster().getCustomerName(customerMobileTextBox.Text);
-                    if (TerminalCommon.currentCustomer != null)
-                    {
-                        customerNameTextBox.Text = TerminalCommon.currentCustomer.cust_Name;
-                        customerNameTextBox.IsEnabled = false;
-                    }
-                    else
-                        customerNameTextBox.Focus();
-                }));
+                //this.Dispatcher.Invoke((Action)(() =>
+                //{
+                //    TerminalCommon.currentCustomer = new BL_UserMaster().getCustomerName(customerMobileTextBox.Text);
+                //    if (TerminalCommon.currentCustomer != null)
+                //    {
+                //        customerNameTextBox.Text = TerminalCommon.currentCustomer.cust_Name;
+                //        customerNameTextBox.IsEnabled = false;
+                //    }
+                //    else
+                //        customerNameTextBox.Focus();
+                //}));
             }
             catch (Exception ex)
             {
@@ -217,8 +218,11 @@ namespace Hotel_POS.User_Controls
                 {
                     Printing.PrintPaymentSlip(e.Result.ToString());
                     new BL_Menu().ClearMenuCart();
+                    customerMobileTextBox.Text = string.Empty;
+                    customerNameTextBox.Text = string.Empty;
                     TerminalCommon.currentCustomer = null;
                     MainMenuListBox.SelectedIndex = 0;
+                    customerMobileTextBox.Focus();
 
                 }
             }

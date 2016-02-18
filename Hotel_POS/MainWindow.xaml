@@ -106,7 +106,7 @@
                                 x:Name="LoadReport" />
                     </MenuItem>
                     <MenuItem Header="_Database"
-                          x:Name="Get_Database">
+                          x:Name="Get_Database" >
                         <MenuItem  Header="Export to Excel"
                                x:Name="Export"
                                Click="Get_Database_Click" />

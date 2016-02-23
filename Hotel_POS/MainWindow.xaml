@@ -4,8 +4,6 @@
         FontFamily="Arial"
         FontSize="12"
         Title="POS"
-        Height="450"
-        Width="700"
         Loaded="Window_Loaded"
         xmlns:local="clr-namespace:Hotel_POS.User_Controls"
         Icon="/Hotel_POS;component/Images/Restaurant%20Blue.ico">
@@ -44,10 +42,12 @@
             </Border>
             <Border x:Name="ManageMenu"
                 VerticalAlignment="Top"
-                Margin="0,5,0,5" HorizontalAlignment="Left">
+                Margin="0,5,0,5">
                 <Menu VerticalAlignment="Bottom"
                   x:Name="MenuBar"
                   Margin="5,0,0,0">
+                    <MenuItem Width="70" Header="_Home"
+                          x:Name="Home" Click="Home_Click"/>
                     <MenuItem Header="User"
                           x:Name="User">
                         <MenuItem  Header="_Users"
@@ -120,9 +120,11 @@
                     <MenuItem Header="_Logout"
                           x:Name="Logout"
                           Click="Logout_Click" />
+
+                   
                 </Menu>
             </Border>
-            <Grid x:Name="MainGrid">
+            <Grid Margin="20,10,20,20" x:Name="MainGrid">
             </Grid>
         </StackPanel>
         <local:ProgressControl x:Name="progressControl" Visibility="Collapsed"></local:ProgressControl>

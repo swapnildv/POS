@@ -254,14 +254,14 @@
             <PropertyRef Name="Company_ID" />
           </Key>
           <Property Name="Transaction_Master_ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Transaction_Date" Type="datetime" />
+          <Property Name="Transaction_Date" Type="datetime" Nullable="false" />
           <Property Name="Order_No" Type="varchar" MaxLength="50" />
           <Property Name="Card_ID" Type="bigint" />
           <Property Name="RFID_No" Type="varchar" MaxLength="50" />
           <Property Name="Transaction_Amount" Type="float" />
           <Property Name="Card_Closing_Balance" Type="float" />
           <Property Name="Created_By" Type="int" />
-          <Property Name="Created_DateTime" Type="datetime" />
+          <Property Name="Created_DateTime" Type="datetime" Nullable="false" />
           <Property Name="IP_Address" Type="varchar" MaxLength="50" />
           <Property Name="Remark" Type="varchar" MaxLength="150" />
           <Property Name="Employee_ID" Type="bigint" />
@@ -290,6 +290,7 @@
           <Property Name="Created_By" Type="int" />
           <Property Name="Updated_By" Type="int" />
         </EntityType>
+        <Function Name="sp_favorite_items" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -312,6 +313,8 @@
           <EntitySet Name="Transaction_Master" EntityType="CafeteriaModel.Transaction_Master" />
           <EntitySet Name="User_Master" EntityType="CafeteriaModel.User_Master" />
           <EntitySet Name="Customer_Master" EntityType="CafeteriaModel.Customer_Master" />
+          <FunctionImport Name="sp_favorite_items" ReturnType="Collection(CafeteriaModel.sp_favorite_items_Result)" />
+          <FunctionImport Name="sp_favorite_items_function" ReturnType="Collection(CafeteriaModel.sp_favorite_items_Result)" />
         </EntityContainer>
         <EntityType Name="Card_Details">
           <Key>
@@ -535,14 +538,14 @@
             <PropertyRef Name="Company_ID" />
           </Key>
           <Property Name="Transaction_Master_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Transaction_Date" Type="DateTime" Precision="3" />
+          <Property Name="Transaction_Date" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="Order_No" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="Card_ID" Type="Int64" />
           <Property Name="RFID_No" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="Transaction_Amount" Type="Double" />
           <Property Name="Card_Closing_Balance" Type="Double" />
           <Property Name="Created_By" Type="Int32" />
-          <Property Name="Created_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Created_DateTime" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="IP_Address" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="Remark" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
           <Property Name="Employee_ID" Type="Int64" />
@@ -576,9 +579,14 @@
             <PropertyRef Name="cust_id" />
           </Key>
           <Property Type="Int32" Name="cust_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="cust_Name" />
-          <Property Type="String" Name="cust_MobileNo" />
+          <Property Type="String" Name="cust_Name" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Type="String" Name="cust_MobileNo" MaxLength="50" Unicode="false" FixedLength="false" />
         </EntityType>
+        <ComplexType Name="sp_favorite_items_Result">
+          <Property Type="Int64" Name="Item_ID" Nullable="true" />
+          <Property Type="String" Name="Item_Name" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ItemCount" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -855,6 +863,24 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_favorite_items" FunctionName="CafeteriaModel.Store.sp_favorite_items">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeteriaModel.sp_favorite_items_Result">
+                <ScalarProperty Name="Item_ID" ColumnName="Item_ID" />
+                <ScalarProperty Name="Item_Name" ColumnName="Item_Name" />
+                <ScalarProperty Name="ItemCount" ColumnName="ItemCount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_favorite_items_function" FunctionName="CafeteriaModel.Store.sp_favorite_items">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeteriaModel.sp_favorite_items_Result">
+                <ScalarProperty Name="Item_ID" ColumnName="Item_ID" />
+                <ScalarProperty Name="Item_Name" ColumnName="Item_Name" />
+                <ScalarProperty Name="ItemCount" ColumnName="ItemCount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

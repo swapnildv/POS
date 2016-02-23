@@ -15,6 +15,8 @@ namespace Hotel_POS
         public static string Demo_DBName { get; set; }
         public static string UserId { get; set; }
         public static string Password { get; set; }
+
+
         /// <summary>
         /// Initialise Server,Database Name,UserId,Password 
         /// </summary>

@@ -4,128 +4,157 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              Loaded="UserControl_Loaded"
+             xmlns:local="clr-namespace:Hotel_POS"
              mc:Ignorable="d">
-    <StackPanel >
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Visible" Margin="0,20,0,0" Name="CustomerScreenGrid">
-            <TextBlock Margin="20,0,0,0" Text="Mobile No." VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="{StaticResource MainFont}" FontSize="25"></TextBlock>
-            <TextBox Margin="20,0,0,0" TabIndex="1" Name="customerMobileTextBox" Width="200" Height="45" HorizontalAlignment="Right" VerticalAlignment="Top" FontFamily="{StaticResource MainFont}" FontSize="22"/>
-            <TextBlock Margin="20,0,0,0" Text="Name" VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="{StaticResource MainFont}" FontSize="25"></TextBlock>
-            <TextBox Margin="20,0,0,0" TabIndex="2" Name="customerNameTextBox" Width="200" Height="45" HorizontalAlignment="Right" VerticalAlignment="Top" FontFamily="{StaticResource MainFont}" FontSize="22" GotFocus="customerNameTextBox_GotFocus"></TextBox>
-        </StackPanel>
-        <Grid>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="20,30,0,0">
-                <StackPanel>
-                    <Border BorderThickness="1" BorderBrush="Blue">
-                        <TextBlock Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Menu" FontSize="18"></TextBlock>
-                    </Border>
-                    <ListBox TabIndex="3" Width="200" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent" Name="MainMenuListBox" SelectionChanged="MainMenuListBox_SelectionChanged">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <RadioButton GroupName="MainMenuGroup" Cursor="Hand"  
-                        IsChecked="{Binding IsSelected, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}">
-                                    <RadioButton.Template>
-                                        <ControlTemplate TargetType="RadioButton">
-                                            <Border BorderBrush="Black" BorderThickness="1" Name="mainMenuBorder" Background="White" Width="197" Height="40">
-                                                <TextBlock TextWrapping="Wrap" Name="mainMenuText" Text="{Binding Item_Group_Name}" FontSize="18" Foreground="Black"></TextBlock>
-                                            </Border>
-                                            <ControlTemplate.Triggers>
-                                                <Trigger Property="IsChecked" Value="true">
-                                                    <Setter Property="Background" TargetName="mainMenuBorder" Value="Black"/>
-                                                    <Setter Property="Foreground" TargetName="mainMenuText" Value="White"/>
-
-                                                </Trigger>
-                                            </ControlTemplate.Triggers>
-                                        </ControlTemplate>
-
-                                    </RadioButton.Template>
-                                </RadioButton>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                </StackPanel>
-
-                <StackPanel>
-                    <Border BorderThickness="1" BorderBrush="Blue">
-                        <TextBlock Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Sub Menu" FontSize="18"></TextBlock>
-                    </Border>
-                <ListBox TabIndex="4" Width="300" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent" Name="SubMainMenuListBox"  SelectionChanged="SubMainMenuListBox_SelectionChanged">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <RadioButton GroupName="subMenuGroup" Cursor="Hand"  
-                        IsChecked="{Binding IsSelected, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}">
-                                <RadioButton.Template>
-                                    <ControlTemplate TargetType="RadioButton">
-                                        <Border BorderBrush="Black" BorderThickness="1" Name="subMenuBorder" Background="White" Width="298" Height="40">
-                                            <TextBlock TextWrapping="Wrap" Name="subMenuText" Text="{Binding Item_Name}" FontSize="12" Foreground="Black"></TextBlock>
-                                        </Border>
-                                        <ControlTemplate.Triggers>
-                                            <Trigger Property="IsChecked" Value="true">
-                                                <Setter Property="Background" TargetName="subMenuBorder" Value="Black"/>
-                                                <Setter Property="Foreground" TargetName="subMenuText" Value="White"/>
-
-                                            </Trigger>
-                                        </ControlTemplate.Triggers>
-                                    </ControlTemplate>
-
-                                </RadioButton.Template>
-                            </RadioButton>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-                </StackPanel>
-
-                <StackPanel Name="quantityBorder" Visibility="Visible">
-                    <Border BorderThickness="1" BorderBrush="Blue">
-                        <TextBlock Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Quantity" FontSize="18"></TextBlock>
-                    </Border>
-                    <TextBox Margin="0,10,0,0" TabIndex="5" Name="itemQuantity" Height="40" Width="80" FontSize="16"></TextBox>
-                    <Button Margin="10" TabIndex="6"  Name="AddItemButton" Content="Add" Height="40" FontSize="18" Width="100" Click="AddItemButton_Click"></Button>
-                </StackPanel>
-               
-                
-
-                <StackPanel>
-                    <Border BorderThickness="1" BorderBrush="Blue" Width="298">
-                        <TextBlock Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Cart" FontSize="18"></TextBlock>
-                    </Border>
-                    <ListBox HorizontalAlignment="Right" BorderThickness="0" Background="Transparent" Width="300" Name="ItemListBox" >
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <RadioButton GroupName="menuCartGroup" Cursor="Hand"  
-                        IsChecked="{Binding IsSelected, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}">
-                                    <RadioButton.Template>
-                                        <ControlTemplate TargetType="RadioButton">
-                                            <Border BorderBrush="Black" BorderThickness="1" Name="subMenuBorder" Background="White" Width="298" Height="40">
-                                                <Grid>
-                                                    <TextBlock Margin="5,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" Name="subMenuText" Text="{Binding Item_Name}" FontSize="12" Foreground="Black"></TextBlock>
-                                                    <TextBlock Margin="0,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Name="subMenuQtyText" Text="{Binding Quantity}" FontSize="11" Foreground="Black"></TextBlock>
-                                                    <TextBlock Margin="0,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Right" TextWrapping="Wrap" Name="subMenuItemTotalText" Text="{Binding Item_Total}" FontSize="11" Foreground="Black"></TextBlock>
-
-                                                </Grid>
-                                            </Border>
-                                            <ControlTemplate.Triggers>
-                                                <Trigger Property="IsChecked" Value="true">
-                                                    <Setter Property="Background" TargetName="subMenuBorder" Value="Black"/>
-                                                    <Setter Property="Foreground" TargetName="subMenuText" Value="White"/>
-                                                    <Setter Property="Foreground" TargetName="subMenuQtyText" Value="White"/>
-                                                    <Setter Property="Foreground" TargetName="subMenuItemTotalText" Value="White"/>
-
-                                                </Trigger>
-                                            </ControlTemplate.Triggers>
-                                        </ControlTemplate>
-
-                                    </RadioButton.Template>
-                                </RadioButton>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                </StackPanel>
+    <UserControl.Resources>
+        <local:CurrencyConcatConverter x:Key="currencyConcatConverter"/>
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel Margin="0,0,0,70">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Visible" Margin="0,5,0,0" Name="CustomerScreenGrid">
+                <TextBlock Margin="20,0,0,0" Text="Mobile No." VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="{StaticResource MainFont}" FontSize="25"></TextBlock>
+                <TextBox Margin="20,0,0,0" TabIndex="1" Name="customerMobileTextBox" Width="200" Height="45" HorizontalAlignment="Right" VerticalAlignment="Top" FontFamily="{StaticResource MainFont}" FontSize="22"/>
+                <TextBlock Margin="20,0,0,0" Text="Name" VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="{StaticResource MainFont}" FontSize="25"></TextBlock>
+                <TextBox Margin="20,0,0,0" TabIndex="2" Name="customerNameTextBox" Width="200" Height="45" HorizontalAlignment="Right" VerticalAlignment="Top" FontFamily="{StaticResource MainFont}" FontSize="22" GotFocus="customerNameTextBox_GotFocus"></TextBox>
             </StackPanel>
+            <Grid Margin="20,10,0,0" ShowGridLines="False">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="220"/>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="300"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="5*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Border Grid.Column="0" BorderBrush="Black" BorderThickness="1">
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Menu" FontSize="18" FontWeight="Bold" ></TextBlock>
+                </Border>
+                <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1">
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Submenu" FontSize="18" FontWeight="Bold" />
+                </Border>
+                <Border Grid.Column="2" BorderBrush="Black" BorderThickness="1">
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Quantity" FontSize="18" FontWeight="Bold"/>
+                </Border>
+                <Border Grid.Column="3" BorderBrush="Black" BorderThickness="1">
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Cart" FontSize="18" FontWeight="Bold"/>
+                </Border>
+                <Border Grid.Row="1"  BorderBrush="Black" BorderThickness="1">
+                    <ScrollViewer>
+                        <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" TabIndex="3" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent" Name="MainMenuListBox" SelectionChanged="MainMenuListBox_SelectionChanged">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <RadioButton GroupName="MainMenuGroup" Cursor="Hand"  
+                        IsChecked="{Binding IsSelected, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}">
+                                        <RadioButton.Template>
+                                            <ControlTemplate TargetType="RadioButton">
+                                                <Border BorderThickness="0,0,0,1" BorderBrush="Black" Name="mainMenuBorder" Background="White" Width="210" Height="40">
+                                                    <TextBlock Margin="5,0,0,0" VerticalAlignment="Center" TextWrapping="Wrap" Name="mainMenuText" Text="{Binding Item_Group_Name}" FontSize="18" Foreground="Black"></TextBlock>
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsChecked" Value="true">
+                                                        <Setter Property="Background" TargetName="mainMenuBorder" Value="Black"/>
+                                                        <Setter Property="Foreground" TargetName="mainMenuText" Value="White"/>
 
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+
+                                        </RadioButton.Template>
+                                    </RadioButton>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </ScrollViewer>
+                </Border>
+                <Border  Grid.Column="1" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
+                    <ScrollViewer>
+                        <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" TabIndex="4" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent" Name="SubMainMenuListBox"  SelectionChanged="SubMainMenuListBox_SelectionChanged">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <RadioButton GroupName="subMenuGroup" Cursor="Hand"  
+                        IsChecked="{Binding IsSelected, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}">
+                                        <RadioButton.Template>
+                                            <ControlTemplate TargetType="RadioButton">
+                                                <Border BorderBrush="Black" BorderThickness="0,0,0,1" Name="subMenuBorder" Background="White" Width="298" Height="40">
+                                                    <TextBlock Margin="5,0,0,0" VerticalAlignment="Center" TextWrapping="Wrap" Name="subMenuText" Text="{Binding Item_Name}" FontSize="16" Foreground="Black"></TextBlock>
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsChecked" Value="true">
+                                                        <Setter Property="Background" TargetName="subMenuBorder" Value="Black"/>
+                                                        <Setter Property="Foreground" TargetName="subMenuText" Value="White"/>
+
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+
+                                        </RadioButton.Template>
+                                    </RadioButton>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </ScrollViewer>
+                </Border>
+
+                <Border Grid.Column="2" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
+                    <StackPanel>
+                        <TextBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,10,0,0" TabIndex="5" Name="itemQuantity" Height="40" Width="80" FontSize="20"></TextBox>
+                        <Button Margin="10" TabIndex="6"  Name="AddItemButton" Content="Update" Height="40" FontSize="18" Width="85" Click="AddItemButton_Click"></Button>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="3" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
+                    <ScrollViewer >
+                        <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Right" BorderThickness="0" Background="Transparent" Name="ItemListBox" >
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <RadioButton GroupName="menuCartGroup" Cursor="Hand"  
+                        IsChecked="{Binding IsSelected, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}">
+                                        <RadioButton.Template>
+                                            <ControlTemplate TargetType="RadioButton">
+                                                <Border BorderBrush="Black" BorderThickness="0,0,0,1" Name="subMenuBorder" Background="White" Width="285" Height="40">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="30"/>
+                                                            <ColumnDefinition Width="70"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock Margin="5,0,0,0" Grid.Column="0" VerticalAlignment="Center" TextWrapping="Wrap" Name="subMenuText" Text="{Binding Item_Name}" FontSize="14" Foreground="Black"></TextBlock>
+                                                        <TextBlock Grid.Column="1" VerticalAlignment="Center" TextWrapping="Wrap" Name="subMenuQtyText" Text="{Binding Quantity}" FontSize="14" Foreground="Black"></TextBlock>
+                                                        <TextBlock Margin="0,0,5,0" Grid.Column="2" VerticalAlignment="Center" TextWrapping="Wrap" Name="subMenuItemTotalText" Text="{Binding Item_Total,Converter={StaticResource currencyConcatConverter}}" FontSize="14" Foreground="Black"></TextBlock>
+
+                                                    </Grid>
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsChecked" Value="true">
+                                                        <Setter Property="Background" TargetName="subMenuBorder" Value="Black"/>
+                                                        <Setter Property="Foreground" TargetName="subMenuText" Value="White"/>
+                                                        <Setter Property="Foreground" TargetName="subMenuQtyText" Value="White"/>
+                                                        <Setter Property="Foreground" TargetName="subMenuItemTotalText" Value="White"/>
+
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+
+                                        </RadioButton.Template>
+                                    </RadioButton>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </ScrollViewer>
+                </Border>
+            </Grid>
+
+        </StackPanel>
+        <Grid VerticalAlignment="Bottom" Name="Footer" Margin="0,10,20,10">
+            <Button Name="proceedOrderButton" FontSize="18" Content="Proceed" HorizontalAlignment="Left" Width="100" Height="45" Margin="20,0,110,0" Click="proceedOrderButton_Click"></Button>
+            <Button Name="cancelOrderButton" FontSize="18" Content="Clear Selection" HorizontalAlignment="Left" Width="150" Height="45" Margin="150,0,0,0" Click="cancelOrderButton_Click"></Button>
+
+            <TextBlock FontFamily="{StaticResource MainFont}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="670,0,0,0" FontSize="25" FontWeight="Bold">
+                <Run Text="Total : "/>
+                <Run Text="Rs. 0" x:Name="totalAmountTextBlock"/>
+            </TextBlock>
         </Grid>
-        <Grid Name="Footer" Margin="0,10,20,0">
-            <Button Name="proceedOrderButton" FontSize="18" Content="Proceed" HorizontalAlignment="Center" Width="100" Height="45" Margin="0,0,110,0" Click="proceedOrderButton_Click"></Button>
-            <Button Name="cancelOrderButton" FontSize="18" Content="Cancel" HorizontalAlignment="Center" Width="100" Height="45" Margin="120,0,0,0" Click="cancelOrderButton_Click"></Button>
-        </Grid>
-    </StackPanel>
+    </Grid>
 </UserControl>

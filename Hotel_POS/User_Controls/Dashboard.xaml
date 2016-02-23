@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="Hotel_POS.User_Controls.Dashboard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Loaded="UserControl_Loaded">
+
+    <UserControl.Resources>
+        <Style x:Name="dataGridColumnStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+
+        <Style x:Name="dataGrdiCellStyle" TargetType="DataGridCell">
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+    </UserControl.Resources>
+    <StackPanel>
+        <Grid>
+            <TextBlock Text="Totol Sales" Foreground="Crimson" FontWeight="Bold" FontSize="20"></TextBlock>
+            <TextBlock x:Name="totalSalesTextBlock" FontSize="25" Margin="150,0,0,0"></TextBlock>
+        </Grid>
+
+        <TextBlock Text="Favorite Menu" Foreground="Crimson" FontWeight="Bold" FontSize="20" Margin="0,50,0,0"></TextBlock>
+        <DataGrid HorizontalAlignment="Left" IsReadOnly="True" Name="dgFavoriteItems" Margin="0,20,0,0"  AutoGenerateColumns="False" RowHeight="20">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Menu Item" Binding="{Binding Item_Name}" Width="250"/>
+                <DataGridTextColumn Header="Count" Binding="{Binding ItemCount}" Width="80"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+</UserControl>

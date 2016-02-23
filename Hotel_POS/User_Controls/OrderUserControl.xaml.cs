@@ -25,15 +25,15 @@ namespace Hotel_POS.User_Controls
     {
         public OrderUserControl()
         {
-             InitializeComponent();
+            InitializeComponent();
             bwPlaceOrder.WorkerReportsProgress = true;
             bwPlaceOrder.WorkerSupportsCancellation = true;
             bwPlaceOrder.DoWork += bwPlaceOrder_DoWork;
             bwPlaceOrder.ProgressChanged += bwPlaceOrder_ProgressChanged;
             bwPlaceOrder.RunWorkerCompleted += bwPlaceOrder_RunWorkerCompleted;
-    }
+        }
 
-         /// <summary>
+        /// <summary>
         /// Background worker for placing order.
         /// </summary>
         private BackgroundWorker bwPlaceOrder = new BackgroundWorker();
@@ -120,7 +120,7 @@ namespace Hotel_POS.User_Controls
                 {
                     new BL_Menu().AddMenuCartItem(subMenu.Item_ID, int.Parse(itemQuantity.Text.ToString()));
                 }
-
+                totalAmountTextBlock.Text = TerminalCommon.currency + " " + new BL_Menu().getTotatlCartValue().ToString();
             }
             catch (Exception ex)
             {
@@ -136,8 +136,11 @@ namespace Hotel_POS.User_Controls
             {
                 //Set customer 
                 if (TerminalCommon.currentCustomer == null)
-                    TerminalCommon.currentCustomer = new Customer_Master() { cust_MobileNo = customerMobileTextBox.Text.Trim(), 
-                                                                             cust_Name = customerNameTextBox.Text.Trim() };
+                    TerminalCommon.currentCustomer = new Customer_Master()
+                    {
+                        cust_MobileNo = customerMobileTextBox.Text.Trim(),
+                        cust_Name = customerNameTextBox.Text.Trim()
+                    };
                 if (bwPlaceOrder.IsBusy != true)
                 {
                     MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
@@ -183,7 +186,7 @@ namespace Hotel_POS.User_Controls
                 else
                 {
                     e.Result = new BL_Transaction().SubmitOrder();
-                    
+
                 }
             }
             catch (Exception ex)
@@ -223,7 +226,7 @@ namespace Hotel_POS.User_Controls
                     TerminalCommon.currentCustomer = null;
                     MainMenuListBox.SelectedIndex = 0;
                     customerMobileTextBox.Focus();
-
+                    totalAmountTextBlock.Text = "Rs. 0";
                 }
             }
             catch (Exception ex)

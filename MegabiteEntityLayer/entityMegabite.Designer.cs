@@ -20,54 +20,51 @@ using System.Xml.Serialization;
 namespace MegabiteEntityLayer
 {
     #region Contexts
-
+    
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
     public partial class MegabiteCafeteriaEntities : ObjectContext
     {
         #region Constructors
-
+    
         /// <summary>
         /// Initializes a new MegabiteCafeteriaEntities object using the connection string found in the 'MegabiteCafeteriaEntities' section of the application configuration file.
         /// </summary>
-        public MegabiteCafeteriaEntities()
-            : base("name=MegabiteCafeteriaEntities", "MegabiteCafeteriaEntities")
+        public MegabiteCafeteriaEntities() : base("name=MegabiteCafeteriaEntities", "MegabiteCafeteriaEntities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
-
+    
         /// <summary>
         /// Initialize a new MegabiteCafeteriaEntities object.
         /// </summary>
-        public MegabiteCafeteriaEntities(string connectionString)
-            : base(connectionString, "MegabiteCafeteriaEntities")
+        public MegabiteCafeteriaEntities(string connectionString) : base(connectionString, "MegabiteCafeteriaEntities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
-
+    
         /// <summary>
         /// Initialize a new MegabiteCafeteriaEntities object.
         /// </summary>
-        public MegabiteCafeteriaEntities(EntityConnection connection)
-            : base(connection, "MegabiteCafeteriaEntities")
+        public MegabiteCafeteriaEntities(EntityConnection connection) : base(connection, "MegabiteCafeteriaEntities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
-
+    
         #endregion
-
+    
         #region Partial Methods
-
+    
         partial void OnContextCreated();
-
+    
         #endregion
-
+    
         #region ObjectSet Properties
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -83,7 +80,7 @@ namespace MegabiteEntityLayer
             }
         }
         private ObjectSet<Card_Details> _Card_Details;
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -99,7 +96,7 @@ namespace MegabiteEntityLayer
             }
         }
         private ObjectSet<Card_Ledger> _Card_Ledger;
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -115,7 +112,7 @@ namespace MegabiteEntityLayer
             }
         }
         private ObjectSet<Card_Master> _Card_Master;
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -131,7 +128,7 @@ namespace MegabiteEntityLayer
             }
         }
         private ObjectSet<Card_Status_Master> _Card_Status_Master;
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -147,7 +144,7 @@ namespace MegabiteEntityLayer
             }
         }
         private ObjectSet<Company_Master> _Company_Master;
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -163,7 +160,7 @@ namespace MegabiteEntityLayer
             }
         }
         private ObjectSet<Employee_Master> _Employee_Master;
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -179,7 +176,7 @@ namespace MegabiteEntityLayer
             }
         }
         private ObjectSet<Grade_Master> _Grade_Master;
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -195,7 +192,7 @@ namespace MegabiteEntityLayer
             }
         }
         private ObjectSet<Item_Group_Master> _Item_Group_Master;
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -211,7 +208,7 @@ namespace MegabiteEntityLayer
             }
         }
         private ObjectSet<Item_Master> _Item_Master;
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -227,7 +224,7 @@ namespace MegabiteEntityLayer
             }
         }
         private ObjectSet<Role_Master> _Role_Master;
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -243,7 +240,7 @@ namespace MegabiteEntityLayer
             }
         }
         private ObjectSet<schema_info> _schema_info;
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -259,7 +256,7 @@ namespace MegabiteEntityLayer
             }
         }
         private ObjectSet<scope_config> _scope_config;
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -275,7 +272,7 @@ namespace MegabiteEntityLayer
             }
         }
         private ObjectSet<scope_info> _scope_info;
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -291,7 +288,7 @@ namespace MegabiteEntityLayer
             }
         }
         private ObjectSet<Transaction_Details> _Transaction_Details;
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -307,7 +304,7 @@ namespace MegabiteEntityLayer
             }
         }
         private ObjectSet<Transaction_Master> _Transaction_Master;
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -323,7 +320,7 @@ namespace MegabiteEntityLayer
             }
         }
         private ObjectSet<User_Master> _User_Master;
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -343,7 +340,7 @@ namespace MegabiteEntityLayer
         #endregion
 
         #region AddTo Methods
-
+    
         /// <summary>
         /// Deprecated Method for adding a new object to the Card_Details EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -351,7 +348,7 @@ namespace MegabiteEntityLayer
         {
             base.AddObject("Card_Details", card_Details);
         }
-
+    
         /// <summary>
         /// Deprecated Method for adding a new object to the Card_Ledger EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -359,7 +356,7 @@ namespace MegabiteEntityLayer
         {
             base.AddObject("Card_Ledger", card_Ledger);
         }
-
+    
         /// <summary>
         /// Deprecated Method for adding a new object to the Card_Master EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -367,7 +364,7 @@ namespace MegabiteEntityLayer
         {
             base.AddObject("Card_Master", card_Master);
         }
-
+    
         /// <summary>
         /// Deprecated Method for adding a new object to the Card_Status_Master EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -375,7 +372,7 @@ namespace MegabiteEntityLayer
         {
             base.AddObject("Card_Status_Master", card_Status_Master);
         }
-
+    
         /// <summary>
         /// Deprecated Method for adding a new object to the Company_Master EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -383,7 +380,7 @@ namespace MegabiteEntityLayer
         {
             base.AddObject("Company_Master", company_Master);
         }
-
+    
         /// <summary>
         /// Deprecated Method for adding a new object to the Employee_Master EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -391,7 +388,7 @@ namespace MegabiteEntityLayer
         {
             base.AddObject("Employee_Master", employee_Master);
         }
-
+    
         /// <summary>
         /// Deprecated Method for adding a new object to the Grade_Master EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -399,7 +396,7 @@ namespace MegabiteEntityLayer
         {
             base.AddObject("Grade_Master", grade_Master);
         }
-
+    
         /// <summary>
         /// Deprecated Method for adding a new object to the Item_Group_Master EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -407,7 +404,7 @@ namespace MegabiteEntityLayer
         {
             base.AddObject("Item_Group_Master", item_Group_Master);
         }
-
+    
         /// <summary>
         /// Deprecated Method for adding a new object to the Item_Master EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -415,7 +412,7 @@ namespace MegabiteEntityLayer
         {
             base.AddObject("Item_Master", item_Master);
         }
-
+    
         /// <summary>
         /// Deprecated Method for adding a new object to the Role_Master EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -423,7 +420,7 @@ namespace MegabiteEntityLayer
         {
             base.AddObject("Role_Master", role_Master);
         }
-
+    
         /// <summary>
         /// Deprecated Method for adding a new object to the schema_info EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -431,7 +428,7 @@ namespace MegabiteEntityLayer
         {
             base.AddObject("schema_info", schema_info);
         }
-
+    
         /// <summary>
         /// Deprecated Method for adding a new object to the scope_config EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -439,7 +436,7 @@ namespace MegabiteEntityLayer
         {
             base.AddObject("scope_config", scope_config);
         }
-
+    
         /// <summary>
         /// Deprecated Method for adding a new object to the scope_info EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -447,7 +444,7 @@ namespace MegabiteEntityLayer
         {
             base.AddObject("scope_info", scope_info);
         }
-
+    
         /// <summary>
         /// Deprecated Method for adding a new object to the Transaction_Details EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -455,7 +452,7 @@ namespace MegabiteEntityLayer
         {
             base.AddObject("Transaction_Details", transaction_Details);
         }
-
+    
         /// <summary>
         /// Deprecated Method for adding a new object to the Transaction_Master EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -463,7 +460,7 @@ namespace MegabiteEntityLayer
         {
             base.AddObject("Transaction_Master", transaction_Master);
         }
-
+    
         /// <summary>
         /// Deprecated Method for adding a new object to the User_Master EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -471,7 +468,7 @@ namespace MegabiteEntityLayer
         {
             base.AddObject("User_Master", user_Master);
         }
-
+    
         /// <summary>
         /// Deprecated Method for adding a new object to the Customer_Master EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -482,22 +479,42 @@ namespace MegabiteEntityLayer
 
         #endregion
 
+        #region Function Imports
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectResult<sp_favorite_items_Result> sp_favorite_items()
+        {
+            return base.ExecuteFunction<sp_favorite_items_Result>("sp_favorite_items");
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectResult<sp_favorite_items_Result> sp_favorite_items_function()
+        {
+            return base.ExecuteFunction<sp_favorite_items_Result>("sp_favorite_items_function");
+        }
+
+        #endregion
+
     }
 
     #endregion
 
     #region Entities
-
+    
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName = "CafeteriaModel", Name = "Card_Details")]
+    [EdmEntityTypeAttribute(NamespaceName="CafeteriaModel", Name="Card_Details")]
     [Serializable()]
-    [DataContractAttribute(IsReference = true)]
+    [DataContractAttribute(IsReference=true)]
     public partial class Card_Details : EntityObject
     {
         #region Factory Method
-
+    
         /// <summary>
         /// Create a new Card_Details object.
         /// </summary>
@@ -514,11 +531,11 @@ namespace MegabiteEntityLayer
         #endregion
 
         #region Primitive Properties
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int64 Card_Detail_ID
         {
@@ -541,11 +558,11 @@ namespace MegabiteEntityLayer
         private global::System.Int64 _Card_Detail_ID;
         partial void OnCard_Detail_IDChanging(global::System.Int64 value);
         partial void OnCard_Detail_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int64> Card_ID
         {
@@ -565,11 +582,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int64> _Card_ID;
         partial void OnCard_IDChanging(Nullable<global::System.Int64> value);
         partial void OnCard_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Double> Amount_Loaded
         {
@@ -589,11 +606,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Double> _Amount_Loaded;
         partial void OnAmount_LoadedChanging(Nullable<global::System.Double> value);
         partial void OnAmount_LoadedChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> Loaded_Datetime
         {
@@ -613,11 +630,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.DateTime> _Loaded_Datetime;
         partial void OnLoaded_DatetimeChanging(Nullable<global::System.DateTime> value);
         partial void OnLoaded_DatetimeChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Loaded_By
         {
@@ -637,11 +654,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int32> _Loaded_By;
         partial void OnLoaded_ByChanging(Nullable<global::System.Int32> value);
         partial void OnLoaded_ByChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int64> Transafered_From_Card
         {
@@ -661,11 +678,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int64> _Transafered_From_Card;
         partial void OnTransafered_From_CardChanging(Nullable<global::System.Int64> value);
         partial void OnTransafered_From_CardChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String RFID_No
         {
@@ -685,11 +702,11 @@ namespace MegabiteEntityLayer
         private global::System.String _RFID_No;
         partial void OnRFID_NoChanging(global::System.String value);
         partial void OnRFID_NoChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Employee_ID
         {
@@ -709,11 +726,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int32> _Employee_ID;
         partial void OnEmployee_IDChanging(Nullable<global::System.Int32> value);
         partial void OnEmployee_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Double> Closing_Balance
         {
@@ -733,11 +750,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Double> _Closing_Balance;
         partial void OnClosing_BalanceChanging(Nullable<global::System.Double> value);
         partial void OnClosing_BalanceChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 Company_ID
         {
@@ -760,11 +777,11 @@ namespace MegabiteEntityLayer
         private global::System.Int32 _Company_ID;
         partial void OnCompany_IDChanging(global::System.Int32 value);
         partial void OnCompany_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> Created_DateTime
         {
@@ -784,11 +801,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.DateTime> _Created_DateTime;
         partial void OnCreated_DateTimeChanging(Nullable<global::System.DateTime> value);
         partial void OnCreated_DateTimeChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> Updated_DateTime
         {
@@ -808,11 +825,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.DateTime> _Updated_DateTime;
         partial void OnUpdated_DateTimeChanging(Nullable<global::System.DateTime> value);
         partial void OnUpdated_DateTimeChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Created_By
         {
@@ -832,11 +849,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int32> _Created_By;
         partial void OnCreated_ByChanging(Nullable<global::System.Int32> value);
         partial void OnCreated_ByChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Updated_By
         {
@@ -859,19 +876,19 @@ namespace MegabiteEntityLayer
 
         #endregion
 
-
+    
     }
-
+    
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName = "CafeteriaModel", Name = "Card_Ledger")]
+    [EdmEntityTypeAttribute(NamespaceName="CafeteriaModel", Name="Card_Ledger")]
     [Serializable()]
-    [DataContractAttribute(IsReference = true)]
+    [DataContractAttribute(IsReference=true)]
     public partial class Card_Ledger : EntityObject
     {
         #region Factory Method
-
+    
         /// <summary>
         /// Create a new Card_Ledger object.
         /// </summary>
@@ -888,11 +905,11 @@ namespace MegabiteEntityLayer
         #endregion
 
         #region Primitive Properties
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int64 ID
         {
@@ -915,11 +932,11 @@ namespace MegabiteEntityLayer
         private global::System.Int64 _ID;
         partial void OnIDChanging(global::System.Int64 value);
         partial void OnIDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String RFID_NO
         {
@@ -939,11 +956,11 @@ namespace MegabiteEntityLayer
         private global::System.String _RFID_NO;
         partial void OnRFID_NOChanging(global::System.String value);
         partial void OnRFID_NOChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Employee_ID
         {
@@ -963,11 +980,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int32> _Employee_ID;
         partial void OnEmployee_IDChanging(Nullable<global::System.Int32> value);
         partial void OnEmployee_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String TR_Remark
         {
@@ -987,11 +1004,11 @@ namespace MegabiteEntityLayer
         private global::System.String _TR_Remark;
         partial void OnTR_RemarkChanging(global::System.String value);
         partial void OnTR_RemarkChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String TR_Type
         {
@@ -1011,11 +1028,11 @@ namespace MegabiteEntityLayer
         private global::System.String _TR_Type;
         partial void OnTR_TypeChanging(global::System.String value);
         partial void OnTR_TypeChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> TR_Date
         {
@@ -1035,11 +1052,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.DateTime> _TR_Date;
         partial void OnTR_DateChanging(Nullable<global::System.DateTime> value);
         partial void OnTR_DateChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Double> Debit
         {
@@ -1059,11 +1076,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Double> _Debit;
         partial void OnDebitChanging(Nullable<global::System.Double> value);
         partial void OnDebitChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Double> Credit
         {
@@ -1083,11 +1100,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Double> _Credit;
         partial void OnCreditChanging(Nullable<global::System.Double> value);
         partial void OnCreditChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> User_ID
         {
@@ -1107,11 +1124,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int32> _User_ID;
         partial void OnUser_IDChanging(Nullable<global::System.Int32> value);
         partial void OnUser_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Ref
         {
@@ -1131,11 +1148,11 @@ namespace MegabiteEntityLayer
         private global::System.String _Ref;
         partial void OnRefChanging(global::System.String value);
         partial void OnRefChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Payment_Type
         {
@@ -1155,11 +1172,11 @@ namespace MegabiteEntityLayer
         private global::System.String _Payment_Type;
         partial void OnPayment_TypeChanging(global::System.String value);
         partial void OnPayment_TypeChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Double> Closing_Balance
         {
@@ -1179,11 +1196,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Double> _Closing_Balance;
         partial void OnClosing_BalanceChanging(Nullable<global::System.Double> value);
         partial void OnClosing_BalanceChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 Company_ID
         {
@@ -1206,11 +1223,11 @@ namespace MegabiteEntityLayer
         private global::System.Int32 _Company_ID;
         partial void OnCompany_IDChanging(global::System.Int32 value);
         partial void OnCompany_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> Created_DateTime
         {
@@ -1230,11 +1247,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.DateTime> _Created_DateTime;
         partial void OnCreated_DateTimeChanging(Nullable<global::System.DateTime> value);
         partial void OnCreated_DateTimeChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> Updated_DateTime
         {
@@ -1254,11 +1271,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.DateTime> _Updated_DateTime;
         partial void OnUpdated_DateTimeChanging(Nullable<global::System.DateTime> value);
         partial void OnUpdated_DateTimeChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Created_By
         {
@@ -1278,11 +1295,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int32> _Created_By;
         partial void OnCreated_ByChanging(Nullable<global::System.Int32> value);
         partial void OnCreated_ByChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Updated_By
         {
@@ -1305,19 +1322,19 @@ namespace MegabiteEntityLayer
 
         #endregion
 
-
+    
     }
-
+    
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName = "CafeteriaModel", Name = "Card_Master")]
+    [EdmEntityTypeAttribute(NamespaceName="CafeteriaModel", Name="Card_Master")]
     [Serializable()]
-    [DataContractAttribute(IsReference = true)]
+    [DataContractAttribute(IsReference=true)]
     public partial class Card_Master : EntityObject
     {
         #region Factory Method
-
+    
         /// <summary>
         /// Create a new Card_Master object.
         /// </summary>
@@ -1334,11 +1351,11 @@ namespace MegabiteEntityLayer
         #endregion
 
         #region Primitive Properties
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int64 Card_ID
         {
@@ -1361,11 +1378,11 @@ namespace MegabiteEntityLayer
         private global::System.Int64 _Card_ID;
         partial void OnCard_IDChanging(global::System.Int64 value);
         partial void OnCard_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String RFID_No
         {
@@ -1385,11 +1402,11 @@ namespace MegabiteEntityLayer
         private global::System.String _RFID_No;
         partial void OnRFID_NoChanging(global::System.String value);
         partial void OnRFID_NoChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Employee_ID
         {
@@ -1409,11 +1426,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int32> _Employee_ID;
         partial void OnEmployee_IDChanging(Nullable<global::System.Int32> value);
         partial void OnEmployee_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Double> Current_Balance
         {
@@ -1433,11 +1450,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Double> _Current_Balance;
         partial void OnCurrent_BalanceChanging(Nullable<global::System.Double> value);
         partial void OnCurrent_BalanceChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> Card_Assigned_Date
         {
@@ -1457,11 +1474,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.DateTime> _Card_Assigned_Date;
         partial void OnCard_Assigned_DateChanging(Nullable<global::System.DateTime> value);
         partial void OnCard_Assigned_DateChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Boolean> Is_Active
         {
@@ -1481,11 +1498,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Boolean> _Is_Active;
         partial void OnIs_ActiveChanging(Nullable<global::System.Boolean> value);
         partial void OnIs_ActiveChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Card_Status_ID
         {
@@ -1505,11 +1522,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int32> _Card_Status_ID;
         partial void OnCard_Status_IDChanging(Nullable<global::System.Int32> value);
         partial void OnCard_Status_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> Created_DateTime
         {
@@ -1529,11 +1546,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.DateTime> _Created_DateTime;
         partial void OnCreated_DateTimeChanging(Nullable<global::System.DateTime> value);
         partial void OnCreated_DateTimeChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> Updated_DateTime
         {
@@ -1553,11 +1570,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.DateTime> _Updated_DateTime;
         partial void OnUpdated_DateTimeChanging(Nullable<global::System.DateTime> value);
         partial void OnUpdated_DateTimeChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Created_By
         {
@@ -1577,11 +1594,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int32> _Created_By;
         partial void OnCreated_ByChanging(Nullable<global::System.Int32> value);
         partial void OnCreated_ByChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Updated_By
         {
@@ -1601,11 +1618,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int32> _Updated_By;
         partial void OnUpdated_ByChanging(Nullable<global::System.Int32> value);
         partial void OnUpdated_ByChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 Company_ID
         {
@@ -1628,11 +1645,11 @@ namespace MegabiteEntityLayer
         private global::System.Int32 _Company_ID;
         partial void OnCompany_IDChanging(global::System.Int32 value);
         partial void OnCompany_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Byte> Is_Deleted
         {
@@ -1655,19 +1672,19 @@ namespace MegabiteEntityLayer
 
         #endregion
 
-
+    
     }
-
+    
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName = "CafeteriaModel", Name = "Card_Status_Master")]
+    [EdmEntityTypeAttribute(NamespaceName="CafeteriaModel", Name="Card_Status_Master")]
     [Serializable()]
-    [DataContractAttribute(IsReference = true)]
+    [DataContractAttribute(IsReference=true)]
     public partial class Card_Status_Master : EntityObject
     {
         #region Factory Method
-
+    
         /// <summary>
         /// Create a new Card_Status_Master object.
         /// </summary>
@@ -1684,11 +1701,11 @@ namespace MegabiteEntityLayer
         #endregion
 
         #region Primitive Properties
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 Card_Status_ID
         {
@@ -1711,11 +1728,11 @@ namespace MegabiteEntityLayer
         private global::System.Int32 _Card_Status_ID;
         partial void OnCard_Status_IDChanging(global::System.Int32 value);
         partial void OnCard_Status_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Card_Status
         {
@@ -1735,11 +1752,11 @@ namespace MegabiteEntityLayer
         private global::System.String _Card_Status;
         partial void OnCard_StatusChanging(global::System.String value);
         partial void OnCard_StatusChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 Company_ID
         {
@@ -1765,19 +1782,19 @@ namespace MegabiteEntityLayer
 
         #endregion
 
-
+    
     }
-
+    
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName = "CafeteriaModel", Name = "Company_Master")]
+    [EdmEntityTypeAttribute(NamespaceName="CafeteriaModel", Name="Company_Master")]
     [Serializable()]
-    [DataContractAttribute(IsReference = true)]
+    [DataContractAttribute(IsReference=true)]
     public partial class Company_Master : EntityObject
     {
         #region Factory Method
-
+    
         /// <summary>
         /// Create a new Company_Master object.
         /// </summary>
@@ -1792,11 +1809,11 @@ namespace MegabiteEntityLayer
         #endregion
 
         #region Primitive Properties
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 Company_ID
         {
@@ -1819,11 +1836,11 @@ namespace MegabiteEntityLayer
         private global::System.Int32 _Company_ID;
         partial void OnCompany_IDChanging(global::System.Int32 value);
         partial void OnCompany_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Company_Name
         {
@@ -1843,11 +1860,11 @@ namespace MegabiteEntityLayer
         private global::System.String _Company_Name;
         partial void OnCompany_NameChanging(global::System.String value);
         partial void OnCompany_NameChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Company_Address
         {
@@ -1867,11 +1884,11 @@ namespace MegabiteEntityLayer
         private global::System.String _Company_Address;
         partial void OnCompany_AddressChanging(global::System.String value);
         partial void OnCompany_AddressChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.Byte[] Company_Logo
         {
@@ -1891,11 +1908,11 @@ namespace MegabiteEntityLayer
         private global::System.Byte[] _Company_Logo;
         partial void OnCompany_LogoChanging(global::System.Byte[] value);
         partial void OnCompany_LogoChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String City
         {
@@ -1915,11 +1932,11 @@ namespace MegabiteEntityLayer
         private global::System.String _City;
         partial void OnCityChanging(global::System.String value);
         partial void OnCityChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String State
         {
@@ -1939,11 +1956,11 @@ namespace MegabiteEntityLayer
         private global::System.String _State;
         partial void OnStateChanging(global::System.String value);
         partial void OnStateChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Country
         {
@@ -1963,11 +1980,11 @@ namespace MegabiteEntityLayer
         private global::System.String _Country;
         partial void OnCountryChanging(global::System.String value);
         partial void OnCountryChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Phone
         {
@@ -1987,11 +2004,11 @@ namespace MegabiteEntityLayer
         private global::System.String _Phone;
         partial void OnPhoneChanging(global::System.String value);
         partial void OnPhoneChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Email
         {
@@ -2011,11 +2028,11 @@ namespace MegabiteEntityLayer
         private global::System.String _Email;
         partial void OnEmailChanging(global::System.String value);
         partial void OnEmailChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Contact_Person
         {
@@ -2035,11 +2052,11 @@ namespace MegabiteEntityLayer
         private global::System.String _Contact_Person;
         partial void OnContact_PersonChanging(global::System.String value);
         partial void OnContact_PersonChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Contact_Person_Phone
         {
@@ -2059,11 +2076,11 @@ namespace MegabiteEntityLayer
         private global::System.String _Contact_Person_Phone;
         partial void OnContact_Person_PhoneChanging(global::System.String value);
         partial void OnContact_Person_PhoneChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Contact_Person_Email
         {
@@ -2083,11 +2100,11 @@ namespace MegabiteEntityLayer
         private global::System.String _Contact_Person_Email;
         partial void OnContact_Person_EmailChanging(global::System.String value);
         partial void OnContact_Person_EmailChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Boolean> Is_Active
         {
@@ -2107,11 +2124,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Boolean> _Is_Active;
         partial void OnIs_ActiveChanging(Nullable<global::System.Boolean> value);
         partial void OnIs_ActiveChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> Created_DateTime
         {
@@ -2131,11 +2148,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.DateTime> _Created_DateTime;
         partial void OnCreated_DateTimeChanging(Nullable<global::System.DateTime> value);
         partial void OnCreated_DateTimeChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> Updated_DateTime
         {
@@ -2155,11 +2172,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.DateTime> _Updated_DateTime;
         partial void OnUpdated_DateTimeChanging(Nullable<global::System.DateTime> value);
         partial void OnUpdated_DateTimeChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Remark
         {
@@ -2179,11 +2196,11 @@ namespace MegabiteEntityLayer
         private global::System.String _Remark;
         partial void OnRemarkChanging(global::System.String value);
         partial void OnRemarkChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Created_By
         {
@@ -2203,11 +2220,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int32> _Created_By;
         partial void OnCreated_ByChanging(Nullable<global::System.Int32> value);
         partial void OnCreated_ByChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Updated_By
         {
@@ -2230,19 +2247,19 @@ namespace MegabiteEntityLayer
 
         #endregion
 
-
+    
     }
-
+    
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName = "CafeteriaModel", Name = "Customer_Master")]
+    [EdmEntityTypeAttribute(NamespaceName="CafeteriaModel", Name="Customer_Master")]
     [Serializable()]
-    [DataContractAttribute(IsReference = true)]
+    [DataContractAttribute(IsReference=true)]
     public partial class Customer_Master : EntityObject
     {
         #region Factory Method
-
+    
         /// <summary>
         /// Create a new Customer_Master object.
         /// </summary>
@@ -2257,11 +2274,11 @@ namespace MegabiteEntityLayer
         #endregion
 
         #region Primitive Properties
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 cust_id
         {
@@ -2284,11 +2301,11 @@ namespace MegabiteEntityLayer
         private global::System.Int32 _cust_id;
         partial void Oncust_idChanging(global::System.Int32 value);
         partial void Oncust_idChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String cust_Name
         {
@@ -2308,11 +2325,11 @@ namespace MegabiteEntityLayer
         private global::System.String _cust_Name;
         partial void Oncust_NameChanging(global::System.String value);
         partial void Oncust_NameChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String cust_MobileNo
         {
@@ -2335,19 +2352,19 @@ namespace MegabiteEntityLayer
 
         #endregion
 
-
+    
     }
-
+    
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName = "CafeteriaModel", Name = "Employee_Master")]
+    [EdmEntityTypeAttribute(NamespaceName="CafeteriaModel", Name="Employee_Master")]
     [Serializable()]
-    [DataContractAttribute(IsReference = true)]
+    [DataContractAttribute(IsReference=true)]
     public partial class Employee_Master : EntityObject
     {
         #region Factory Method
-
+    
         /// <summary>
         /// Create a new Employee_Master object.
         /// </summary>
@@ -2364,11 +2381,11 @@ namespace MegabiteEntityLayer
         #endregion
 
         #region Primitive Properties
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 Employee_ID
         {
@@ -2391,11 +2408,11 @@ namespace MegabiteEntityLayer
         private global::System.Int32 _Employee_ID;
         partial void OnEmployee_IDChanging(global::System.Int32 value);
         partial void OnEmployee_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Employee_Name
         {
@@ -2415,11 +2432,11 @@ namespace MegabiteEntityLayer
         private global::System.String _Employee_Name;
         partial void OnEmployee_NameChanging(global::System.String value);
         partial void OnEmployee_NameChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 Company_ID
         {
@@ -2442,11 +2459,11 @@ namespace MegabiteEntityLayer
         private global::System.Int32 _Company_ID;
         partial void OnCompany_IDChanging(global::System.Int32 value);
         partial void OnCompany_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Department
         {
@@ -2466,11 +2483,11 @@ namespace MegabiteEntityLayer
         private global::System.String _Department;
         partial void OnDepartmentChanging(global::System.String value);
         partial void OnDepartmentChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Designation
         {
@@ -2490,11 +2507,11 @@ namespace MegabiteEntityLayer
         private global::System.String _Designation;
         partial void OnDesignationChanging(global::System.String value);
         partial void OnDesignationChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Grade_ID
         {
@@ -2514,11 +2531,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int32> _Grade_ID;
         partial void OnGrade_IDChanging(Nullable<global::System.Int32> value);
         partial void OnGrade_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Phone
         {
@@ -2538,11 +2555,11 @@ namespace MegabiteEntityLayer
         private global::System.String _Phone;
         partial void OnPhoneChanging(global::System.String value);
         partial void OnPhoneChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Email
         {
@@ -2562,11 +2579,11 @@ namespace MegabiteEntityLayer
         private global::System.String _Email;
         partial void OnEmailChanging(global::System.String value);
         partial void OnEmailChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Boolean> Is_Active
         {
@@ -2586,11 +2603,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Boolean> _Is_Active;
         partial void OnIs_ActiveChanging(Nullable<global::System.Boolean> value);
         partial void OnIs_ActiveChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> Created_DateTime
         {
@@ -2610,11 +2627,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.DateTime> _Created_DateTime;
         partial void OnCreated_DateTimeChanging(Nullable<global::System.DateTime> value);
         partial void OnCreated_DateTimeChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> Updated_DateTime
         {
@@ -2634,11 +2651,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.DateTime> _Updated_DateTime;
         partial void OnUpdated_DateTimeChanging(Nullable<global::System.DateTime> value);
         partial void OnUpdated_DateTimeChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Remark
         {
@@ -2658,11 +2675,11 @@ namespace MegabiteEntityLayer
         private global::System.String _Remark;
         partial void OnRemarkChanging(global::System.String value);
         partial void OnRemarkChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String RFID_NO
         {
@@ -2682,11 +2699,11 @@ namespace MegabiteEntityLayer
         private global::System.String _RFID_NO;
         partial void OnRFID_NOChanging(global::System.String value);
         partial void OnRFID_NOChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int64> Card_ID
         {
@@ -2706,11 +2723,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int64> _Card_ID;
         partial void OnCard_IDChanging(Nullable<global::System.Int64> value);
         partial void OnCard_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Created_By
         {
@@ -2730,11 +2747,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int32> _Created_By;
         partial void OnCreated_ByChanging(Nullable<global::System.Int32> value);
         partial void OnCreated_ByChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Updated_By
         {
@@ -2757,19 +2774,19 @@ namespace MegabiteEntityLayer
 
         #endregion
 
-
+    
     }
-
+    
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName = "CafeteriaModel", Name = "Grade_Master")]
+    [EdmEntityTypeAttribute(NamespaceName="CafeteriaModel", Name="Grade_Master")]
     [Serializable()]
-    [DataContractAttribute(IsReference = true)]
+    [DataContractAttribute(IsReference=true)]
     public partial class Grade_Master : EntityObject
     {
         #region Factory Method
-
+    
         /// <summary>
         /// Create a new Grade_Master object.
         /// </summary>
@@ -2786,11 +2803,11 @@ namespace MegabiteEntityLayer
         #endregion
 
         #region Primitive Properties
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 Grade_ID
         {
@@ -2813,11 +2830,11 @@ namespace MegabiteEntityLayer
         private global::System.Int32 _Grade_ID;
         partial void OnGrade_IDChanging(global::System.Int32 value);
         partial void OnGrade_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Grade_Name
         {
@@ -2837,11 +2854,11 @@ namespace MegabiteEntityLayer
         private global::System.String _Grade_Name;
         partial void OnGrade_NameChanging(global::System.String value);
         partial void OnGrade_NameChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Double> Grade_Limit
         {
@@ -2861,11 +2878,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Double> _Grade_Limit;
         partial void OnGrade_LimitChanging(Nullable<global::System.Double> value);
         partial void OnGrade_LimitChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 Company_ID
         {
@@ -2891,19 +2908,19 @@ namespace MegabiteEntityLayer
 
         #endregion
 
-
+    
     }
-
+    
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName = "CafeteriaModel", Name = "Item_Group_Master")]
+    [EdmEntityTypeAttribute(NamespaceName="CafeteriaModel", Name="Item_Group_Master")]
     [Serializable()]
-    [DataContractAttribute(IsReference = true)]
+    [DataContractAttribute(IsReference=true)]
     public partial class Item_Group_Master : EntityObject
     {
         #region Factory Method
-
+    
         /// <summary>
         /// Create a new Item_Group_Master object.
         /// </summary>
@@ -2920,11 +2937,11 @@ namespace MegabiteEntityLayer
         #endregion
 
         #region Primitive Properties
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 Item_Group_ID
         {
@@ -2947,11 +2964,11 @@ namespace MegabiteEntityLayer
         private global::System.Int32 _Item_Group_ID;
         partial void OnItem_Group_IDChanging(global::System.Int32 value);
         partial void OnItem_Group_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Item_Group_Name
         {
@@ -2971,11 +2988,11 @@ namespace MegabiteEntityLayer
         private global::System.String _Item_Group_Name;
         partial void OnItem_Group_NameChanging(global::System.String value);
         partial void OnItem_Group_NameChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Boolean> Is_Active
         {
@@ -2995,11 +3012,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Boolean> _Is_Active;
         partial void OnIs_ActiveChanging(Nullable<global::System.Boolean> value);
         partial void OnIs_ActiveChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Guid> Item_Group_GUID
         {
@@ -3019,11 +3036,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Guid> _Item_Group_GUID;
         partial void OnItem_Group_GUIDChanging(Nullable<global::System.Guid> value);
         partial void OnItem_Group_GUIDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 Company_ID
         {
@@ -3046,11 +3063,11 @@ namespace MegabiteEntityLayer
         private global::System.Int32 _Company_ID;
         partial void OnCompany_IDChanging(global::System.Int32 value);
         partial void OnCompany_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> Created_DateTime
         {
@@ -3070,11 +3087,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.DateTime> _Created_DateTime;
         partial void OnCreated_DateTimeChanging(Nullable<global::System.DateTime> value);
         partial void OnCreated_DateTimeChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> Updated_DateTime
         {
@@ -3094,11 +3111,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.DateTime> _Updated_DateTime;
         partial void OnUpdated_DateTimeChanging(Nullable<global::System.DateTime> value);
         partial void OnUpdated_DateTimeChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Created_By
         {
@@ -3118,11 +3135,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int32> _Created_By;
         partial void OnCreated_ByChanging(Nullable<global::System.Int32> value);
         partial void OnCreated_ByChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Updated_By
         {
@@ -3145,19 +3162,19 @@ namespace MegabiteEntityLayer
 
         #endregion
 
-
+    
     }
-
+    
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName = "CafeteriaModel", Name = "Item_Master")]
+    [EdmEntityTypeAttribute(NamespaceName="CafeteriaModel", Name="Item_Master")]
     [Serializable()]
-    [DataContractAttribute(IsReference = true)]
+    [DataContractAttribute(IsReference=true)]
     public partial class Item_Master : EntityObject
     {
         #region Factory Method
-
+    
         /// <summary>
         /// Create a new Item_Master object.
         /// </summary>
@@ -3174,11 +3191,11 @@ namespace MegabiteEntityLayer
         #endregion
 
         #region Primitive Properties
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int64 Item_ID
         {
@@ -3201,11 +3218,11 @@ namespace MegabiteEntityLayer
         private global::System.Int64 _Item_ID;
         partial void OnItem_IDChanging(global::System.Int64 value);
         partial void OnItem_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Item_Name
         {
@@ -3225,11 +3242,11 @@ namespace MegabiteEntityLayer
         private global::System.String _Item_Name;
         partial void OnItem_NameChanging(global::System.String value);
         partial void OnItem_NameChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Double> Item_Unit_Price
         {
@@ -3249,11 +3266,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Double> _Item_Unit_Price;
         partial void OnItem_Unit_PriceChanging(Nullable<global::System.Double> value);
         partial void OnItem_Unit_PriceChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Boolean> Is_Active
         {
@@ -3273,11 +3290,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Boolean> _Is_Active;
         partial void OnIs_ActiveChanging(Nullable<global::System.Boolean> value);
         partial void OnIs_ActiveChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> Created_DateTime
         {
@@ -3297,11 +3314,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.DateTime> _Created_DateTime;
         partial void OnCreated_DateTimeChanging(Nullable<global::System.DateTime> value);
         partial void OnCreated_DateTimeChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> Updated_DateTime
         {
@@ -3321,11 +3338,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.DateTime> _Updated_DateTime;
         partial void OnUpdated_DateTimeChanging(Nullable<global::System.DateTime> value);
         partial void OnUpdated_DateTimeChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Created_By
         {
@@ -3345,11 +3362,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int32> _Created_By;
         partial void OnCreated_ByChanging(Nullable<global::System.Int32> value);
         partial void OnCreated_ByChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Updated_By
         {
@@ -3369,11 +3386,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int32> _Updated_By;
         partial void OnUpdated_ByChanging(Nullable<global::System.Int32> value);
         partial void OnUpdated_ByChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Item_Type_ID
         {
@@ -3393,11 +3410,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int32> _Item_Type_ID;
         partial void OnItem_Type_IDChanging(Nullable<global::System.Int32> value);
         partial void OnItem_Type_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Guid> Item_Group_GUID
         {
@@ -3417,11 +3434,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Guid> _Item_Group_GUID;
         partial void OnItem_Group_GUIDChanging(Nullable<global::System.Guid> value);
         partial void OnItem_Group_GUIDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 Company_ID
         {
@@ -3445,36 +3462,21 @@ namespace MegabiteEntityLayer
         partial void OnCompany_IDChanging(global::System.Int32 value);
         partial void OnCompany_IDChanged();
 
-
-        private System.Int32 _Qty;
-        public System.Int32 Qty
-        {
-            get
-            {
-                return _Qty;
-            }
-            set
-            {
-                _Qty = value;
-            }
-        }
-
-        
         #endregion
 
-
+    
     }
-
+    
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName = "CafeteriaModel", Name = "Role_Master")]
+    [EdmEntityTypeAttribute(NamespaceName="CafeteriaModel", Name="Role_Master")]
     [Serializable()]
-    [DataContractAttribute(IsReference = true)]
+    [DataContractAttribute(IsReference=true)]
     public partial class Role_Master : EntityObject
     {
         #region Factory Method
-
+    
         /// <summary>
         /// Create a new Role_Master object.
         /// </summary>
@@ -3491,11 +3493,11 @@ namespace MegabiteEntityLayer
         #endregion
 
         #region Primitive Properties
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 Role_ID
         {
@@ -3518,11 +3520,11 @@ namespace MegabiteEntityLayer
         private global::System.Int32 _Role_ID;
         partial void OnRole_IDChanging(global::System.Int32 value);
         partial void OnRole_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Role_Name
         {
@@ -3542,11 +3544,11 @@ namespace MegabiteEntityLayer
         private global::System.String _Role_Name;
         partial void OnRole_NameChanging(global::System.String value);
         partial void OnRole_NameChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 Company_ID
         {
@@ -3572,19 +3574,19 @@ namespace MegabiteEntityLayer
 
         #endregion
 
-
+    
     }
-
+    
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName = "CafeteriaModel", Name = "schema_info")]
+    [EdmEntityTypeAttribute(NamespaceName="CafeteriaModel", Name="schema_info")]
     [Serializable()]
-    [DataContractAttribute(IsReference = true)]
+    [DataContractAttribute(IsReference=true)]
     public partial class schema_info : EntityObject
     {
         #region Factory Method
-
+    
         /// <summary>
         /// Create a new schema_info object.
         /// </summary>
@@ -3603,11 +3605,11 @@ namespace MegabiteEntityLayer
         #endregion
 
         #region Primitive Properties
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 schema_major_version
         {
@@ -3630,11 +3632,11 @@ namespace MegabiteEntityLayer
         private global::System.Int32 _schema_major_version;
         partial void Onschema_major_versionChanging(global::System.Int32 value);
         partial void Onschema_major_versionChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 schema_minor_version
         {
@@ -3657,11 +3659,11 @@ namespace MegabiteEntityLayer
         private global::System.Int32 _schema_minor_version;
         partial void Onschema_minor_versionChanging(global::System.Int32 value);
         partial void Onschema_minor_versionChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String schema_extended_info
         {
@@ -3684,19 +3686,19 @@ namespace MegabiteEntityLayer
 
         #endregion
 
-
+    
     }
-
+    
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName = "CafeteriaModel", Name = "scope_config")]
+    [EdmEntityTypeAttribute(NamespaceName="CafeteriaModel", Name="scope_config")]
     [Serializable()]
-    [DataContractAttribute(IsReference = true)]
+    [DataContractAttribute(IsReference=true)]
     public partial class scope_config : EntityObject
     {
         #region Factory Method
-
+    
         /// <summary>
         /// Create a new scope_config object.
         /// </summary>
@@ -3713,11 +3715,11 @@ namespace MegabiteEntityLayer
         #endregion
 
         #region Primitive Properties
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Guid config_id
         {
@@ -3740,11 +3742,11 @@ namespace MegabiteEntityLayer
         private global::System.Guid _config_id;
         partial void Onconfig_idChanging(global::System.Guid value);
         partial void Onconfig_idChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String config_data
         {
@@ -3764,11 +3766,11 @@ namespace MegabiteEntityLayer
         private global::System.String _config_data;
         partial void Onconfig_dataChanging(global::System.String value);
         partial void Onconfig_dataChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String scope_status
         {
@@ -3791,19 +3793,19 @@ namespace MegabiteEntityLayer
 
         #endregion
 
-
+    
     }
-
+    
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName = "CafeteriaModel", Name = "scope_info")]
+    [EdmEntityTypeAttribute(NamespaceName="CafeteriaModel", Name="scope_info")]
     [Serializable()]
-    [DataContractAttribute(IsReference = true)]
+    [DataContractAttribute(IsReference=true)]
     public partial class scope_info : EntityObject
     {
         #region Factory Method
-
+    
         /// <summary>
         /// Create a new scope_info object.
         /// </summary>
@@ -3824,11 +3826,11 @@ namespace MegabiteEntityLayer
         #endregion
 
         #region Primitive Properties
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 scope_local_id
         {
@@ -3848,11 +3850,11 @@ namespace MegabiteEntityLayer
         private global::System.Int32 _scope_local_id;
         partial void Onscope_local_idChanging(global::System.Int32 value);
         partial void Onscope_local_idChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Guid scope_id
         {
@@ -3872,11 +3874,11 @@ namespace MegabiteEntityLayer
         private global::System.Guid _scope_id;
         partial void Onscope_idChanging(global::System.Guid value);
         partial void Onscope_idChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String sync_scope_name
         {
@@ -3899,11 +3901,11 @@ namespace MegabiteEntityLayer
         private global::System.String _sync_scope_name;
         partial void Onsync_scope_nameChanging(global::System.String value);
         partial void Onsync_scope_nameChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.Byte[] scope_sync_knowledge
         {
@@ -3923,11 +3925,11 @@ namespace MegabiteEntityLayer
         private global::System.Byte[] _scope_sync_knowledge;
         partial void Onscope_sync_knowledgeChanging(global::System.Byte[] value);
         partial void Onscope_sync_knowledgeChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.Byte[] scope_tombstone_cleanup_knowledge
         {
@@ -3947,11 +3949,11 @@ namespace MegabiteEntityLayer
         private global::System.Byte[] _scope_tombstone_cleanup_knowledge;
         partial void Onscope_tombstone_cleanup_knowledgeChanging(global::System.Byte[] value);
         partial void Onscope_tombstone_cleanup_knowledgeChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.Byte[] scope_timestamp
         {
@@ -3971,11 +3973,11 @@ namespace MegabiteEntityLayer
         private global::System.Byte[] _scope_timestamp;
         partial void Onscope_timestampChanging(global::System.Byte[] value);
         partial void Onscope_timestampChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Guid> scope_config_id
         {
@@ -3995,11 +3997,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Guid> _scope_config_id;
         partial void Onscope_config_idChanging(Nullable<global::System.Guid> value);
         partial void Onscope_config_idChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 scope_restore_count
         {
@@ -4019,11 +4021,11 @@ namespace MegabiteEntityLayer
         private global::System.Int32 _scope_restore_count;
         partial void Onscope_restore_countChanging(global::System.Int32 value);
         partial void Onscope_restore_countChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String scope_user_comment
         {
@@ -4046,19 +4048,19 @@ namespace MegabiteEntityLayer
 
         #endregion
 
-
+    
     }
-
+    
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName = "CafeteriaModel", Name = "Transaction_Details")]
+    [EdmEntityTypeAttribute(NamespaceName="CafeteriaModel", Name="Transaction_Details")]
     [Serializable()]
-    [DataContractAttribute(IsReference = true)]
+    [DataContractAttribute(IsReference=true)]
     public partial class Transaction_Details : EntityObject
     {
         #region Factory Method
-
+    
         /// <summary>
         /// Create a new Transaction_Details object.
         /// </summary>
@@ -4075,11 +4077,11 @@ namespace MegabiteEntityLayer
         #endregion
 
         #region Primitive Properties
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int64 Transaction_Detail_ID
         {
@@ -4102,11 +4104,11 @@ namespace MegabiteEntityLayer
         private global::System.Int64 _Transaction_Detail_ID;
         partial void OnTransaction_Detail_IDChanging(global::System.Int64 value);
         partial void OnTransaction_Detail_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int64> Transaction_Master_ID
         {
@@ -4126,11 +4128,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int64> _Transaction_Master_ID;
         partial void OnTransaction_Master_IDChanging(Nullable<global::System.Int64> value);
         partial void OnTransaction_Master_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int64> Item_ID
         {
@@ -4150,11 +4152,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int64> _Item_ID;
         partial void OnItem_IDChanging(Nullable<global::System.Int64> value);
         partial void OnItem_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Double> Item_Unit_Price
         {
@@ -4174,11 +4176,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Double> _Item_Unit_Price;
         partial void OnItem_Unit_PriceChanging(Nullable<global::System.Double> value);
         partial void OnItem_Unit_PriceChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Item_Quantity
         {
@@ -4198,11 +4200,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int32> _Item_Quantity;
         partial void OnItem_QuantityChanging(Nullable<global::System.Int32> value);
         partial void OnItem_QuantityChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Double> Item_Total_Cost
         {
@@ -4222,11 +4224,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Double> _Item_Total_Cost;
         partial void OnItem_Total_CostChanging(Nullable<global::System.Double> value);
         partial void OnItem_Total_CostChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Remark
         {
@@ -4246,11 +4248,11 @@ namespace MegabiteEntityLayer
         private global::System.String _Remark;
         partial void OnRemarkChanging(global::System.String value);
         partial void OnRemarkChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 Company_ID
         {
@@ -4273,11 +4275,11 @@ namespace MegabiteEntityLayer
         private global::System.Int32 _Company_ID;
         partial void OnCompany_IDChanging(global::System.Int32 value);
         partial void OnCompany_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> Created_DateTime
         {
@@ -4297,11 +4299,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.DateTime> _Created_DateTime;
         partial void OnCreated_DateTimeChanging(Nullable<global::System.DateTime> value);
         partial void OnCreated_DateTimeChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> Updated_DateTime
         {
@@ -4321,11 +4323,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.DateTime> _Updated_DateTime;
         partial void OnUpdated_DateTimeChanging(Nullable<global::System.DateTime> value);
         partial void OnUpdated_DateTimeChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Created_By
         {
@@ -4345,11 +4347,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int32> _Created_By;
         partial void OnCreated_ByChanging(Nullable<global::System.Int32> value);
         partial void OnCreated_ByChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Updated_By
         {
@@ -4372,28 +4374,32 @@ namespace MegabiteEntityLayer
 
         #endregion
 
-
+    
     }
-
+    
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName = "CafeteriaModel", Name = "Transaction_Master")]
+    [EdmEntityTypeAttribute(NamespaceName="CafeteriaModel", Name="Transaction_Master")]
     [Serializable()]
-    [DataContractAttribute(IsReference = true)]
+    [DataContractAttribute(IsReference=true)]
     public partial class Transaction_Master : EntityObject
     {
         #region Factory Method
-
+    
         /// <summary>
         /// Create a new Transaction_Master object.
         /// </summary>
         /// <param name="transaction_Master_ID">Initial value of the Transaction_Master_ID property.</param>
+        /// <param name="transaction_Date">Initial value of the Transaction_Date property.</param>
+        /// <param name="created_DateTime">Initial value of the Created_DateTime property.</param>
         /// <param name="company_ID">Initial value of the Company_ID property.</param>
-        public static Transaction_Master CreateTransaction_Master(global::System.Int64 transaction_Master_ID, global::System.Int32 company_ID)
+        public static Transaction_Master CreateTransaction_Master(global::System.Int64 transaction_Master_ID, global::System.DateTime transaction_Date, global::System.DateTime created_DateTime, global::System.Int32 company_ID)
         {
             Transaction_Master transaction_Master = new Transaction_Master();
             transaction_Master.Transaction_Master_ID = transaction_Master_ID;
+            transaction_Master.Transaction_Date = transaction_Date;
+            transaction_Master.Created_DateTime = created_DateTime;
             transaction_Master.Company_ID = company_ID;
             return transaction_Master;
         }
@@ -4401,11 +4407,11 @@ namespace MegabiteEntityLayer
         #endregion
 
         #region Primitive Properties
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int64 Transaction_Master_ID
         {
@@ -4428,13 +4434,13 @@ namespace MegabiteEntityLayer
         private global::System.Int64 _Transaction_Master_ID;
         partial void OnTransaction_Master_IDChanging(global::System.Int64 value);
         partial void OnTransaction_Master_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> Transaction_Date
+        public global::System.DateTime Transaction_Date
         {
             get
             {
@@ -4449,14 +4455,14 @@ namespace MegabiteEntityLayer
                 OnTransaction_DateChanged();
             }
         }
-        private Nullable<global::System.DateTime> _Transaction_Date;
-        partial void OnTransaction_DateChanging(Nullable<global::System.DateTime> value);
+        private global::System.DateTime _Transaction_Date;
+        partial void OnTransaction_DateChanging(global::System.DateTime value);
         partial void OnTransaction_DateChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Order_No
         {
@@ -4476,11 +4482,11 @@ namespace MegabiteEntityLayer
         private global::System.String _Order_No;
         partial void OnOrder_NoChanging(global::System.String value);
         partial void OnOrder_NoChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int64> Card_ID
         {
@@ -4500,11 +4506,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int64> _Card_ID;
         partial void OnCard_IDChanging(Nullable<global::System.Int64> value);
         partial void OnCard_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String RFID_No
         {
@@ -4524,11 +4530,11 @@ namespace MegabiteEntityLayer
         private global::System.String _RFID_No;
         partial void OnRFID_NoChanging(global::System.String value);
         partial void OnRFID_NoChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Double> Transaction_Amount
         {
@@ -4548,11 +4554,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Double> _Transaction_Amount;
         partial void OnTransaction_AmountChanging(Nullable<global::System.Double> value);
         partial void OnTransaction_AmountChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Double> Card_Closing_Balance
         {
@@ -4572,11 +4578,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Double> _Card_Closing_Balance;
         partial void OnCard_Closing_BalanceChanging(Nullable<global::System.Double> value);
         partial void OnCard_Closing_BalanceChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Created_By
         {
@@ -4596,13 +4602,13 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int32> _Created_By;
         partial void OnCreated_ByChanging(Nullable<global::System.Int32> value);
         partial void OnCreated_ByChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> Created_DateTime
+        public global::System.DateTime Created_DateTime
         {
             get
             {
@@ -4617,14 +4623,14 @@ namespace MegabiteEntityLayer
                 OnCreated_DateTimeChanged();
             }
         }
-        private Nullable<global::System.DateTime> _Created_DateTime;
-        partial void OnCreated_DateTimeChanging(Nullable<global::System.DateTime> value);
+        private global::System.DateTime _Created_DateTime;
+        partial void OnCreated_DateTimeChanging(global::System.DateTime value);
         partial void OnCreated_DateTimeChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String IP_Address
         {
@@ -4644,11 +4650,11 @@ namespace MegabiteEntityLayer
         private global::System.String _IP_Address;
         partial void OnIP_AddressChanging(global::System.String value);
         partial void OnIP_AddressChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Remark
         {
@@ -4668,11 +4674,11 @@ namespace MegabiteEntityLayer
         private global::System.String _Remark;
         partial void OnRemarkChanging(global::System.String value);
         partial void OnRemarkChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int64> Employee_ID
         {
@@ -4692,11 +4698,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int64> _Employee_ID;
         partial void OnEmployee_IDChanging(Nullable<global::System.Int64> value);
         partial void OnEmployee_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Boolean> PaidBy_Card
         {
@@ -4716,11 +4722,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Boolean> _PaidBy_Card;
         partial void OnPaidBy_CardChanging(Nullable<global::System.Boolean> value);
         partial void OnPaidBy_CardChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 Company_ID
         {
@@ -4743,11 +4749,11 @@ namespace MegabiteEntityLayer
         private global::System.Int32 _Company_ID;
         partial void OnCompany_IDChanging(global::System.Int32 value);
         partial void OnCompany_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> Updated_DateTime
         {
@@ -4767,11 +4773,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.DateTime> _Updated_DateTime;
         partial void OnUpdated_DateTimeChanging(Nullable<global::System.DateTime> value);
         partial void OnUpdated_DateTimeChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Updated_By
         {
@@ -4791,11 +4797,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int32> _Updated_By;
         partial void OnUpdated_ByChanging(Nullable<global::System.Int32> value);
         partial void OnUpdated_ByChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> cust_id
         {
@@ -4818,19 +4824,19 @@ namespace MegabiteEntityLayer
 
         #endregion
 
-
+    
     }
-
+    
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName = "CafeteriaModel", Name = "User_Master")]
+    [EdmEntityTypeAttribute(NamespaceName="CafeteriaModel", Name="User_Master")]
     [Serializable()]
-    [DataContractAttribute(IsReference = true)]
+    [DataContractAttribute(IsReference=true)]
     public partial class User_Master : EntityObject
     {
         #region Factory Method
-
+    
         /// <summary>
         /// Create a new User_Master object.
         /// </summary>
@@ -4847,11 +4853,11 @@ namespace MegabiteEntityLayer
         #endregion
 
         #region Primitive Properties
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 User_ID
         {
@@ -4874,11 +4880,11 @@ namespace MegabiteEntityLayer
         private global::System.Int32 _User_ID;
         partial void OnUser_IDChanging(global::System.Int32 value);
         partial void OnUser_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String User_Name
         {
@@ -4898,11 +4904,11 @@ namespace MegabiteEntityLayer
         private global::System.String _User_Name;
         partial void OnUser_NameChanging(global::System.String value);
         partial void OnUser_NameChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Real_Name
         {
@@ -4922,11 +4928,11 @@ namespace MegabiteEntityLayer
         private global::System.String _Real_Name;
         partial void OnReal_NameChanging(global::System.String value);
         partial void OnReal_NameChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Mobile
         {
@@ -4946,11 +4952,11 @@ namespace MegabiteEntityLayer
         private global::System.String _Mobile;
         partial void OnMobileChanging(global::System.String value);
         partial void OnMobileChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Password
         {
@@ -4970,11 +4976,11 @@ namespace MegabiteEntityLayer
         private global::System.String _Password;
         partial void OnPasswordChanging(global::System.String value);
         partial void OnPasswordChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Email
         {
@@ -4994,11 +5000,11 @@ namespace MegabiteEntityLayer
         private global::System.String _Email;
         partial void OnEmailChanging(global::System.String value);
         partial void OnEmailChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int64 Company_ID
         {
@@ -5021,11 +5027,11 @@ namespace MegabiteEntityLayer
         private global::System.Int64 _Company_ID;
         partial void OnCompany_IDChanging(global::System.Int64 value);
         partial void OnCompany_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Boolean> Is_Active
         {
@@ -5045,11 +5051,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Boolean> _Is_Active;
         partial void OnIs_ActiveChanging(Nullable<global::System.Boolean> value);
         partial void OnIs_ActiveChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> Created_DateTime
         {
@@ -5069,11 +5075,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.DateTime> _Created_DateTime;
         partial void OnCreated_DateTimeChanging(Nullable<global::System.DateTime> value);
         partial void OnCreated_DateTimeChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.DateTime> Updated_DateTime
         {
@@ -5093,11 +5099,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.DateTime> _Updated_DateTime;
         partial void OnUpdated_DateTimeChanging(Nullable<global::System.DateTime> value);
         partial void OnUpdated_DateTimeChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Role_ID
         {
@@ -5117,11 +5123,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int32> _Role_ID;
         partial void OnRole_IDChanging(Nullable<global::System.Int32> value);
         partial void OnRole_IDChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Created_By
         {
@@ -5141,11 +5147,11 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int32> _Created_By;
         partial void OnCreated_ByChanging(Nullable<global::System.Int32> value);
         partial void OnCreated_ByChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Updated_By
         {
@@ -5168,10 +5174,100 @@ namespace MegabiteEntityLayer
 
         #endregion
 
+    
+    }
+
+    #endregion
+
+    #region ComplexTypes
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="CafeteriaModel", Name="sp_favorite_items_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class sp_favorite_items_Result : ComplexObject
+    {
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int64> Item_ID
+        {
+            get
+            {
+                return _Item_ID;
+            }
+            set
+            {
+                OnItem_IDChanging(value);
+                ReportPropertyChanging("Item_ID");
+                _Item_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Item_ID");
+                OnItem_IDChanged();
+            }
+        }
+        private Nullable<global::System.Int64> _Item_ID;
+        partial void OnItem_IDChanging(Nullable<global::System.Int64> value);
+        partial void OnItem_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Item_Name
+        {
+            get
+            {
+                return _Item_Name;
+            }
+            set
+            {
+                OnItem_NameChanging(value);
+                ReportPropertyChanging("Item_Name");
+                _Item_Name = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Item_Name");
+                OnItem_NameChanged();
+            }
+        }
+        private global::System.String _Item_Name;
+        partial void OnItem_NameChanging(global::System.String value);
+        partial void OnItem_NameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ItemCount
+        {
+            get
+            {
+                return _ItemCount;
+            }
+            set
+            {
+                OnItemCountChanging(value);
+                ReportPropertyChanging("ItemCount");
+                _ItemCount = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ItemCount");
+                OnItemCountChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ItemCount;
+        partial void OnItemCountChanging(Nullable<global::System.Int32> value);
+        partial void OnItemCountChanged();
+
+        #endregion
 
     }
 
     #endregion
 
-
+    
 }

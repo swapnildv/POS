@@ -56,13 +56,16 @@ namespace Hotel_POS
                 {
                     case 2:
                         shuffleMenus(TerminalCommon.operatorRoleMenu);
+                        MainGrid.Children.Clear();
+                        MainGrid.Children.Add(new OrderUserControl());
                         break;
                     case 3:
                         shuffleMenus(TerminalCommon.adminRoleMenu);
+                        MainGrid.Children.Clear();
+                        MainGrid.Children.Add(new Dashboard());
                         break;
                 }
-                MainGrid.Children.Clear();
-                MainGrid.Children.Add(new OrderUserControl());
+
                 this.WindowState = System.Windows.WindowState.Maximized;
             }
             catch (Exception ex)
@@ -416,6 +419,19 @@ namespace Hotel_POS
             }
         }
 
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MainGrid.Children.Clear();
+                MainGrid.Children.Add(new Dashboard());
+            }
+            catch (Exception ex)
+            {
+                Log.Write(ex);
+            }
+        }
+
         #endregion
         #region Methods
 
@@ -461,7 +477,7 @@ namespace Hotel_POS
                         subitem.Visibility = System.Windows.Visibility.Collapsed;
 
                 }
-                if (submenuCount > 0 || menuItem.Name == "Logout")
+                if (submenuCount > 0 || menuItem.Name == "Logout"  || menuItem.Name == "Home" )
                     menuItem.Visibility = System.Windows.Visibility.Visible;
                 else
                     menuItem.Visibility = System.Windows.Visibility.Collapsed;
@@ -469,5 +485,7 @@ namespace Hotel_POS
             }
         }
         #endregion
+
+        
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Objects;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -239,6 +240,22 @@ namespace POS_DAL
             dc.SaveChanges();
             return objTM.Order_No;
         }
+        /// <summary>
+        /// Get today's sale.
+        /// </summary>
+        /// <returns></returns>
+        public double _getTodaysSale()
+        {
+            return (from d in dc.Transaction_Master
+                    where EntityFunctions.TruncateTime(d.Transaction_Date) == DateTime.Today
+                    select d.Transaction_Amount.Value).Sum();
+        }
+
+        public List<sp_favorite_items_Result> _getFavoriteItems()
+        {
+             return dc.sp_favorite_items_function().ToList();
+        }
+
         #endregion
     }
 }

@@ -139,7 +139,11 @@
     <Compile Include="CompanyWindow.xaml.cs">
       <DependentUpon>CompanyWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converter\Converters.cs" />
     <Compile Include="Resource\Log.cs" />
+    <Compile Include="User_Controls\Dashboard.xaml.cs">
+      <DependentUpon>Dashboard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="User_Controls\MovingCircles.xaml.cs">
       <DependentUpon>MovingCircles.xaml</DependentUpon>
     </Compile>
@@ -195,6 +199,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CompanyWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User_Controls\Dashboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

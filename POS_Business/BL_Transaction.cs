@@ -35,11 +35,23 @@ namespace POS_Business
             return objDAL_Transaction.getLoadReport(EmployeeID, Fromdt, Todt);
         }
 
+
         #region RevisedCode
         public String SubmitOrder()
         {
             return new DAL_Transaction().SubmitOrder();
         }
+
+        public double getTodaysSale()
+        {
+            return new DAL_Transaction()._getTodaysSale();
+        }
+
+        public List<sp_favorite_items_Result> getFavoriteItems()
+        {
+            return new DAL_Transaction()._getFavoriteItems();
+        }
+
         #endregion
     }
 }

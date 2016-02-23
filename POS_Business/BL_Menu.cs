@@ -212,6 +212,11 @@ namespace POS_Business
         {
            new DAL_Item_Master().ClearMenuCart();
         }
+
+        public double getTotatlCartValue()
+        {
+           return new DAL_Item_Master()._getTotatlCartValue();
+        }
         #endregion
 
     }

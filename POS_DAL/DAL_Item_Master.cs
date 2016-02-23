@@ -227,6 +227,11 @@ namespace POS_DAL
             menuCart.Add(obj);
         }
 
+        public double _getTotatlCartValue()
+        {
+            return menuCart.ToList().Select(a => a.Item_Total).Sum();
+        }
+
 
         #endregion
     }

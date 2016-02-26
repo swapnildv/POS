@@ -78,359 +78,80 @@ namespace Hotel_POS
 
         }
 
-        private void Users_Click(object sender, RoutedEventArgs e)
+        private void Menu_Click(object sender, RoutedEventArgs e)
         {
-            try
+            MenuItem _sender = (MenuItem)sender;
+            switch (_sender.Name)
             {
-                this.Cursor = Cursors.Wait;
-                UsersWindow objUsersWindow = new UsersWindow();
-                objUsersWindow.Owner = this;
-                objUsersWindow.ShowDialog();
-                objUsersWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-                this.Cursor = Cursors.Arrow;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-            }
-        }
-
-        private void Company_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                this.Cursor = Cursors.Wait;
-                CompanyWindow objCompanyWindow = new CompanyWindow();
-                objCompanyWindow.Owner = this;
-                objCompanyWindow.ShowDialog();
-                objCompanyWindow = null;
-                this.Cursor = Cursors.Arrow;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-            }
-        }
-        private void ManageEmployee_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                this.Cursor = Cursors.Wait;
-
-                Employee_Window objemployee_Window = new Employee_Window();
-                objemployee_Window.Owner = this;
-                objemployee_Window.ShowDialog();
-                objemployee_Window = null;
-
-                this.Cursor = Cursors.Arrow;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-            }
-        }
-        private void Order_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                MainGrid.Children.Clear();
-                MainGrid.Children.Add(new OrderUserControl());
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        private void CardAssign_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                this.Cursor = Cursors.Wait;
-
-                CardAssignWindow objCardAssignWindow = new CardAssignWindow();
-                objCardAssignWindow.Owner = this;
-
-                objCardAssignWindow.ShowDialog();
-
-                objCardAssignWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-                this.Cursor = Cursors.Arrow;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-            }
-        }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                this.Cursor = Cursors.Wait;
-
-                MenuWindow objMenuWindow = new MenuWindow();
-                objMenuWindow.Owner = this;
-                objMenuWindow.ShowDialog();
-
-                objMenuWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-                this.Cursor = Cursors.Arrow;
+                case "Home":
+                    MainGrid.Children.Clear();
+                    MainGrid.Children.Add(new Dashboard());
+                    break;
+
+                case "Users":
+                    this.Cursor = Cursors.Wait;
+                    UsersWindow usersWindow = new UsersWindow();
+                    usersWindow.Owner = this;
+                    usersWindow.ShowDialog();
+                    usersWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+                    this.Cursor = Cursors.Arrow;
+                    break;
+
+                case "ChangePasswordMenuItem":
+
+                    this.Cursor = Cursors.Wait;
+
+                    ChangePasswordWindow objChangePwdWindow = new ChangePasswordWindow();
+                    objChangePwdWindow.Owner = this;
+                    objChangePwdWindow.ShowDialog();
+
+                    objChangePwdWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+                    this.Cursor = Cursors.Arrow;
+                    break;
+
+                case "MenuCategory":
+                    this.Cursor = Cursors.Wait;
+
+                    MenuCategoryWindow objMenucatWindow = new MenuCategoryWindow();
+                    objMenucatWindow.Owner = this;
+                    objMenucatWindow.ShowDialog();
+
+                    objMenucatWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+                    this.Cursor = Cursors.Arrow;
+                    break;
+
+                case "Menu":
+                    this.Cursor = Cursors.Wait;
+
+                    MenuWindow objMenuWindow = new MenuWindow();
+                    objMenuWindow.Owner = this;
+                    objMenuWindow.ShowDialog();
+
+                    objMenuWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+                    this.Cursor = Cursors.Arrow;
+                    break;
+
+                case "NewOrder":
+                    MainGrid.Children.Clear();
+                    MainGrid.Children.Add(new OrderUserControl());
+                    break;
+
+                case "TransactionReport":
+                    this.Cursor = Cursors.Wait;
+
+                    TransactionReport objTransactionReport = new TransactionReport();
+                    objTransactionReport.Owner = this;
+                    objTransactionReport.ShowDialog();
+
+                    objTransactionReport.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+                    this.Cursor = Cursors.Arrow;
+                    break;
+
+                case "Logout":
+                    new BL_Menu().ClearMenuCart();
+                    this.Close();
+                    break;
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-            }
-        }
-
-        private void LoadCard_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                this.Cursor = Cursors.Wait;
-
-                CardLoadWindow objCardLoadWindow = new CardLoadWindow();
-                objCardLoadWindow.Owner = this;
-                objCardLoadWindow.ShowDialog();
-
-                objCardLoadWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-                this.Cursor = Cursors.Arrow;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-            }
-        }
-
-        private void ChangePassword_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                this.Cursor = Cursors.Wait;
-
-                ChangePasswordWindow objChangePwdWindow = new ChangePasswordWindow();
-                objChangePwdWindow.Owner = this;
-                objChangePwdWindow.ShowDialog();
-
-                objChangePwdWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-                this.Cursor = Cursors.Arrow;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-            }
-        }
-
-        private void MenuCategory_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                this.Cursor = Cursors.Wait;
-
-                MenuCategoryWindow objMenucatWindow = new MenuCategoryWindow();
-                objMenucatWindow.Owner = this;
-                objMenucatWindow.ShowDialog();
-
-                objMenucatWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-                this.Cursor = Cursors.Arrow;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-            }
-        }
-
-        private void employeeLedger_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                this.Cursor = Cursors.Wait;
-
-                EmployeeReport objEmployeeReport = new EmployeeReport();
-                objEmployeeReport.Owner = this;
-                objEmployeeReport.ShowDialog();
-
-                objEmployeeReport.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-                this.Cursor = Cursors.Arrow;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-            }
-        }
-
-        private void TransactionReport_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                this.Cursor = Cursors.Wait;
-
-                TransactionReport objTransactionReport = new TransactionReport();
-                objTransactionReport.Owner = this;
-                objTransactionReport.ShowDialog();
-
-                objTransactionReport.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-                this.Cursor = Cursors.Arrow;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-            }
-        }
-
-        private void LoadReport_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                this.Cursor = Cursors.Wait;
-
-                LoadReport objLoadReport = new LoadReport();
-                objLoadReport.Owner = this;
-                objLoadReport.ShowDialog();
-
-                objLoadReport.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-                this.Cursor = Cursors.Arrow;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-            }
-
-        }
-
-        private void Logout_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                new BL_Menu().ClearMenuCart();
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-            }
-        }
-
-        private void Change_Login_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                this.Cursor = Cursors.Wait;
-                lblRoleID.Content = 0;
-                lblUserID.Content = 0;
-                LoginWindow objLoginWindow = new LoginWindow();
-
-                objLoginWindow.ShowDialog();
-
-                objLoginWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-                this.Close();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-            }
-        }
-
-        private void Get_Database_Click(object sender, RoutedEventArgs e)
-        {
-            //try
-            //{
-            //    this.Cursor = Cursors.Wait;
-
-            //    DatabaseWindow objDBWindow = new DatabaseWindow();
-            //    objDBWindow.Owner = this;
-            //    objDBWindow.ShowDialog();
-
-            //    objDBWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-            //    this.Cursor = Cursors.Arrow;
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-            //}
-        }
-
-        private void GEt_Data_Click(object sender, RoutedEventArgs e)
-        {
-            this.Cursor = Cursors.Wait;
-
-            ////BackUp_RestoreData objDBWindow = new BackUp_RestoreData();
-            //objDBWindow.Owner = this;
-            //objDBWindow.ShowDialog();
-
-            //objDBWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-            //this.Cursor = Cursors.Arrow;
-        }
-
-        private void FormatCard_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                this.Cursor = Cursors.Wait;
-
-                ClearCard objClearCard = new ClearCard();
-                objClearCard.Owner = this;
-                objClearCard.ShowDialog();
-
-                objClearCard.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-                this.Cursor = Cursors.Arrow;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-            }
-        }
-
-        private void Home_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                MainGrid.Children.Clear();
-                MainGrid.Children.Add(new Dashboard());
-            }
-            catch (Exception ex)
-            {
-                Log.Write(ex);
             }
         }
 
@@ -479,7 +200,7 @@ namespace Hotel_POS
                         subitem.Visibility = System.Windows.Visibility.Collapsed;
 
                 }
-                if (submenuCount > 0 || menuItem.Name == "Logout"  || menuItem.Name == "Home" )
+                if (submenuCount > 0 || menuItem.Name == "Logout" || menuItem.Name == "Home" || menuItem.Name == "NewOrder")
                     menuItem.Visibility = System.Windows.Visibility.Visible;
                 else
                     menuItem.Visibility = System.Windows.Visibility.Collapsed;
@@ -488,6 +209,6 @@ namespace Hotel_POS
         }
         #endregion
 
-        
+
     }
 }

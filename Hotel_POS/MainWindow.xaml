@@ -7,6 +7,11 @@
         Loaded="Window_Loaded"
         xmlns:local="clr-namespace:Hotel_POS.User_Controls"
         Icon="/Hotel_POS;component/Images/bunkerzz_icon.ico">
+    
+    <Window.Resources>
+        
+        
+    </Window.Resources>
     <Grid>
         <StackPanel>
             <Border Height="40"
@@ -46,82 +51,75 @@
                 <Menu VerticalAlignment="Bottom"
                   x:Name="MenuBar"
                   Margin="5,0,0,0">
-                    <MenuItem Width="70" Header="_Home"
-                          x:Name="Home" Click="Home_Click"/>
-                    <MenuItem Header="User"
+                    <MenuItem Width="90" Height="40" VerticalAlignment="Center" VerticalContentAlignment="Center"
+                          x:Name="Home" Click="Menu_Click">
+                        <MenuItem.Header>
+                            <TextBlock Text="Home" FontSize="20" VerticalAlignment="Center"/>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem 
                           x:Name="User">
-                        <MenuItem  Header="_Users"
-                               x:Name="Users"
-                               Click="Users_Click" />
-                        <MenuItem  Header="_Change Password"
+                        <MenuItem.Header>
+                            <TextBlock Text="User" FontSize="20" VerticalAlignment="Center"/>
+                        </MenuItem.Header>
+                        <MenuItem x:Name="Users"
+                               Click="Menu_Click" >
+                            <MenuItem.Header>
+                                <TextBlock Text="Users" FontSize="17" VerticalAlignment="Center"/>
+                            </MenuItem.Header>
+                        </MenuItem>
+                        <MenuItem 
                                x:Name="ChangePasswordMenuItem"
-                               Click="ChangePassword_Click" />
-                    </MenuItem>
-                    <MenuItem  Header="_Company"
-                           x:Name="CompanyMenu">
-                        <MenuItem   Header="_Company"
-                                x:Name="Company"
-                                Click="Company_Click" />
-                        <MenuItem  Header="_Manage Employee"
-                               x:Name="Manage_Employee"
-                               Click="ManageEmployee_Click" />
-                    </MenuItem>
-                    <MenuItem Header="_Menu"
-                          x:Name="ItemMenu">
-                        <MenuItem Header="_Category"
-                              x:Name="MenuCategory"
-                              Click="MenuCategory_Click" />
-                        <MenuItem  Header="_Item"
-                               x:Name="Menu"
-                               Click="MenuItem_Click" />
-                    </MenuItem>
-                    <MenuItem Visibility="Collapsed" Header="_Card"
-                          x:Name="Card">
-                        <MenuItem Header="_Assign Card"
-                              x:Name="CardAssign"
-                              Click="CardAssign_Click" />
-                        <MenuItem Header="_Load Card"
-                              x:Name="LoadCard"
-                              Click="LoadCard_Click" />
-                        <MenuItem Header="_Format Card"
-                              x:Name="FormatCard"
-                              Click="FormatCard_Click" />
-                    </MenuItem>
-                    <MenuItem Header="_Orders"
-                          x:Name="OrderMenu">
-                        <MenuItem  Header="_New Order"
-                               x:Name="NewOrder"
-                               Click="Order_Click" />
-                    </MenuItem>
-                    <MenuItem Header="_Reports"
-                          x:Name="Reports">
-                        <MenuItem   Header="_Employee Ledger"
-                                Click="employeeLedger_Click"
-                                x:Name="employeeLedger" />
-                        <MenuItem   Header="_Transaction"
-                                Click="TransactionReport_Click"
-                                x:Name="TransactionReport" />
-                        <MenuItem   Header="_Load"
-                                Click="LoadReport_Click"
-                                x:Name="LoadReport" />
-                    </MenuItem>
-                    <MenuItem Header="_Database"
-                          x:Name="Get_Database" >
-                        <MenuItem  Header="Export to Excel"
-                               x:Name="Export"
-                               Click="Get_Database_Click" />
-                        <MenuItem  Header="Get Data"
-                               x:Name="Get_Data"
-                               Click="GEt_Data_Click" />
-                    </MenuItem>
-                    <MenuItem Header="_Change Login"
-                          x:Name="Change_Login"
-                          Click="Change_Login_Click" />
-                    <MenuItem Header="_Logout"
-                          x:Name="Logout"
-                          Click="Logout_Click" />
+                               Click="Menu_Click" >
+                            <MenuItem.Header>
+                                <TextBlock Text="Change Password" FontSize="17" VerticalAlignment="Center"/>
+                            </MenuItem.Header>
+                        </MenuItem>
 
-                   
+                    </MenuItem>
+                    <MenuItem 
+                          x:Name="ItemMenu">
+                        <MenuItem.Header>
+                            <TextBlock Text="Menu" FontSize="20" VerticalAlignment="Center"/>
+                        </MenuItem.Header>
+                        <MenuItem x:Name="MenuCategory"
+                              Click="Menu_Click">
+                            <MenuItem.Header>
+                                <TextBlock Text="Add Menu" FontSize="17" VerticalAlignment="Center"/>
+                            </MenuItem.Header>
+                        </MenuItem>
+
+                        <MenuItem x:Name="Menu"
+                               Click="Menu_Click" >
+                            <MenuItem.Header>
+                                <TextBlock Text="Add Submenu" FontSize="17" VerticalAlignment="Center"/>
+                            </MenuItem.Header>
+                        </MenuItem>
+                    </MenuItem>
+                    <MenuItem x:Name="NewOrder" 
+                               Click="Menu_Click" >
+                        <MenuItem.Header>
+                            <TextBlock Text="Order" FontSize="20" VerticalAlignment="Center"/>
+                        </MenuItem.Header>
+                    </MenuItem>
+
+                    <MenuItem x:Name="Reports">
+                        <MenuItem.Header>
+                            <TextBlock Text="Reports" FontSize="20" VerticalAlignment="Center"/>
+                        </MenuItem.Header>
+                        <MenuItem Click="Menu_Click"
+                                x:Name="TransactionReport" >
+                            <MenuItem.Header>
+                                <TextBlock Text="Transaction" FontSize="17" VerticalAlignment="Center"/>
+                                </MenuItem.Header></MenuItem>
+                        </MenuItem>
+                    <MenuItem x:Name="Logout"
+                          Click="Menu_Click" >
+                        <MenuItem.Header>
+                            <TextBlock Text="Logout" FontSize="20" VerticalAlignment="Center"/>
+                        </MenuItem.Header>
+                    </MenuItem>
+
                 </Menu>
             </Border>
             <Grid Margin="20,10,20,20" x:Name="MainGrid">

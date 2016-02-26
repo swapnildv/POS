@@ -216,8 +216,6 @@ namespace Hotel_POS
                 btnUpdate.Visibility = System.Windows.Visibility.Collapsed;
                 btnSave.Visibility = System.Windows.Visibility.Collapsed;
 
-
-
                 if (MenuItemGridView.SelectedValue != null)
                 {
                     EditgrdMenu();
@@ -240,7 +238,7 @@ namespace Hotel_POS
                 BindItemTypeID();
                 cmbitem_Type_IDComboBox.IsEnabled = true;
                 cmbitem_Type_IDComboBox.ItemsSource = ((List<Item_Group_Master>)cmbitem_Type_IDComboBox.ItemsSource).Where(c => c.Is_Active == true);
-
+                cmbitem_Type_IDComboBox.Focus();
             }
             catch (Exception ex)
             {

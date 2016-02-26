@@ -8,7 +8,7 @@
         FontFamily="Arial"
         FontSize="12"
         x:Name="LoginWindow1"
-        Title="Megabite Login"
+        Title="Bunkerzz"
         ShowInTaskbar="False"
         WindowStartupLocation="CenterScreen"
         Height="350"
@@ -17,10 +17,8 @@
         ResizeMode="NoResize"
         mc:Ignorable="d"
         Loaded="Window_Loaded_1"
-        Icon="/Hotel_POS;component/Images/Restaurant%20Blue.ico">
-    <Window.Background>
-        <ImageBrush ImageSource="/Hotel_POS;component/Images/login-bg.jpg" />
-    </Window.Background>
+        Icon="/Hotel_POS;component/Images/Restaurant%20Blue.ico" Background="#D7D7D7">
+    
     <Window.Resources>
         <Style TargetType="{x:Type Label}">
             <Setter Property="HorizontalAlignment"
@@ -36,7 +34,7 @@
             <Setter Property="ForceCursor"
                     Value="False" />
             <Setter Property="Foreground"
-                    Value="Gray" />
+                    Value="Black" />
             <Setter Property="FontWeight"
                     Value="Bold" />
         </Style>
@@ -101,14 +99,12 @@
                     Height="50"
                     Margin="0,20,0,0"
                     HorizontalAlignment="Center">
-            <Button x:Name="btnLogin"
-                    Style="{DynamicResource BlueButtonStyle}"
+            <Button x:Name="btnLogin" Height="40" Width="80" FontSize="18"
                     Content="Login"
                     Click="btnLogin_Click"
                     TabIndex="2" />
-            <Button x:Name="btnCancel"
-                    Style="{DynamicResource BlueButtonStyle}"
-                    Content="Cancel"
+            <Button x:Name="btnCancel" Height="40" Width="80" FontSize="18" Margin="10,0,00,0"
+                    Content="Reset"
                     IsCancel="True"
                     Click="btnCancel_Click"
                     TabIndex="3" />

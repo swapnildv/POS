@@ -35,6 +35,7 @@ namespace MegabiteEntityLayer
             {
                 _Quantity = value;
                 Item_Total = Item_Unit_Price * _Quantity;
+                NotifyPropertyChanged("Quantity");
             }
         }
         public double Item_Total

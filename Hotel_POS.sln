@@ -10,27 +10,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MegabiteEntityLayer", "MegabiteEntityLayer\MegabiteEntityLayer.csproj", "{186D76F7-B7A9-4DF4-91D9-B5BDA09F1EC5}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 6
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://di-tfs:8080/tfs/cafeteria
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Hotel_POS\\Hotel_POS.csproj
-		SccProjectName1 = Hotel_POS
-		SccLocalPath1 = Hotel_POS
-		SccProjectUniqueName2 = POS_Business\\POS_Business.csproj
-		SccProjectName2 = POS_Business
-		SccLocalPath2 = POS_Business
-		SccProjectUniqueName3 = POS_DAL\\POS_DAL.csproj
-		SccProjectName3 = POS_DAL
-		SccLocalPath3 = POS_DAL
-		SccProjectUniqueName4 = MegabiteEntityLayer\\MegabiteEntityLayer.csproj
-		SccProjectName4 = MegabiteEntityLayer
-		SccLocalPath4 = MegabiteEntityLayer
-		SccProjectUniqueName5 = MegabiteSetup\\MegabiteSetup.vdproj
-		SccProjectName5 = MegabiteSetup
-		SccLocalPath5 = MegabiteSetup
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x86 = Debug|x86

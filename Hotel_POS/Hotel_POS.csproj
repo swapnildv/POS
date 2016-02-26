@@ -38,7 +38,7 @@
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Images\Restaurant Blue.ico</ApplicationIcon>
+    <ApplicationIcon>bunkerzz_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -356,6 +356,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Restaurant Blue.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bunkerzz_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bunkerzz_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

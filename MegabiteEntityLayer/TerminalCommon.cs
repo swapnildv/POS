@@ -33,5 +33,7 @@ namespace Hotel_POS.Resource
                                               "changePassword","Logout" };
 
         public static String currency { get { return "Rs."; } }
+
+        public enum user_roles { adminRole = 4, operatorRole };
     }
 }

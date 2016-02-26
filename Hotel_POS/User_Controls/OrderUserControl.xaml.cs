@@ -44,7 +44,7 @@ namespace Hotel_POS.User_Controls
             {
                 //BL_Menu obj = new BL_Menu();
                 MainMenuListBox.ItemsSource = new BL_Menu().get_Item_Group_List().Where(c => c.Is_Active == true);
-                ItemListBox.ItemsSource = new BL_Menu().GetMenuCart();
+                MenuCartlistBox.ItemsSource = new BL_Menu().GetMenuCart();
                 customerMobileTextBox.Focus();
             }
             catch (Exception ex)
@@ -98,7 +98,10 @@ namespace Hotel_POS.User_Controls
             try
             {
                 itemQuantity.Text = "1";
-                AddItemButton.Focus();
+                itemQuantity.Focus();
+                itemQuantity.SelectAll();
+                if (SubMainMenuListBox.SelectedItem != null)
+                    _selectedItemId = ((MegabiteEntityLayer.Item_Master)SubMainMenuListBox.SelectedItem).Item_ID; // Get selected sub menu.
             }
             catch (Exception ex)
             {
@@ -108,6 +111,24 @@ namespace Hotel_POS.User_Controls
 
         }
 
+        private long _selectedItemId;
+        private void MenuCartlistBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (MenuCartlistBox.SelectedItem != null)
+                    _selectedItemId = ((MenuCart)MenuCartlistBox.SelectedItem).Item_ID;
+
+                itemQuantity.Focus();
+                itemQuantity.SelectAll();
+                
+            }
+            catch (Exception ex)
+            {
+                Log.Write(ex);
+            }
+        }
+
         private void AddItemButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -115,10 +136,9 @@ namespace Hotel_POS.User_Controls
                 MegabiteEntityLayer.Item_Group_Master masterMenu = (MegabiteEntityLayer.Item_Group_Master)MainMenuListBox.SelectedItem; // Get selected menu group.
                 MegabiteEntityLayer.Item_Master subMenu = (MegabiteEntityLayer.Item_Master)SubMainMenuListBox.SelectedItem; // Get selected sub menu.
 
-                if (masterMenu != null &&
-                    subMenu != null)
+                if (_selectedItemId != 0 && int.Parse(itemQuantity.Text.ToString()) > 00)
                 {
-                    new BL_Menu().AddMenuCartItem(subMenu.Item_ID, int.Parse(itemQuantity.Text.ToString()));
+                    new BL_Menu().AddMenuCartItem(_selectedItemId, int.Parse(itemQuantity.Text.ToString()));
                 }
                 totalAmountTextBlock.Text = TerminalCommon.currency + " " + new BL_Menu().getTotatlCartValue().ToString();
             }
@@ -129,7 +149,28 @@ namespace Hotel_POS.User_Controls
             }
         }
 
-        #region Place Order
+        private void subMenuSearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(SubMainMenuListBox.ItemsSource);
+                view.Filter = UserFilter;
+                CollectionViewSource.GetDefaultView(SubMainMenuListBox.ItemsSource).Refresh();
+            }
+            catch (Exception ex)
+            {
+                Log.Write(ex);
+            }
+        }
+
+        private bool UserFilter(object item)
+        {
+            if (String.IsNullOrEmpty(subMenuSearchTextBox.Text))
+                return true;
+            else
+                return ((item as Item_Master).Item_Name.IndexOf(subMenuSearchTextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+        }
+
         private void proceedOrderButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -155,16 +196,16 @@ namespace Hotel_POS.User_Controls
                 MessageBox.Show(TerminalCommon.errorMessage, TerminalCommon.cafeName);
             }
         }
-
         private void cancelOrderButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 if (bwPlaceOrder.IsBusy != true)
-                {
                     bwPlaceOrder.CancelAsync();
 
-                }
+                new BL_Menu().ClearMenuCart();
+                totalAmountTextBlock.Text = TerminalCommon.currency + " " + new BL_Menu().getTotatlCartValue().ToString();
+                itemQuantity.Text = "1";
             }
             catch (Exception ex)
             {
@@ -172,8 +213,6 @@ namespace Hotel_POS.User_Controls
                 MessageBox.Show(TerminalCommon.errorMessage, TerminalCommon.cafeName);
             }
         }
-
-
         void bwPlaceOrder_DoWork(object sender, DoWorkEventArgs e)
         {
             try
@@ -236,8 +275,5 @@ namespace Hotel_POS.User_Controls
             }
 
         }
-
-
-        #endregion
     }
 }

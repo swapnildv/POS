@@ -151,7 +151,7 @@ namespace POS_DAL
             MenuItems.Item_Unit_Price = itemMaster.Item_Unit_Price;
             MenuItems.Is_Active = itemMaster.Is_Active;
             MenuItems.Updated_DateTime = DateTime.Now;
-           // MenuItems.Company_ID = itemMaster.Company_ID;
+            // MenuItems.Company_ID = itemMaster.Company_ID;
             return dc.SaveChanges();
         }
 
@@ -216,15 +216,24 @@ namespace POS_DAL
 
         public void AddMenuCart(long submenuId, int qty)
         {
-            var item = dc.Item_Master.Where(a=>a.Item_ID == submenuId).SingleOrDefault();
-            MenuCart obj = new MegabiteEntityLayer.MenuCart()
+
+            if (menuCart.Any(c => c.Item_ID == submenuId))
             {
-                Item_ID = item.Item_ID,
-                Item_Unit_Price = item.Item_Unit_Price.Value,
-                Item_Name = item.Item_Name,
-                Quantity = qty
-            };
-            menuCart.Add(obj);
+                var exitem = menuCart.Where(d => d.Item_ID == submenuId).SingleOrDefault();
+                exitem.Quantity = qty;
+            }
+            else
+            {
+                var item = dc.Item_Master.Where(a => a.Item_ID == submenuId).SingleOrDefault();
+                MenuCart obj = new MegabiteEntityLayer.MenuCart()
+                {
+                    Item_ID = item.Item_ID,
+                    Item_Unit_Price = item.Item_Unit_Price.Value,
+                    Item_Name = item.Item_Name,
+                    Quantity = qty
+                };
+                menuCart.Add(obj);
+            }
         }
 
         public double _getTotatlCartValue()

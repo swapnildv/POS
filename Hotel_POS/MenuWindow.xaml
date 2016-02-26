@@ -72,6 +72,7 @@
                            Grid.Column="0"
                            Grid.Row="2" />
                     <TextBox x:Name="txtitem_NameTextBox"
+                             TabIndex="2"
                              Grid.Column="1"
                              Grid.Row="2"
                              Style="{DynamicResource textBoxNormalStyle}" />
@@ -79,6 +80,7 @@
                            Grid.Column="0"
                            Grid.Row="1" />
                     <ComboBox x:Name="cmbitem_Type_IDComboBox"
+                              TabIndex="1"
                               Grid.Column="1"
                               DisplayMemberPath="Item_Group_Name"
                               SelectedValuePath="Item_Group_ID"
@@ -95,6 +97,7 @@
                            Grid.Column="0"
                            Grid.Row="3" />
                     <TextBox x:Name="txtitem_Unit_PriceTextBlock"
+                             TabIndex="3"
                              Style="{DynamicResource textBoxNormalStyle}"
                              Grid.Column="1"
                              Grid.Row="3" />
@@ -104,6 +107,7 @@
                            Margin="3"
                            Grid.Row="4" />
                     <CheckBox x:Name="chkis_ActiveCheckBox"
+                              TabIndex="4"
                               Content=""
                               Grid.Column="1"
                               HorizontalAlignment="Left"
@@ -130,21 +134,25 @@
                             Orientation="Horizontal"
                             HorizontalAlignment="Center">
                     <Button Style="{DynamicResource BlueButtonStyle}"
+                            TabIndex="5"
                             x:Name="btnSave"
                             Content="Save"
                             Click="btnSave_Click" />
                     <Button Style="{DynamicResource BlueButtonStyle}"
+                            TabIndex="6"
                             x:Name="btnUpdate"
                             Content="Update"
                             Click="btnUpdate_Click" />
                     <Button Style="{DynamicResource BlueButtonStyle}"
                             x:Name="btnCancel"
+                            TabIndex="7"
                             Content="Cancel"
                             Click="btnCancel_Click" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Center">
                     <Button Style="{DynamicResource BlueButtonStyle}"
+                            TabIndex="8"
                             IsDefault="False"
                             x:Name="btnNew"
                             HorizontalAlignment="Center"
@@ -154,6 +162,7 @@
                             Margin="5"
                             Click="btnNewUser_Click" />
                     <Button Style="{DynamicResource BlueButtonStyle}"
+                            TabIndex="9"
                             x:Name="btnEdit"
                             Content="Edit"
                             Click="btnEdit_Click" />
@@ -179,6 +188,7 @@
                                Foreground="Gray"
                                VerticalAlignment="Center" />
                     <TextBox x:Name="txtSearch"
+                             TabIndex="10"
                              HorizontalAlignment="Left"
                              Style="{DynamicResource textBoxNormalStyle}"
                              TextChanged="txtSearch_TextChanged" />

@@ -24,6 +24,7 @@ using Hotel_POS;
 using Hotel_POS.Reports;
 using Hotel_POS.User_Controls;
 using Hotel_POS.Resource;
+using POS_Business;
 namespace Hotel_POS
 {
     /// <summary>
@@ -54,12 +55,12 @@ namespace Hotel_POS
                 Role_ID = Convert.ToInt32(lblRoleID.Content.ToString());
                 switch (TerminalCommon.LoggedInUser.Role_ID)
                 {
-                    case 2:
+                    case (int)TerminalCommon.user_roles.operatorRole:
                         shuffleMenus(TerminalCommon.operatorRoleMenu);
                         MainGrid.Children.Clear();
                         MainGrid.Children.Add(new OrderUserControl());
                         break;
-                    case 3:
+                    case (int)TerminalCommon.user_roles.adminRole:
                         shuffleMenus(TerminalCommon.adminRoleMenu);
                         MainGrid.Children.Clear();
                         MainGrid.Children.Add(new Dashboard());
@@ -330,6 +331,7 @@ namespace Hotel_POS
         {
             try
             {
+                new BL_Menu().ClearMenuCart();
                 this.Close();
             }
             catch (Exception ex)

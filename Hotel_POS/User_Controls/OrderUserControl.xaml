@@ -7,7 +7,40 @@
              xmlns:local="clr-namespace:Hotel_POS"
              mc:Ignorable="d">
     <UserControl.Resources>
+        <SolidColorBrush x:Key="brushWatermarkBackground" Color="White" />
+        <SolidColorBrush x:Key="brushWatermarkForeground" Color="Gray" />
+        <SolidColorBrush x:Key="brushWatermarkBorder" Color="Indigo" />
         <local:CurrencyConcatConverter x:Key="currencyConcatConverter"/>
+        <local:Helper x:Key="Helper"/>
+        <Style x:Key="placeHolder" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Grid>
+                            <TextBox Text="{Binding Path=Text,
+                                                RelativeSource={RelativeSource TemplatedParent}, 
+                                                Mode=TwoWay,
+                                                UpdateSourceTrigger=PropertyChanged}"
+                                 x:Name="textSource" 
+                                 Background="Transparent" 
+                                 Panel.ZIndex="2" />
+                            <TextBox Text="{TemplateBinding Tag}" Background="{TemplateBinding Background}" Panel.ZIndex="1">
+                                <TextBox.Style>
+                                    <Style TargetType="{x:Type TextBox}">
+                                        <Setter Property="Foreground" Value="Transparent"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Path=Text, Source={x:Reference textSource}}" Value="">
+                                                <Setter Property="Foreground" Value="LightGray"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBox.Style>
+                            </TextBox>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </UserControl.Resources>
     <Grid>
         <StackPanel Margin="0,0,0,70">
@@ -17,7 +50,7 @@
                 <TextBlock Margin="20,0,0,0" Text="Name" VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="{StaticResource MainFont}" FontSize="25"></TextBlock>
                 <TextBox Margin="20,0,0,0" TabIndex="2" Name="customerNameTextBox" Width="200" Height="45" HorizontalAlignment="Right" VerticalAlignment="Top" FontFamily="{StaticResource MainFont}" FontSize="22" GotFocus="customerNameTextBox_GotFocus"></TextBox>
             </StackPanel>
-            <Grid Margin="20,10,0,0" ShowGridLines="False">
+            <Grid Margin="20,10,0,0" ShowGridLines="False" Height="500">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="220"/>
                     <ColumnDefinition Width="300"/>
@@ -40,37 +73,55 @@
                 <Border Grid.Column="3" BorderBrush="Black" BorderThickness="1">
                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Cart" FontSize="18" FontWeight="Bold"/>
                 </Border>
-                <Border Grid.Row="1"  BorderBrush="Black" BorderThickness="1">
-                    <ScrollViewer>
-                        <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" TabIndex="3" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent" Name="MainMenuListBox" SelectionChanged="MainMenuListBox_SelectionChanged">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <RadioButton GroupName="MainMenuGroup" Cursor="Hand"  
+
+                <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1">
+                    <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" TabIndex="3" HorizontalAlignment="Left" Background="Transparent" Name="MainMenuListBox" SelectionChanged="MainMenuListBox_SelectionChanged">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <RadioButton GroupName="MainMenuGroup" Cursor="Hand"  
                         IsChecked="{Binding IsSelected, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}">
-                                        <RadioButton.Template>
-                                            <ControlTemplate TargetType="RadioButton">
-                                                <Border BorderThickness="0,0,0,1" BorderBrush="Black" Name="mainMenuBorder" Background="White" Width="210" Height="40">
-                                                    <TextBlock Margin="5,0,0,0" VerticalAlignment="Center" TextWrapping="Wrap" Name="mainMenuText" Text="{Binding Item_Group_Name}" FontSize="18" Foreground="Black"></TextBlock>
-                                                </Border>
-                                                <ControlTemplate.Triggers>
-                                                    <Trigger Property="IsChecked" Value="true">
-                                                        <Setter Property="Background" TargetName="mainMenuBorder" Value="Black"/>
-                                                        <Setter Property="Foreground" TargetName="mainMenuText" Value="White"/>
+                                    <RadioButton.Template>
+                                        <ControlTemplate TargetType="RadioButton">
+                                            <Border BorderThickness="0,0,0,1" BorderBrush="Black" Name="mainMenuBorder" Background="White" Width="210" Height="40">
+                                                <TextBlock Margin="5,0,0,0" VerticalAlignment="Center" TextWrapping="Wrap" Name="mainMenuText" Text="{Binding Item_Group_Name}" FontSize="18" Foreground="Black"></TextBlock>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsChecked" Value="true">
+                                                    <Setter Property="Background" TargetName="mainMenuBorder" Value="Black"/>
+                                                    <Setter Property="Foreground" TargetName="mainMenuText" Value="White"/>
 
-                                                    </Trigger>
-                                                </ControlTemplate.Triggers>
-                                            </ControlTemplate>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
 
-                                        </RadioButton.Template>
-                                    </RadioButton>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                    </ScrollViewer>
+                                    </RadioButton.Template>
+                                </RadioButton>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <ListBox.Template>
+                            <ControlTemplate>
+                                <ScrollViewer>
+                                    <ItemsPresenter/>
+                                </ScrollViewer>
+                            </ControlTemplate>
+                        </ListBox.Template>
+                    </ListBox>
                 </Border>
+
                 <Border  Grid.Column="1" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
-                    <ScrollViewer>
-                        <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" TabIndex="4" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent" Name="SubMainMenuListBox"  SelectionChanged="SubMainMenuListBox_SelectionChanged">
+                    <StackPanel>
+                        <Grid>
+                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" FontSize="16" Text="Search..." Foreground="{StaticResource brushWatermarkForeground}" >
+                                <TextBlock.Visibility>
+                                    <MultiBinding Converter="{StaticResource Helper}">
+                                        <Binding ElementName="subMenuSearchTextBox" Path="Text.IsEmpty" />
+                                        <Binding ElementName="subMenuSearchTextBox" Path="IsFocused" />
+                                    </MultiBinding>
+                                </TextBlock.Visibility>
+                            </TextBlock>
+                            <TextBox FontSize="17" Height="30" Name="subMenuSearchTextBox" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" TextChanged="subMenuSearchTextBox_TextChanged"/>
+                        </Grid>
+                        <ListBox Height="418" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Disabled" TabIndex="4" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent" Name="SubMainMenuListBox"  SelectionChanged="SubMainMenuListBox_SelectionChanged">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <RadioButton GroupName="subMenuGroup" Cursor="Hand"  
@@ -93,8 +144,15 @@
                                     </RadioButton>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
+                            <ListBox.Template>
+                                <ControlTemplate>
+                                    <ScrollViewer>
+                                        <ItemsPresenter/>
+                                    </ScrollViewer>
+                                </ControlTemplate>
+                            </ListBox.Template>
                         </ListBox>
-                    </ScrollViewer>
+                    </StackPanel >
                 </Border>
 
                 <Border Grid.Column="2" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
@@ -105,44 +163,49 @@
                 </Border>
 
                 <Border Grid.Column="3" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
-                    <ScrollViewer >
-                        <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Right" BorderThickness="0" Background="Transparent" Name="ItemListBox" >
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <RadioButton GroupName="menuCartGroup" Cursor="Hand"  
+                    <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Right" BorderThickness="0" Background="Transparent" Name="MenuCartlistBox" SelectionChanged="MenuCartlistBox_SelectionChanged">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <RadioButton GroupName="menuCartGroup" Cursor="Hand"  
                         IsChecked="{Binding IsSelected, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}">
-                                        <RadioButton.Template>
-                                            <ControlTemplate TargetType="RadioButton">
-                                                <Border BorderBrush="Black" BorderThickness="0,0,0,1" Name="subMenuBorder" Background="White" Width="285" Height="40">
-                                                    <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="*"/>
-                                                            <ColumnDefinition Width="30"/>
-                                                            <ColumnDefinition Width="70"/>
-                                                        </Grid.ColumnDefinitions>
-                                                        <TextBlock Margin="5,0,0,0" Grid.Column="0" VerticalAlignment="Center" TextWrapping="Wrap" Name="subMenuText" Text="{Binding Item_Name}" FontSize="14" Foreground="Black"></TextBlock>
-                                                        <TextBlock Grid.Column="1" VerticalAlignment="Center" TextWrapping="Wrap" Name="subMenuQtyText" Text="{Binding Quantity}" FontSize="14" Foreground="Black"></TextBlock>
-                                                        <TextBlock Margin="0,0,5,0" Grid.Column="2" VerticalAlignment="Center" TextWrapping="Wrap" Name="subMenuItemTotalText" Text="{Binding Item_Total,Converter={StaticResource currencyConcatConverter}}" FontSize="14" Foreground="Black"></TextBlock>
+                                    <RadioButton.Template>
+                                        <ControlTemplate TargetType="RadioButton">
+                                            <Border BorderBrush="Black" BorderThickness="0,0,0,1" Name="subMenuBorder" Background="White" Width="285" Height="40">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="30"/>
+                                                        <ColumnDefinition Width="70"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock Margin="5,0,0,0" Grid.Column="0" VerticalAlignment="Center" TextWrapping="Wrap" Name="subMenuText" Text="{Binding Item_Name}" FontSize="14" Foreground="Black"></TextBlock>
+                                                    <TextBlock Grid.Column="1" VerticalAlignment="Center" TextWrapping="Wrap" Name="subMenuQtyText" Text="{Binding Quantity}" FontSize="14" Foreground="Black"></TextBlock>
+                                                    <TextBlock Margin="0,0,5,0" Grid.Column="2" VerticalAlignment="Center" TextWrapping="Wrap" Name="subMenuItemTotalText" Text="{Binding Item_Total,Converter={StaticResource currencyConcatConverter}}" FontSize="14" Foreground="Black"></TextBlock>
 
-                                                    </Grid>
-                                                </Border>
-                                                <ControlTemplate.Triggers>
-                                                    <Trigger Property="IsChecked" Value="true">
-                                                        <Setter Property="Background" TargetName="subMenuBorder" Value="Black"/>
-                                                        <Setter Property="Foreground" TargetName="subMenuText" Value="White"/>
-                                                        <Setter Property="Foreground" TargetName="subMenuQtyText" Value="White"/>
-                                                        <Setter Property="Foreground" TargetName="subMenuItemTotalText" Value="White"/>
+                                                </Grid>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsChecked" Value="true">
+                                                    <Setter Property="Background" TargetName="subMenuBorder" Value="Black"/>
+                                                    <Setter Property="Foreground" TargetName="subMenuText" Value="White"/>
+                                                    <Setter Property="Foreground" TargetName="subMenuQtyText" Value="White"/>
+                                                    <Setter Property="Foreground" TargetName="subMenuItemTotalText" Value="White"/>
 
-                                                    </Trigger>
-                                                </ControlTemplate.Triggers>
-                                            </ControlTemplate>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
 
-                                        </RadioButton.Template>
-                                    </RadioButton>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                    </ScrollViewer>
+                                    </RadioButton.Template>
+                                </RadioButton>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <ListBox.Template>
+                            <ControlTemplate>
+                                <ScrollViewer>
+                                    <ItemsPresenter/>
+                                </ScrollViewer>
+                            </ControlTemplate>
+                        </ListBox.Template>
+                    </ListBox>
                 </Border>
             </Grid>
 

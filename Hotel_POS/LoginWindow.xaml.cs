@@ -83,6 +83,7 @@ namespace Hotel_POS
                             //NavigateObj.lblRoleID.Content = objResponse.Company_Name.ToString();
                             NavigateObj.lblCompanyID.Content = TerminalCommon.LoggedInUser.Company_ID.ToString();
                             NavigateObj.lblUserName.Content = "Welcome, " + TerminalCommon.LoggedInUser.Real_Name.ToString();
+                            this.Hide();
                             NavigateObj.ShowDialog();
                             this.Show();
                             btnCancel_Click(null, null);
@@ -101,10 +102,6 @@ namespace Hotel_POS
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-
-
             }
 
         }
@@ -114,9 +111,9 @@ namespace Hotel_POS
             try
             {
                 lbl_Msg.Text = "";
-                txtUserName.Text = "";
-                pbPassword.Password = "";
-
+                txtUserName.Text = String.Empty;
+                pbPassword.Password = String.Empty;
+                txtUserName.Focus();
             }
             catch (Exception ex)
             {

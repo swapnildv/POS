@@ -3,13 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         FontFamily="Arial"
         FontSize="12"
-        Title="POS"
+        Title="Bunkerzz"
         Loaded="Window_Loaded"
         xmlns:local="clr-namespace:Hotel_POS.User_Controls"
-        Icon="/Hotel_POS;component/Images/Restaurant%20Blue.ico">
+        Icon="/Hotel_POS;component/Images/bunkerzz_icon.ico">
     <Grid>
         <StackPanel>
-            <Border Height="50"
+            <Border Height="40"
                 BorderBrush="{DynamicResource BorderBrush}"
                 BorderThickness="0,0,0,1"
                 x:Name="HeaderBorder"

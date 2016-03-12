@@ -123,22 +123,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CardAssignWindow.xaml.cs">
-      <DependentUpon>CardAssignWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="CardLoadWindow.xaml.cs">
-      <DependentUpon>CardLoadWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ChangePasswordWindow.xaml.cs">
       <DependentUpon>ChangePasswordWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ClearCard.xaml.cs">
-      <DependentUpon>ClearCard.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Common.cs" />
-    <Compile Include="CompanyWindow.xaml.cs">
-      <DependentUpon>CompanyWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Converter\Converters.cs" />
     <Compile Include="Resource\Log.cs" />
     <Compile Include="User_Controls\Dashboard.xaml.cs">
@@ -146,9 +134,6 @@
     </Compile>
     <Compile Include="User_Controls\MovingCircles.xaml.cs">
       <DependentUpon>MovingCircles.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Employee_Window.xaml.cs">
-      <DependentUpon>Employee_Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
@@ -182,23 +167,7 @@
     <Compile Include="User_Controls\ProgressControl.xaml.cs">
       <DependentUpon>ProgressControl.xaml</DependentUpon>
     </Compile>
-    <Page Include="CardAssignWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="CardLoadWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="ChangePasswordWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ClearCard.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="CompanyWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -209,10 +178,6 @@
     <Page Include="User_Controls\MovingCircles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Employee_Window.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
@@ -235,10 +200,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MenuWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Order.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -280,9 +241,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Order.xaml.cs">
-      <DependentUpon>Order.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

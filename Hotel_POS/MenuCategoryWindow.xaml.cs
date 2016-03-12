@@ -15,6 +15,7 @@ using POS_Business;
 using System.Collections;
 using MegabiteEntityLayer;
 using System.Text.RegularExpressions;
+using Hotel_POS.Resource;
 
 namespace Hotel_POS
 {
@@ -147,7 +148,7 @@ namespace Hotel_POS
 
                 btnNew.IsEnabled = false;
                 btnEdit.IsEnabled = false;
-
+                txt_MenuCategory.Focus();
             }
             catch (Exception ex)
             {
@@ -198,7 +199,7 @@ namespace Hotel_POS
             }
         }
 
-        private void MenuCategoryGridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void dgMenuCatDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
@@ -236,7 +237,6 @@ namespace Hotel_POS
                 Item_Group_Master item = (Item_Group_Master)MenuCategoryGridView.SelectedValue;
                 if (item != null)
                 {
-
                     txt_MenuCategory.Text = item.Item_Group_Name;
                     chkis_ActiveCheckBox.IsChecked = item.Is_Active;
 
@@ -348,6 +348,7 @@ namespace Hotel_POS
         {
             List<Item_Group_Master> lstMenuCat = obj.BindMenuCategory();
             MenuCategoryGridView.ItemsSource = lstMenuCat;
+            MenuCategoryGridView.ItemsSource = lstMenuCat;
         }
 
         private bool UserFilter(object item)
@@ -453,6 +454,8 @@ namespace Hotel_POS
         }
 
         #endregion
+
+       
 
 
 

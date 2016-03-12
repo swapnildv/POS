@@ -14,8 +14,8 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner"
         Loaded="MenuCategoryWindow1_Loaded"
+        xmlns:local="clr-namespace:Hotel_POS"
         Icon="/Hotel_POS;component/Images/Restaurant%20Blue.ico">
-    <Window.Resources></Window.Resources>
     <Window.RenderTransform>
         <TransformGroup>
             <ScaleTransform ScaleX="1"
@@ -86,21 +86,6 @@
                     Orientation="Horizontal"
                     HorizontalAlignment="Center">
             <Button Style="{DynamicResource BlueButtonStyle}"
-                    x:Name="btnSave"
-                    Content="Save"
-                    Click="btnSubmit_Click" />
-            <Button Style="{DynamicResource BlueButtonStyle}"
-                    x:Name="btnUpdate"
-                    Content="Update"
-                    Click="btnUpdate_Click" />
-            <Button Style="{DynamicResource BlueButtonStyle}"
-                    x:Name="btnCancel"
-                    Content="Cancel"
-                    Click="btnCancel_Click" />
-        </StackPanel>
-        <StackPanel Orientation="Horizontal"
-                    HorizontalAlignment="Center">
-            <Button Style="{DynamicResource BlueButtonStyle}"
                     IsDefault="False"
                     x:Name="btnNew"
                     HorizontalAlignment="Center"
@@ -110,9 +95,28 @@
                     Margin="5"
                     Click="btnNew_Click" />
             <Button Style="{DynamicResource BlueButtonStyle}"
+                    x:Name="btnCancel"
+                    Content="Cancel"
+                    Click="btnCancel_Click" />
+            <Button Style="{DynamicResource BlueButtonStyle}"
                     x:Name="btnEdit"
                     Content="Edit"
                     Click="btnEdit_Click" />
+
+           
+       
+     
+        </StackPanel>
+        <StackPanel Height="50" Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <Button Style="{DynamicResource BlueButtonStyle}"
+                    x:Name="btnSave"
+                    Content="Save"
+                    Click="btnSubmit_Click" />
+            <Button Style="{DynamicResource BlueButtonStyle}"
+                    x:Name="btnUpdate"
+                    Content="Update"
+                    Click="btnUpdate_Click" />
         </StackPanel>
         <StackPanel>
             <Border x:Name="BorderGrid"
@@ -126,16 +130,23 @@
                             MaxHeight="450"
                             MaxWidth="800"
                             Margin="10">
-                    <DockPanel Margin="2">
-                        <TextBlock Margin="0,0,4,0"
-                                   Text="Search Menu Category:"
-                                   Foreground="Brown"
-                                   VerticalAlignment="Center" />
-                        <TextBox x:Name="txtSearch"
+                  
+                        <Grid Width="200">
+                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" FontSize="16" Text="Search..." Foreground="{StaticResource brushWatermarkForeground}" >
+                                <TextBlock.Visibility>
+                                <MultiBinding Converter="{StaticResource SearchBoxHelper}">
+                                    <Binding ElementName="txtSearch" Path="Text.IsEmpty" />
+                                    <Binding ElementName="txtSearch" Path="IsFocused" />
+                                    </MultiBinding>
+                                </TextBlock.Visibility>
+                            </TextBlock>
+                            <TextBox FontSize="17" Height="30" Name="txtSearch" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" TextChanged="txtSearch_TextChanged"/>
+                        </Grid>
+                        <!--<TextBox x:Name="txtSearch" Height="30"
                                  Style="{DynamicResource textBoxNormalStyle}"
                                  HorizontalAlignment="Left"
-                                 TextChanged="txtSearch_TextChanged" />
-                    </DockPanel>
+                                 TextChanged="txtSearch_TextChanged" />-->
+                   
                     <ScrollViewer  MaxHeight="400"
                                    MaxWidth="790"
                                    MinHeight="200"
@@ -144,7 +155,7 @@
                                    CanContentScroll="True"
                                    HorizontalScrollBarVisibility="Auto"
                                    VerticalScrollBarVisibility="Auto">
-                        <ListView SelectionMode="Single"
+                        <!--<ListView SelectionMode="Single"
                                   x:Name="MenuCategoryGridView"
                                   ItemsSource="{Binding}"
                                   Margin="0,5,0,20"
@@ -161,8 +172,20 @@
                                                     DisplayMemberBinding="{Binding Is_Active}" />
                                 </GridView>
                             </ListView.View>
-                        </ListView>
+                        </ListView>-->
+                        <DataGrid HorizontalAlignment="Left" IsReadOnly="True" Name="MenuCategoryGridView" Margin="0,20,0,0"  AutoGenerateColumns="False" RowHeight="20" SelectionChanged="dgMenuCatDataGrid_SelectionChanged">
+                            <DataGrid.ColumnHeaderStyle>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="FontSize" Value="16"/>
+                                </Style>
+                            </DataGrid.ColumnHeaderStyle>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Menu Item" Binding="{Binding Item_Group_Name}" Width="250" FontSize="12"/>
+                                <DataGridTextColumn Header="Count" Binding="{Binding Is_Active}" Width="80" FontSize="12"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
                     </ScrollViewer>
+                    
                 </StackPanel>
             </Border>
         </StackPanel>

@@ -73,7 +73,6 @@ namespace Hotel_POS
             {
                 MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
 
-
             }
 
         }

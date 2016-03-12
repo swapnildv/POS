@@ -18,7 +18,7 @@ using MegabiteEntityLayer;
 namespace Hotel_POS
 {
     /// <summary>
-    /// Interaction logic for ChangePsswordWindow.xaml
+    /// Interaction logic for ChangePasswordWindow.xaml
     /// </summary>
     public partial class ChangePasswordWindow : Window
     {
@@ -230,7 +230,5 @@ namespace Hotel_POS
             cmbUser.ItemsSource = obj.Get_UserList();
         }
         #endregion
-
-
     }
 }

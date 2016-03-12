@@ -7,11 +7,7 @@
              xmlns:local="clr-namespace:Hotel_POS"
              mc:Ignorable="d">
     <UserControl.Resources>
-        <SolidColorBrush x:Key="brushWatermarkBackground" Color="White" />
-        <SolidColorBrush x:Key="brushWatermarkForeground" Color="Gray" />
-        <SolidColorBrush x:Key="brushWatermarkBorder" Color="Indigo" />
         <local:CurrencyConcatConverter x:Key="currencyConcatConverter"/>
-        <local:Helper x:Key="Helper"/>
         <Style x:Key="placeHolder" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
             <Setter Property="Template">
                 <Setter.Value>
@@ -113,7 +109,7 @@
                         <Grid>
                             <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" FontSize="16" Text="Search..." Foreground="{StaticResource brushWatermarkForeground}" >
                                 <TextBlock.Visibility>
-                                    <MultiBinding Converter="{StaticResource Helper}">
+                                    <MultiBinding Converter="{StaticResource SearchBoxHelper}">
                                         <Binding ElementName="subMenuSearchTextBox" Path="Text.IsEmpty" />
                                         <Binding ElementName="subMenuSearchTextBox" Path="IsFocused" />
                                     </MultiBinding>

@@ -20,7 +20,7 @@
             <TextBlock x:Name="totalSalesTextBlock" FontSize="25" Margin="150,0,0,0"></TextBlock>
         </Grid>
 
-        <TextBlock Text="Favorite Menu" Foreground="Crimson" FontWeight="Bold" FontSize="20" Margin="0,50,0,0"></TextBlock>
+        <TextBlock Text="Favorite Menu" Foreground="Crimson" FontWeight="Bold" FontSize="20" Margin="0,30,0,0"></TextBlock>
         <DataGrid HorizontalAlignment="Left" IsReadOnly="True" Name="dgFavoriteItems" Margin="0,20,0,0"  AutoGenerateColumns="False" RowHeight="20">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Menu Item" Binding="{Binding Item_Name}" Width="250"/>

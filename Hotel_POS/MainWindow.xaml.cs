@@ -25,6 +25,7 @@ using Hotel_POS.Reports;
 using Hotel_POS.User_Controls;
 using Hotel_POS.Resource;
 using POS_Business;
+using log4net;
 namespace Hotel_POS
 {
     /// <summary>
@@ -32,6 +33,10 @@ namespace Hotel_POS
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private static readonly ILog _logger =
+         LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         #region Variables
         public Int32 User_ID;
         public Int32 Role_ID;
@@ -145,6 +150,18 @@ namespace Hotel_POS
                     objTransactionReport.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
                     this.Cursor = Cursors.Arrow;
                     break;
+
+                case "CustomerReport":
+                    this.Cursor = Cursors.Wait;
+                    CustomerReport winCust = new Hotel_POS.Reports.CustomerReport()
+                    {
+                        Owner = this,
+                        WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen
+                    };
+                    winCust.ShowDialog();
+                    this.Cursor = Cursors.Arrow;
+                    break;
+                    
 
                 case "Logout":
                     new BL_Menu().ClearMenuCart();

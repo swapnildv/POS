@@ -74,6 +74,7 @@
     <Compile Include="Connection.cs" />
     <Compile Include="DAL_Card.cs" />
     <Compile Include="DAL_CompanyMaster.cs" />
+    <Compile Include="DAL_Cusomter.cs" />
     <Compile Include="DAL_EmployeeMaster.cs" />
     <Compile Include="DAL_Item_Master.cs" />
     <Compile Include="DAL_UserMaster.cs" />

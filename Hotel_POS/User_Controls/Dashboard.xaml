@@ -16,16 +16,18 @@
     </UserControl.Resources>
     <StackPanel>
         <Grid>
-            <TextBlock Text="Totol Sales" Foreground="Crimson" FontWeight="Bold" FontSize="20"></TextBlock>
-            <TextBlock x:Name="totalSalesTextBlock" FontSize="25" Margin="150,0,0,0"></TextBlock>
+            <TextBlock Text="Total Sales" Foreground="Crimson" FontWeight="Bold" FontSize="20"></TextBlock>
+            <TextBlock x:Name="totalSalesTextBlock" FontSize="25" Margin="150,0,0,0" Text="Rs.0"></TextBlock>
         </Grid>
 
-        <TextBlock Text="Favorite Menu" Foreground="Crimson" FontWeight="Bold" FontSize="20" Margin="0,30,0,0"></TextBlock>
-        <DataGrid HorizontalAlignment="Left" IsReadOnly="True" Name="dgFavoriteItems" Margin="0,20,0,0"  AutoGenerateColumns="False" RowHeight="20">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Menu Item" Binding="{Binding Item_Name}" Width="250"/>
-                <DataGridTextColumn Header="Count" Binding="{Binding ItemCount}" Width="80"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <StackPanel Name="favMenuStackPanel">
+            <TextBlock Text="Favorite Menu" Foreground="Crimson" FontWeight="Bold" FontSize="20" Margin="0,30,0,0"></TextBlock>
+            <DataGrid HorizontalAlignment="Left" IsReadOnly="True" Name="dgFavoriteItems" Margin="0,20,0,0"  AutoGenerateColumns="False" RowHeight="20">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Menu Item" Binding="{Binding Item_Name}" Width="250"/>
+                    <DataGridTextColumn Header="Count" Binding="{Binding ItemCount}" Width="80"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
     </StackPanel>
 </UserControl>

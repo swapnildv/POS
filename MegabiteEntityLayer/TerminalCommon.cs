@@ -26,11 +26,12 @@ namespace Hotel_POS.Resource
                                          "Menu", 
                                          "NewOrder", 
                                          "TransactionReport", 
+                                         "CustomerReport",
                                          "Logout",
                                          "Home"};
 
         public static List<String> operatorRoleMenu = new List<string>() {  "NewOrder",  
-                                              "changePassword","Logout" };
+                                              "ChangePasswordMenuItem","Logout" };
 
         public static String currency { get { return "Rs."; } }
 

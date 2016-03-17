@@ -34,11 +34,15 @@ namespace Hotel_POS.User_Controls
                 var favItems = new BL_Transaction().getFavoriteItems();
                 if (favItems.Count > 0)
                 {
-                    dgFavoriteItems.Visibility = System.Windows.Visibility.Visible;
+                    favMenuStackPanel.Visibility = System.Windows.Visibility.Visible;
+                    //dgFavoriteItems.Visibility = System.Windows.Visibility.Visible;
                     dgFavoriteItems.ItemsSource = favItems;
                 }
                 else
-                    dgFavoriteItems.Visibility = System.Windows.Visibility.Collapsed;
+                {
+                    favMenuStackPanel.Visibility = System.Windows.Visibility.Collapsed;
+                    //dgFavoriteItems.Visibility = System.Windows.Visibility.Collapsed;
+                }
 
 
                 //dgOrders.ItemsSource = new BL_Transaction().getMasterOrders();

@@ -23,10 +23,10 @@ namespace POS_Business
             return objDAL_Transaction.get_PrintingMenuCart(tmid);
         }
 
-        public List<Report> getTransactionReport(int EmployeeID, DateTime Fromdt, DateTime Todt)
+        public List<Report> getTransactionReport(DateTime Fromdt, DateTime Todt)
         {
             DAL_Transaction objDAL_Transaction = new DAL_Transaction();
-            return objDAL_Transaction.getTransactionReport(EmployeeID, Fromdt, Todt);
+            return objDAL_Transaction.getTransactionReport(Fromdt, Todt);
         }
 
         public List<Load_Report> getLoadReport(int EmployeeID, DateTime Fromdt, DateTime Todt)

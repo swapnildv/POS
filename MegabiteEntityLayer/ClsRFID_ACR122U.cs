@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using log4net;
 
 namespace MegabiteEntityLayer
 {
@@ -43,6 +44,7 @@ namespace MegabiteEntityLayer
 
         public string FunWriteValue(int IntLocBlockNumber, string StrLocWriteData, out int IntLocErrorCode)
         {
+            
             IntLocErrorCode = 0;
             FunConnect(IntLocBlockNumber, out IntLocErrorCode);
             if (IntLocErrorCode == 0)

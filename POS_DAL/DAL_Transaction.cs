@@ -95,7 +95,7 @@ namespace POS_DAL
             return lstMenuCart;
         }
 
-        public List<Report> getTransactionReport(int EmployeeID, DateTime Fromdt, DateTime Todt)
+        public List<Report> getTransactionReport(DateTime Fromdt, DateTime Todt)
         {
             Fromdt = Convert.ToDateTime(Fromdt.ToShortDateString());
             Todt = Convert.ToDateTime(Todt.ToShortDateString()).Add(ts);
@@ -104,20 +104,13 @@ namespace POS_DAL
             List<Report> lstReport = new List<Report>();
             Report objReport = new Report();
             var qry = (from tm in dc.Transaction_Master
-                       join em in dc.Employee_Master on tm.Employee_ID equals em.Employee_ID
-                       where tm.Employee_ID == (EmployeeID == 0 ? tm.Employee_ID : EmployeeID)
-                       && tm.Transaction_Date >= Fromdt
+                       where tm.Transaction_Date >= Fromdt
                        && tm.Transaction_Date <= Todt
                        select new
                        {
                            tm.Transaction_Date,
-                           tm.Transaction_Master_ID,
                            tm.Order_No,
-                           tm.RFID_No,
-                           tm.Transaction_Amount,
-                           tm.Employee_ID,
-                           tm.Created_By,
-                           em.Employee_Name
+                           tm.Transaction_Amount
                        }).ToList();
 
             foreach (var item in qry)
@@ -125,21 +118,12 @@ namespace POS_DAL
                 objReport = new Report();
 
                 objReport.Transaction_Date = Convert.ToDateTime(item.Transaction_Date);
-                objReport.Transaction_Master_ID = item.Transaction_Master_ID;
                 objReport.Order_No = item.Order_No;
-                objReport.RFID_No = item.RFID_No;
                 objReport.Transaction_Amount = Convert.ToDouble(item.Transaction_Amount);
-                objReport.Employee_ID = Convert.ToInt32(item.Employee_ID);
-                objReport.Created_By = Convert.ToInt32(item.Created_By);
-                objReport.Employee_Name = item.Employee_Name;
                 lstReport.Add(objReport);
 
             }
-
             return lstReport;
-
-
-
         }
 
         public List<Load_Report> getLoadReport(int EmployeeID, DateTime Fromdt, DateTime Todt)

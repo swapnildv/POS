@@ -14,6 +14,7 @@ using POS_Business;
 using MegabiteEntityLayer;
 using System.Collections;
 using System.ComponentModel;
+using Hotel_POS.Resource;
 namespace Hotel_POS.Reports
 {
     /// <summary>
@@ -41,7 +42,6 @@ namespace Hotel_POS.Reports
         {
             FromDate.SelectedDate = DateTime.Now;
             ToDate.SelectedDate = DateTime.Now;
-            BindCompany();
         }
 
         private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -63,25 +63,18 @@ namespace Hotel_POS.Reports
         {
             try
             {
-                if (cmbcompany.SelectedValue == null || cmbEmployee.SelectedValue == null)
+                DateTime Fromdt = Convert.ToDateTime(FromDate.SelectedDate);
+                DateTime Todt = Convert.ToDateTime(ToDate.SelectedDate);
+                var report = objTM.getTransactionReport(Fromdt, Todt);
+                if (report.Count > 0)
                 {
-                    MessageBox.Show("Please Select Company & Employee Name ", "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                    lv_TransactionReport.ItemsSource = report;
+                    totalSalesTextBlock.Text = TerminalCommon.currency + " " + report.Sum(a => a.Transaction_Amount).ToString();
                 }
-                else
-                {
-                    Bind_TransactionReport();
-                }
-
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-
-
             }
         }
 
@@ -89,66 +82,12 @@ namespace Hotel_POS.Reports
         {
             try
             {
-
                 this.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-
-
             }
-        }
-        private void Bind_TransactionReport()
-        {
-
-
-            DateTime Fromdt = Convert.ToDateTime(FromDate.SelectedDate);
-            DateTime Todt = Convert.ToDateTime(ToDate.SelectedDate);
-            Int32 EmployeeID = Convert.ToInt32(((Employee_Master)(cmbEmployee.SelectedValue)).Employee_ID);
-            lv_TransactionReport.ItemsSource = objTM.getTransactionReport(EmployeeID, Fromdt, Todt);
-        }
-
-
-        private void BindCompany()
-        {
-
-            cmbcompany.ItemsSource = objEM.Bindcompany();
-
-        }
-
-        private void cmbcompany_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            try
-            {
-
-                Bind_Employees();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-
-
-            }
-        }
-
-
-        private void Bind_Employees()
-        {
-            Int32 Company_ID = Convert.ToInt32(((Company_Master)(cmbcompany.SelectedValue)).Company_ID);
-
-            Employee_Master obj = new Employee_Master();
-            obj.Employee_ID = 0;
-            obj.Employee_Name = "-- Select All --";
-            List<Employee_Master> lst = (objEM.getEmployeeList_By_CompanyID(Company_ID));
-            lst.Add(obj);
-            cmbEmployee.ItemsSource = lst.OrderBy(e => e.Employee_ID);
-            cmbEmployee.SelectedIndex = 1;
-
         }
 
         private void btnExport_Click(object sender, RoutedEventArgs e)

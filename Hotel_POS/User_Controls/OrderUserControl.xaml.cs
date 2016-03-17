@@ -175,6 +175,7 @@ namespace Hotel_POS.User_Controls
         {
             try
             {
+                int s = int.Parse("d");
                 //Set customer 
                 if (TerminalCommon.currentCustomer == null)
                     TerminalCommon.currentCustomer = new Customer_Master()
@@ -192,7 +193,6 @@ namespace Hotel_POS.User_Controls
             }
             catch (Exception ex)
             {
-                Log.Write(ex);
                 MessageBox.Show(TerminalCommon.errorMessage, TerminalCommon.cafeName);
             }
         }

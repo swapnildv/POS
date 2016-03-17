@@ -7,10 +7,10 @@
         Loaded="Window_Loaded"
         xmlns:local="clr-namespace:Hotel_POS.User_Controls"
         Icon="/Hotel_POS;component/Images/bunkerzz_icon.ico">
-    
+
     <Window.Resources>
-        
-        
+
+
     </Window.Resources>
     <Grid>
         <StackPanel>
@@ -111,8 +111,16 @@
                                 x:Name="TransactionReport" >
                             <MenuItem.Header>
                                 <TextBlock Text="Transaction" FontSize="17" VerticalAlignment="Center"/>
-                                </MenuItem.Header></MenuItem>
+                            </MenuItem.Header>
                         </MenuItem>
+                        <MenuItem Click="Menu_Click"
+                                x:Name="CustomerReport" >
+                            <MenuItem.Header>
+                                <TextBlock Text="Customers" FontSize="17" VerticalAlignment="Center"/>
+                            </MenuItem.Header>
+                        </MenuItem>
+                    </MenuItem>
+
                     <MenuItem x:Name="Logout"
                           Click="Menu_Click" >
                         <MenuItem.Header>

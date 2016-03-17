@@ -105,13 +105,13 @@ namespace MegabiteEntityLayer
     {
 
         public DateTime Transaction_Date { get; set; }
-        public Int64 Transaction_Master_ID { get; set; }
+
         public String Order_No { get; set; }
-        public String RFID_No { get; set; }
+
         public double Transaction_Amount { get; set; }
-        public Int32 Employee_ID { get; set; }
-        public Int32 Created_By { get; set; }
-        public String Employee_Name { get; set; }
+
+
+
 
 
 
@@ -187,5 +187,5 @@ namespace MegabiteEntityLayer
         public string Role_Name { get; set; }
     }
 
-    
+
 }

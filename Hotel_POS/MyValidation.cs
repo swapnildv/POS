@@ -167,6 +167,7 @@ namespace Hotel_POS
         where U : List<T>
     {
         public List<T> dataToPrint;
+        public object[] header;
         // Excel object references.
         private Excel.Application _excelApp = null;
         private Excel.Workbooks _books = null;
@@ -222,7 +223,7 @@ namespace Hotel_POS
         /// </summary>
         private void FillSheet()
         {
-            object[] header = CreateHeader();
+            header = CreateHeader();
             WriteData(header);
         }
         /// <summary>
@@ -263,21 +264,24 @@ namespace Hotel_POS
         /// <returns></returns>
         private object[] CreateHeader()
         {
-            PropertyInfo[] headerInfo = typeof(T).GetProperties();
 
-            // Create an array for the headers and add it to the
-            // worksheet starting at cell A1.
-            List<object> objHeaders = new List<object>();
-            for (int n = 0; n < headerInfo.Length; n++)
+            if (header == null)
             {
-                objHeaders.Add(headerInfo[n].Name);
-            }
+                PropertyInfo[] headerInfo = typeof(T).GetProperties();
 
-            var headerToAdd = objHeaders.ToArray();
-            AddExcelRows("A1", 1, headerToAdd.Length, headerToAdd);
+                header = new object[headerInfo.Count()];
+                //List<object> objHeaders = new List<object>();
+                for (int n = 0; n < headerInfo.Length; n++)
+                {
+                    header[n] = headerInfo[n].Name;
+                }
+
+               // var headerToAdd = objHeaders.ToArray();
+            }
+            AddExcelRows("A1", 1, header.Count(), header);
             SetHeaderStyle();
 
-            return headerToAdd;
+            return header;
         }
         /// <summary>
         /// Set Header style as bold

@@ -15,18 +15,7 @@
         ResizeMode="NoResize"
         Loaded="TransactionReport_Loaded"
         Icon="/Hotel_POS;component/Images/Restaurant%20Blue.ico">
-    <Window.Resources></Window.Resources>
-    <Window.RenderTransform>
-        <TransformGroup>
-            <ScaleTransform ScaleX="1"
-                            ScaleY="1" />
-            <SkewTransform AngleX="0"
-                           AngleY="0" />
-            <RotateTransform Angle="0" />
-            <TranslateTransform X="0"
-                                Y="0" />
-        </TransformGroup>
-    </Window.RenderTransform>
+   
     <Window.Triggers>
         <EventTrigger RoutedEvent="FrameworkElement.Loaded">
             <BeginStoryboard Storyboard="{DynamicResource StoryboardEntrance}" />
@@ -36,15 +25,8 @@
         <CommandBinding Command="Close"
                         Executed="CommandBinding_Executed" />
     </Window.CommandBindings>
-    <StackPanel>
-        <Button x:Name="btnClose"
-                IsCancel="True"
-                Width="0"
-                Height="0"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Top"
-                Click="btnClose_Click" />
-        <Border x:Name="BorderFilter"
+    <StackPanel Margin="10">
+        <Border x:Name="BorderFilter" 
                 IsEnabled="True"
                 VerticalAlignment="Top"
                 Margin="6,2,6,6"
@@ -52,7 +34,7 @@
                 BorderThickness="1,1,1,1"
                 CornerRadius="5,5,5,5"
                 Background="{x:Null}">
-            <StackPanel x:Name="pnlFilter">
+            <StackPanel x:Name="pnlFilter" Margin="0,10,0,0">
                 <Grid x:Name="grdEmployeeLedger"
                       HorizontalAlignment="Stretch"
                       VerticalAlignment="Top">
@@ -73,29 +55,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <Label Content="Select Company Name :"
-                           Grid.Column="0"
-                           Grid.Row="0"
-                           Grid.ColumnSpan="2" />
-                    <ComboBox x:Name="cmbcompany"
-                              HorizontalAlignment="Left"
-                              Grid.Column="2"
-                              Grid.Row="0"
-                              Grid.ColumnSpan="2"
-                              DisplayMemberPath="Company_Name"
-                              ItemsSource="{Binding}"
-                              SelectionChanged="cmbcompany_SelectionChanged" />
-                    <Label Content="Select Employee Name :"
-                           Grid.Column="0"
-                           Grid.Row="1"
-                           Grid.ColumnSpan="2" />
-                    <ComboBox x:Name="cmbEmployee"
-                              Grid.Column="2"
-                              Grid.Row="1"
-                              HorizontalAlignment="Left"
-                              Grid.ColumnSpan="2"
-                              DisplayMemberPath="Employee_Name"
-                              ItemsSource="{Binding}" />
+
                     <StackPanel Orientation="Horizontal"
                                 Grid.Column="0"
                                 Grid.Row="2"
@@ -152,44 +112,32 @@
                 BorderThickness="1,1,1,1"
                 CornerRadius="5,5,5,5"
                 Background="{x:Null}">
-            <StackPanel VerticalAlignment="Top"
-                        MaxHeight="500"
-                        MaxWidth="800"
-                        Margin="20">
-                <ScrollViewer MaxHeight="500"
-                              MinHeight="200"
-                              HorizontalScrollBarVisibility="Auto"
-                              VerticalScrollBarVisibility="Auto"
-                              CanContentScroll="True"
-                              VerticalAlignment="Top"
-                              HorizontalAlignment="Center">
-                    <ListView SelectionMode="Single"
-                              x:Name="lv_TransactionReport"
-                              Margin="20">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="Date"
-                                                CellTemplate="{DynamicResource AgeItemTemplate}"
-                                                DisplayMemberBinding="{Binding Transaction_Date}" />
-                                <GridViewColumn Header="RFID NO"
-                                                CellTemplate="{DynamicResource AgeItemTemplate}"
-                                                DisplayMemberBinding="{Binding RFID_No}" />
-                                <GridViewColumn Header="Employee Name"
-                                                CellTemplate="{DynamicResource AgeItemTemplate}"
-                                                DisplayMemberBinding="{Binding Employee_Name}" />
-                                <GridViewColumn Header="Order No."
-                                                CellTemplate="{DynamicResource AgeItemTemplate}"
-                                                DisplayMemberBinding="{Binding Order_No}" />
-                                <GridViewColumn Header="Amount"
-                                                CellTemplate="{DynamicResource AgeItemTemplate}"
-                                                DisplayMemberBinding="{Binding Transaction_Amount}" />
-                                <GridViewColumn Header="User_ID"
-                                                CellTemplate="{DynamicResource AgeItemTemplate}"
-                                                DisplayMemberBinding="{Binding Created_By}" />
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                </ScrollViewer>
+            <StackPanel>
+                <Grid HorizontalAlignment="Center" Margin="0,10,0,0">
+                    <TextBlock VerticalAlignment="Center" Text="Total : " Foreground="Black" FontWeight="Bold" FontSize="20"></TextBlock>
+                    <TextBlock x:Name="totalSalesTextBlock" FontSize="25" Margin="150,0,0,0" Text="Rs.0"></TextBlock>
+                </Grid>
+            
+            <ScrollViewer  
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Center"
+                               CanContentScroll="True"
+                               Margin="10"
+                               HorizontalScrollBarVisibility="Auto"
+                               VerticalScrollBarVisibility="Auto">
+                <DataGrid HorizontalAlignment="Left" IsReadOnly="True" Name="lv_TransactionReport" Margin="0,20,0,0"  AutoGenerateColumns="False" RowHeight="20" Height="250">
+                    <DataGrid.ColumnHeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontSize" Value="16"/>
+                        </Style>
+                    </DataGrid.ColumnHeaderStyle>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Date" Binding="{Binding Transaction_Date}" Width="150" FontSize="12"/>
+                        <DataGridTextColumn Header="Order" Binding="{Binding Order_No}" Width="150" FontSize="12"/>
+                        <DataGridTextColumn Header="Amount (Rs.)" Binding="{Binding Transaction_Amount}" Width="150" FontSize="12"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </ScrollViewer>
             </StackPanel>
         </Border>
     </StackPanel>

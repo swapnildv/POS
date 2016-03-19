@@ -15,7 +15,7 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner"
         Loaded="Window_Loaded_1"
-        Icon="/Hotel_POS;component/Images/Restaurant%20Blue.ico">
+        Icon="/Bunkerz;component/Images/Restaurant%20Blue.ico">
     <Window.Resources></Window.Resources>
     <Window.RenderTransform>
         <TransformGroup>
@@ -38,127 +38,132 @@
                         Executed="CloseCommand_Executed" />
     </Window.CommandBindings>
     <StackPanel HorizontalAlignment="Center">
-        <Button x:Name="btnClose"
+
+        <StackPanel>
+            <Button x:Name="btnClose"
                 IsCancel="True"
                 Width="0"
                 Height="0"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
                 Click="btnClose_Click" />
-        <Grid HorizontalAlignment="Center">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition x:Name="row_password"
+            <Grid HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition x:Name="row_password"
                                Height="Auto" />
-                <RowDefinition x:Name="row_ConfirmPassword"
+                    <RowDefinition x:Name="row_ConfirmPassword"
                                Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <Label Content="Full Name :"
+                    <RowDefinition Height="Auto" />
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Label Content="Full Name :"
                    Grid.Column="0"
                    Grid.Row="0" />
-            <TextBox x:Name="txtFullName"
+                <TextBox x:Name="txtFullName"
                      Style="{DynamicResource textBoxNormalStyle}"
                      Grid.Column="1"
                      Grid.Row="0"
                      MaxLength="30" />
-            <Label Content="User Name :"
+                <Label Content="User Name :"
                    Grid.Column="0"
                    Grid.Row="1" />
-            <Label Content="*"
+                <Label Content="*"
                    Foreground="Red"
                    Grid.Column="2"
                    Grid.Row="0" />
-            <TextBox Grid.Column="1"
+                <TextBox Grid.Column="1"
                      Grid.Row="1"
                      x:Name="txtUserName"
                      Style="{DynamicResource textBoxNormalStyle}"
                      MaxLength="30" />
-            <Label Content="*"
+                <Label Content="*"
                    Foreground="Red"
                    Grid.Column="2"
                    Grid.Row="1" />
-            <Label Content="Password :"
+                <Label Content="Password :"
                    Grid.Column="0"
                    Grid.Row="2" />
-            <PasswordBox Grid.Column="1"
+                <PasswordBox Grid.Column="1"
                          Grid.Row="2"
                          x:Name="pbPassword"
                          MaxLength="30" />
-            <Label Content="*"
+                <Label Content="*"
                    Foreground="Red"
                    Grid.Column="2"
                    Grid.Row="2" />
-            <Label Content="Confirm Password :"
+                <Label Content="Confirm Password :"
                    Grid.Column="0"
                    Grid.Row="3" />
-            <PasswordBox Grid.Column="1"
+                <PasswordBox Grid.Column="1"
                          Grid.Row="3"
                          x:Name="pbConfirmPassword"
                          MaxLength="30" />
-            <Label Content="*"
+                <Label Content="*"
                    Foreground="Red"
                    Grid.Column="2"
                    Grid.Row="3" />
-            <Label Content="Role :"
+
+                <Label Name="roleLabel"
+                    Content="Role :"
                    Grid.Column="0"
                    Grid.Row="4" />
-            <ComboBox Grid.Column="1"
+                <ComboBox Grid.Column="1"
                       Grid.Row="4"
                       x:Name="cmbRole"
                       Foreground="Black"
                       DisplayMemberPath="Role_Name"
                       SelectedValuePath="Role_ID"></ComboBox>
-            <Label Content="*"
+                <Label Name="roleAstrix" Content="*"
                    Foreground="Red"
                    Grid.Column="2"
                    Grid.Row="4" />
-            <Label Content="Company :"
+                <Label Content="Company :"
                    Grid.Column="0"
-                   Grid.Row="5" />
-            <ComboBox Grid.Column="1"
+                   Grid.Row="5" Visibility="Collapsed" />
+                <ComboBox Grid.Column="1"
                       Grid.Row="5"
                       x:Name="cmbCompany"
                       Foreground="Black"
                       DisplayMemberPath="Company_Name"
-                      SelectedValuePath="Company_ID"></ComboBox>
-            <Label Content="*"
+                      SelectedValuePath="Company_ID"  Visibility="Collapsed"></ComboBox>
+                <Label Content="*"
                    Foreground="Red"
                    Grid.Column="2"
-                   Grid.Row="5" />
-        </Grid>
-        <StackPanel Orientation="Horizontal"
+                   Grid.Row="5" Visibility="Collapsed" />
+            </Grid>
+            <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Center">
-            <Button Style="{DynamicResource BlueButtonStyle}"
+                <Button Style="{DynamicResource BlueButtonStyle}"
                     x:Name="btnUpdate"
                     Content="Update"
                     Click="btnUpdate_Click"></Button>
-            <Button Style="{DynamicResource BlueButtonStyle}"
+                <Button Style="{DynamicResource BlueButtonStyle}"
                     x:Name="btnSave"
                     Content="Save"
                     Click="btnSave_Click" />
-            <Button Style="{DynamicResource BlueButtonStyle}"
+                <Button Style="{DynamicResource BlueButtonStyle}"
                     x:Name="btnCancel"
                     Content="Reset"
                     Click="btnCancel_Click" />
-        </StackPanel>
-        <StackPanel Orientation="Horizontal"
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Center">
-            <Button Style="{DynamicResource BlueButtonStyle}"
+                <Button Style="{DynamicResource BlueButtonStyle}"
                     x:Name="btnNewUser"
                     Content="New User"
                     Click="btnNewUser_Click" />
-            <Button Style="{DynamicResource BlueButtonStyle}"
+                <Button Style="{DynamicResource BlueButtonStyle}"
                     x:Name="btnEdit"
                     Content="Edit"
                     Click="btnEdit_Click" />
+            </StackPanel>
         </StackPanel>
         <Border x:Name="BorderGrid"
                 VerticalAlignment="Top"
@@ -171,7 +176,7 @@
                         HorizontalAlignment="Center"
                         MaxHeight="400"
                         Margin="0,10,0,20">
-                <DockPanel Margin="2">
+                <!--<DockPanel Margin="2">
                     <TextBlock Margin="0,0,4,0"
                                Text="Search :"
                                Foreground="Gray"
@@ -180,8 +185,21 @@
                              Style="{DynamicResource textBoxNormalStyle}"
                              HorizontalAlignment="Left"
                              TextChanged="txtSearch_TextChanged" />
-                </DockPanel>
-                <ScrollViewer  MaxHeight="380"
+                </DockPanel>-->
+
+                <Grid Width="200">
+                    <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" FontSize="16" Text="Search..." Foreground="{StaticResource brushWatermarkForeground}" >
+                        <TextBlock.Visibility>
+                            <MultiBinding Converter="{StaticResource SearchBoxHelper}">
+                                <Binding ElementName="txtSearch" Path="Text.IsEmpty" />
+                                <Binding ElementName="txtSearch" Path="IsFocused" />
+                            </MultiBinding>
+                        </TextBlock.Visibility>
+                    </TextBlock>
+                    <TextBox FontSize="17" Height="30" Name="txtSearch" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" TextChanged="txtSearch_TextChanged"/>
+                </Grid>
+
+                <!--<ScrollViewer  MaxHeight="380"
                                MaxWidth="790"
                                MinHeight="200"
                                VerticalAlignment="Top"
@@ -211,6 +229,28 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
+                </ScrollViewer>-->
+
+                <ScrollViewer  MaxHeight="400"
+                                   MaxWidth="790"
+                                   MinHeight="200"
+                                   VerticalAlignment="Top"
+                                   HorizontalAlignment="Center"
+                                   CanContentScroll="True"
+                                   HorizontalScrollBarVisibility="Auto"
+                                   VerticalScrollBarVisibility="Auto">
+                    <DataGrid HorizontalAlignment="Left" IsReadOnly="True" Name="UsersGridView" Margin="20"  AutoGenerateColumns="False" RowHeight="20" SelectionChanged="lstUser_SelectionChanged">
+                        <DataGrid.ColumnHeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="FontSize" Value="16"/>
+                            </Style>
+                        </DataGrid.ColumnHeaderStyle>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Full Name" Binding="{Binding Real_Name}" Width="250" FontSize="12"/>
+                            <DataGridTextColumn Header="User Name" Binding="{Binding User_Name}" Width="150" FontSize="12"/>
+                            <DataGridTextColumn Header="Role" Binding="{Binding Role_Name}" Width="150" FontSize="12"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </ScrollViewer>
             </StackPanel>
         </Border>

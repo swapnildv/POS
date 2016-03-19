@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
-                    xmlns:local="clr-namespace:Hotel_POS">
+                    xmlns:local="clr-namespace:Hotel_POS"
+                    xmlns:System="clr-namespace:System;assembly=mscorlib">
     <!--Strat of my defined codes -->
     <!-- Modal Window style -->
     <!-- RestaurantModalWindow style -->
@@ -12,7 +13,37 @@
     <SolidColorBrush x:Key="brushWatermarkBackground" Color="White" />
     <SolidColorBrush x:Key="brushWatermarkForeground" Color="Gray" />
     <SolidColorBrush x:Key="brushWatermarkBorder" Color="Indigo" />
+    <FontFamily x:Key="MainFont">Verdana</FontFamily>
+    <System:Double x:Key="MainFontSize">14</System:Double>
+
     <local:Helper x:Key="SearchBoxHelper"/>
+    <Style x:Key="FlatButtonStyle" TargetType="Button" >
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="BorderThickness" Value="1.5"/>
+        <Setter Property="BorderBrush" Value="Silver"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="Silver"/>
+        <Setter Property="FontSize" Value="{StaticResource MainFontSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource MainFont}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Name="ButtonBackground" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
+                        <TextBlock Text="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Foreground="{TemplateBinding Foreground}" FontSize="{TemplateBinding FontSize}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" TargetName="ButtonBackground" Value="Orange"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <Style x:Key="ButtonFocusVisual">
         <Setter Property="Control.Template">
             <Setter.Value>
@@ -38,7 +69,7 @@
         <Setter Property="Control.Foreground"
                 Value="#FF666666" />
     </Style>
-    <FontFamily x:Key="MainFont">Verdana</FontFamily>
+    
 
     <!--Tab Botton Style -->
     <Style x:Key="TabButtonStyle"

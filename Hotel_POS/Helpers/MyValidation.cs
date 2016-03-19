@@ -198,9 +198,9 @@ namespace Hotel_POS
                     }
                 }
             }
-            catch (Exception e)
-            {
-                MessageBox.Show("Error while generating Excel report");
+            catch (Exception) {
+
+                throw;
             }
             finally
             {

@@ -15,7 +15,7 @@
         WindowStartupLocation="CenterOwner"
         Loaded="MenuCategoryWindow1_Loaded"
         xmlns:local="clr-namespace:Hotel_POS"
-        Icon="/Hotel_POS;component/Images/Restaurant%20Blue.ico">
+        Icon="/Bunkerz;component/Images/Restaurant%20Blue.ico">
     <Window.RenderTransform>
         <TransformGroup>
             <ScaleTransform ScaleX="1"
@@ -155,24 +155,6 @@
                                    CanContentScroll="True"
                                    HorizontalScrollBarVisibility="Auto"
                                    VerticalScrollBarVisibility="Auto">
-                        <!--<ListView SelectionMode="Single"
-                                  x:Name="MenuCategoryGridView"
-                                  ItemsSource="{Binding}"
-                                  Margin="0,5,0,20"
-                                  SelectionChanged="MenuCategoryGridView_SelectionChanged">
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn Header="Menu Category"
-                                                    CellTemplate="{DynamicResource AgeItemTemplate}"
-                                                    Width="400"
-                                                    DisplayMemberBinding="{Binding Item_Group_Name}" />
-                                    <GridViewColumn Header="Is Active"
-                                                    CellTemplate="{DynamicResource AgeItemTemplate}"
-                                                    Width="150"
-                                                    DisplayMemberBinding="{Binding Is_Active}" />
-                                </GridView>
-                            </ListView.View>
-                        </ListView>-->
                         <DataGrid HorizontalAlignment="Left" IsReadOnly="True" Name="MenuCategoryGridView" Margin="0,20,0,0"  AutoGenerateColumns="False" RowHeight="20" SelectionChanged="dgMenuCatDataGrid_SelectionChanged">
                             <DataGrid.ColumnHeaderStyle>
                                 <Style TargetType="DataGridColumnHeader">

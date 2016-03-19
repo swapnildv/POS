@@ -49,9 +49,8 @@ namespace Hotel_POS
             InitializeComponent();
 
         }
+
         #region Events
-
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             try
@@ -76,127 +75,113 @@ namespace Hotel_POS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
 
         }
 
         private void Menu_Click(object sender, RoutedEventArgs e)
         {
-            MenuItem _sender = (MenuItem)sender;
-            switch (_sender.Name)
+            try
             {
-                case "Home":
-                    MainGrid.Children.Clear();
-                    MainGrid.Children.Add(new Dashboard());
-                    break;
 
-                case "Users":
-                    this.Cursor = Cursors.Wait;
-                    UsersWindow usersWindow = new UsersWindow();
-                    usersWindow.Owner = this;
-                    usersWindow.ShowDialog();
-                    usersWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-                    this.Cursor = Cursors.Arrow;
-                    break;
+                MenuItem _sender = (MenuItem)sender;
+                switch (_sender.Name)
+                {
+                    case "Home":
+                        MainGrid.Children.Clear();
+                        MainGrid.Children.Add(new Dashboard());
+                        break;
 
-                case "ChangePasswordMenuItem":
+                    case "Users":
+                        this.Cursor = Cursors.Wait;
+                        UsersWindow usersWindow = new UsersWindow();
+                        usersWindow.Owner = this;
+                        usersWindow.ShowDialog();
+                        usersWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+                        this.Cursor = Cursors.Arrow;
+                        break;
 
-                    this.Cursor = Cursors.Wait;
+                    case "ChangePasswordMenuItem":
 
-                    ChangePasswordWindow objChangePwdWindow = new ChangePasswordWindow();
-                    objChangePwdWindow.Owner = this;
-                    objChangePwdWindow.ShowDialog();
+                        this.Cursor = Cursors.Wait;
 
-                    objChangePwdWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-                    this.Cursor = Cursors.Arrow;
-                    break;
+                        ChangePasswordWindow objChangePwdWindow = new ChangePasswordWindow();
+                        objChangePwdWindow.Owner = this;
+                        objChangePwdWindow.ShowDialog();
 
-                case "MenuCategory":
-                    this.Cursor = Cursors.Wait;
+                        objChangePwdWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+                        this.Cursor = Cursors.Arrow;
+                        break;
 
-                    MenuCategoryWindow objMenucatWindow = new MenuCategoryWindow();
-                    objMenucatWindow.Owner = this;
-                    objMenucatWindow.ShowDialog();
+                    case "MenuCategory":
+                        this.Cursor = Cursors.Wait;
 
-                    objMenucatWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-                    this.Cursor = Cursors.Arrow;
-                    break;
+                        MenuCategoryWindow objMenucatWindow = new MenuCategoryWindow();
+                        objMenucatWindow.Owner = this;
+                        objMenucatWindow.ShowDialog();
 
-                case "Menu":
-                    this.Cursor = Cursors.Wait;
+                        objMenucatWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+                        this.Cursor = Cursors.Arrow;
+                        break;
 
-                    MenuWindow objMenuWindow = new MenuWindow();
-                    objMenuWindow.Owner = this;
-                    objMenuWindow.ShowDialog();
+                    case "Menu":
+                        this.Cursor = Cursors.Wait;
 
-                    objMenuWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-                    this.Cursor = Cursors.Arrow;
-                    break;
+                        MenuWindow objMenuWindow = new MenuWindow();
+                        objMenuWindow.Owner = this;
+                        objMenuWindow.ShowDialog();
 
-                case "NewOrder":
-                    MainGrid.Children.Clear();
-                    MainGrid.Children.Add(new OrderUserControl());
-                    break;
+                        objMenuWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+                        this.Cursor = Cursors.Arrow;
+                        break;
 
-                case "TransactionReport":
-                    this.Cursor = Cursors.Wait;
+                    case "NewOrder":
+                        MainGrid.Children.Clear();
+                        MainGrid.Children.Add(new OrderUserControl());
+                        break;
 
-                    TransactionReport objTransactionReport = new TransactionReport();
-                    objTransactionReport.Owner = this;
-                    objTransactionReport.ShowDialog();
+                    case "TransactionReport":
+                        this.Cursor = Cursors.Wait;
 
-                    objTransactionReport.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-                    this.Cursor = Cursors.Arrow;
-                    break;
+                        TransactionReport objTransactionReport = new TransactionReport();
+                        objTransactionReport.Owner = this;
+                        objTransactionReport.ShowDialog();
 
-                case "CustomerReport":
-                    this.Cursor = Cursors.Wait;
-                    CustomerReport winCust = new Hotel_POS.Reports.CustomerReport()
-                    {
-                        Owner = this,
-                        WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen
-                    };
-                    winCust.ShowDialog();
-                    this.Cursor = Cursors.Arrow;
-                    break;
-                    
+                        objTransactionReport.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+                        this.Cursor = Cursors.Arrow;
+                        break;
 
-                case "Logout":
-                    new BL_Menu().ClearMenuCart();
-                    this.Close();
-                    break;
+                    case "CustomerReport":
+                        this.Cursor = Cursors.Wait;
+                        CustomerReport winCust = new Hotel_POS.Reports.CustomerReport()
+                        {
+                            Owner = this,
+                            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen
+                        };
+                        winCust.ShowDialog();
+                        this.Cursor = Cursors.Arrow;
+                        break;
 
+
+                    case "Logout":
+                        new BL_Menu().ClearMenuCart();
+                        this.Close();
+                        break;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
         }
 
         #endregion
+
         #region Methods
-
-        private void Load_RoleWiseMenus(String[] RoleMenus)
-        {
-            var items = MenuBar.Items;
-
-            foreach (MenuItem item in items)
-            {
-
-                var submenus = item.Items;
-                foreach (MenuItem subitem in submenus)
-                {
-                    if (RoleMenus.Contains(subitem.Name))
-                    {
-                        subitem.Visibility = System.Windows.Visibility.Visible;
-
-                    }
-                    else
-                    {
-                        subitem.Visibility = System.Windows.Visibility.Collapsed;
-                    }
-                }
-
-            }
-        }
 
         private void shuffleMenus(List<string> menu)
         {

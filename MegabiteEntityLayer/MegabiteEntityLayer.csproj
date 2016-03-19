@@ -84,6 +84,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>entityMegabite.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ExceptionHelper.cs" />
     <Compile Include="ModWinsCard.cs" />
     <Compile Include="PartialClasses.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

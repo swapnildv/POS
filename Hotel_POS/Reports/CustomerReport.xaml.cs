@@ -11,19 +11,23 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using log4net;
 using MegabiteEntityLayer;
 using POS_Business;
 
 namespace Hotel_POS.Reports
 {
-    public class customerExport : List<Customer_Master> {
-        
+    public class customerExport : List<Customer_Master>
+    {
+
     }
     /// <summary>
     /// Interaction logic for CustomerReport.xaml
     /// </summary>
     public partial class CustomerReport : Window
     {
+        private static readonly ILog _logger =
+      LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public CustomerReport()
         {
             InitializeComponent();
@@ -37,9 +41,9 @@ namespace Hotel_POS.Reports
                 view.Filter = UserFilter;
                 CollectionViewSource.GetDefaultView(customerDataGrid.ItemsSource).Refresh();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-               
+                _logger.Error(ex);
             }
         }
 
@@ -57,7 +61,11 @@ namespace Hotel_POS.Reports
             {
                 customerDataGrid.ItemsSource = new BL_Customer().getCustomers();
             }
-            catch (Exception) { }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this );
+            }
         }
 
         private void btnExport_Click(object sender, RoutedEventArgs e)
@@ -74,7 +82,11 @@ namespace Hotel_POS.Reports
                     s.GenerateReport();
                 }
             }
-            catch (Exception) { }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
+            }
         }
     }
 }

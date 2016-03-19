@@ -17,6 +17,7 @@ using System.ComponentModel;
 using System.Collections;
 using System.Text.RegularExpressions;
 using Hotel_POS.Resource;
+using log4net;
 namespace Hotel_POS
 {
     /// <summary>
@@ -24,16 +25,16 @@ namespace Hotel_POS
     /// </summary>
     public partial class LoginWindow : Window
     {
+        private static readonly ILog _logger =
+         LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         #region Variables
-
         BL_UserMaster obj = new BL_UserMaster();
         public LoginWindow()
         {
             InitializeComponent();
             lbl_Msg.Text = "";
         }
-
         #endregion
 
         #region Events
@@ -65,8 +66,6 @@ namespace Hotel_POS
                 }
                 else
                 {
-
-
                     if (txtUserName.Text != "" || pbPassword.Password != "")
                     {
                         User_Master objuser = new User_Master();
@@ -101,7 +100,8 @@ namespace Hotel_POS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this,"Error in login.");
             }
 
         }
@@ -117,11 +117,8 @@ namespace Hotel_POS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-
-
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this, "Error in login.");
             }
 
         }
@@ -134,11 +131,8 @@ namespace Hotel_POS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-
-
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this, "Error in login.");
             }
 
         }
@@ -154,16 +148,11 @@ namespace Hotel_POS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this, "Error in login.");
 
             }
         }
 
-        #region Methods
-
-        #endregion
     }
 }

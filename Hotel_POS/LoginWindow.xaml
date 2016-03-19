@@ -17,8 +17,8 @@
         ResizeMode="NoResize"
         mc:Ignorable="d"
         Loaded="Window_Loaded_1"
-        Icon="/Hotel_POS;component/Images/Restaurant%20Blue.ico" Background="#D7D7D7">
-    
+       Background="#D7D7D7">
+
     <Window.Resources>
         <Style TargetType="{x:Type Label}">
             <Setter Property="HorizontalAlignment"

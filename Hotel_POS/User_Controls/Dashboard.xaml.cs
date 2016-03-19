@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Hotel_POS.Resource;
+using log4net;
 using POS_Business;
 
 namespace Hotel_POS.User_Controls
@@ -21,35 +22,41 @@ namespace Hotel_POS.User_Controls
     /// </summary>
     public partial class Dashboard : UserControl
     {
+        private static readonly ILog _logger =
+         LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public Dashboard()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex) { _logger.Error(ex); }
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             try
             {
-                totalSalesTextBlock.Text = TerminalCommon.currency + new BL_Transaction().getTodaysSale();
+
+                try
+                {
+                    totalSalesTextBlock.Text = TerminalCommon.currency + new BL_Transaction().getTodaysSale();
+                }
+                catch (Exception ine) { _logger.Error(ine); }
                 var favItems = new BL_Transaction().getFavoriteItems();
                 if (favItems.Count > 0)
                 {
                     favMenuStackPanel.Visibility = System.Windows.Visibility.Visible;
-                    //dgFavoriteItems.Visibility = System.Windows.Visibility.Visible;
                     dgFavoriteItems.ItemsSource = favItems;
                 }
                 else
                 {
                     favMenuStackPanel.Visibility = System.Windows.Visibility.Collapsed;
-                    //dgFavoriteItems.Visibility = System.Windows.Visibility.Collapsed;
                 }
-
-
-                //dgOrders.ItemsSource = new BL_Transaction().getMasterOrders();
             }
             catch (Exception ex)
             {
-                Log.Write(ex);
+                _logger.Error(ex);
             }
         }
     }

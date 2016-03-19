@@ -16,6 +16,7 @@ using System.Collections;
 using MegabiteEntityLayer;
 using System.Text.RegularExpressions;
 using Hotel_POS.Resource;
+using log4net;
 
 namespace Hotel_POS
 {
@@ -23,18 +24,15 @@ namespace Hotel_POS
     public partial class MenuCategoryWindow : Window
     {
         #region Variables
-
         public MyValidation objValidation = new MyValidation();
-
-
+        private static readonly ILog _logger =
+         LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public MenuCategoryWindow()
         {
 
             InitializeComponent();
 
         }
-
-
         BL_Menu obj = new BL_Menu();
         #endregion
 
@@ -45,7 +43,6 @@ namespace Hotel_POS
         {
             try
             {
-
                 BindMenuCategory();
                 EnableDisable_controls(false);
                 btnUpdate.Visibility = System.Windows.Visibility.Collapsed;
@@ -58,8 +55,8 @@ namespace Hotel_POS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
 
         }
@@ -115,8 +112,8 @@ namespace Hotel_POS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
         }
 
@@ -152,10 +149,8 @@ namespace Hotel_POS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
 
             }
         }
@@ -174,8 +169,8 @@ namespace Hotel_POS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
         }
 
@@ -194,8 +189,8 @@ namespace Hotel_POS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
         }
 
@@ -224,8 +219,8 @@ namespace Hotel_POS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
         }
 
@@ -265,8 +260,8 @@ namespace Hotel_POS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
         }
 
@@ -317,8 +312,8 @@ namespace Hotel_POS
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
 
 
@@ -337,9 +332,6 @@ namespace Hotel_POS
 
         private bool check_isAlreadyAvailable(string MenuCategory, Int32 Item_Type_ID)
         {
-
-
-
             return obj.check_isAlreadyAvailable(MenuCategory, Item_Type_ID);
         }
 
@@ -393,64 +385,89 @@ namespace Hotel_POS
         const string fieldRequired = "This field is required";
         private void KeypressValidation(object sender, TextCompositionEventArgs e)
         {
-            // Handle to the textbox tjhat should be validated..
-            TextBox tbox = (TextBox)sender;
-            // Fetch regex..
-            Regex regex = new Regex((string)previewRegex[(string)tbox.Tag]);
-            // Check match and put error styles and messages..
-            if (regex.IsMatch(e.Text))
+            try
             {
-                if ((ValidationStates)validationState[tbox.Name] != ValidationStates.OK) tbox.Style = (Style)FindResource("textBoxNormalStyle");
-                validationState[tbox.Name] = ValidationStates.OK;
-            }
-            else
-            {
-                if ((ValidationStates)validationState[tbox.Name] != ValidationStates.WARNING)
-                {
-                    BrushConverter bc = new BrushConverter();
-                    Brush brush = (Brush)bc.ConvertFrom("#FF0000");
-                    brush.Freeze();
-                    tbox.BorderBrush = brush;
-                    validationState[tbox.Name] = ValidationStates.WARNING;
-                    tbox.UpdateLayout(); // Very important if want to use Template.FindName when changing style dynamically!
-                }
-                // Fetch the errorimage in the tbox:s control template.. 
 
-                // And set its tooltip to the errormessage of the textboxs validation code..
-                tbox.ToolTip = (string)errorMessage[(string)tbox.Tag];
-                // Use this if you dont want the user to enter something in textbox that invalidates it.
-                e.Handled = true;
+                // Handle to the textbox tjhat should be validated..
+                TextBox tbox = (TextBox)sender;
+                // Fetch regex..
+                Regex regex = new Regex((string)previewRegex[(string)tbox.Tag]);
+                // Check match and put error styles and messages..
+                if (regex.IsMatch(e.Text))
+                {
+                    if ((ValidationStates)validationState[tbox.Name] != ValidationStates.OK) tbox.Style = (Style)FindResource("textBoxNormalStyle");
+                    validationState[tbox.Name] = ValidationStates.OK;
+                }
+                else
+                {
+                    if ((ValidationStates)validationState[tbox.Name] != ValidationStates.WARNING)
+                    {
+                        BrushConverter bc = new BrushConverter();
+                        Brush brush = (Brush)bc.ConvertFrom("#FF0000");
+                        brush.Freeze();
+                        tbox.BorderBrush = brush;
+                        validationState[tbox.Name] = ValidationStates.WARNING;
+                        tbox.UpdateLayout(); // Very important if want to use Template.FindName when changing style dynamically!
+                    }
+                    // Fetch the errorimage in the tbox:s control template.. 
+
+                    // And set its tooltip to the errormessage of the textboxs validation code..
+                    tbox.ToolTip = (string)errorMessage[(string)tbox.Tag];
+                    // Use this if you dont want the user to enter something in textbox that invalidates it.
+                    e.Handled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
         }
 
         private void CompletionValidation(object sender, RoutedEventArgs e)
         {
-            TextBox tbox = (TextBox)sender;
-            Regex regex = new Regex((string)completionRegex[(string)tbox.Tag]);
-            if (regex.IsMatch(tbox.Text))
+            try
             {
-                if ((ValidationStates)validationState[tbox.Name] != ValidationStates.OK) tbox.Style = (Style)FindResource("textBoxNormalStyle");
-                validationState[tbox.Name] = ValidationStates.OK;
-            }
-            else
-            {
-                if ((ValidationStates)validationState[tbox.Name] != ValidationStates.ERROR)
+                TextBox tbox = (TextBox)sender;
+                Regex regex = new Regex((string)completionRegex[(string)tbox.Tag]);
+                if (regex.IsMatch(tbox.Text))
                 {
-                    BrushConverter bc = new BrushConverter();
-                    Brush brush = (Brush)bc.ConvertFrom("#FF0000");
-                    brush.Freeze();
-                    tbox.BorderBrush = brush;
-                    validationState[tbox.Name] = ValidationStates.ERROR;
-                    tbox.UpdateLayout();
+                    if ((ValidationStates)validationState[tbox.Name] != ValidationStates.OK) tbox.Style = (Style)FindResource("textBoxNormalStyle");
+                    validationState[tbox.Name] = ValidationStates.OK;
                 }
+                else
+                {
+                    if ((ValidationStates)validationState[tbox.Name] != ValidationStates.ERROR)
+                    {
+                        BrushConverter bc = new BrushConverter();
+                        Brush brush = (Brush)bc.ConvertFrom("#FF0000");
+                        brush.Freeze();
+                        tbox.BorderBrush = brush;
+                        validationState[tbox.Name] = ValidationStates.ERROR;
+                        tbox.UpdateLayout();
+                    }
 
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
         }
 
         private void InitValidation(object sender, RoutedEventArgs e)
         {
-            TextBox tbox = (TextBox)sender;
-            if (validationState[tbox.Name] == null) validationState[tbox.Name] = ValidationStates.OK;
+            try
+            {
+                TextBox tbox = (TextBox)sender;
+                if (validationState[tbox.Name] == null) validationState[tbox.Name] = ValidationStates.OK;
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
+            }
         }
 
         #endregion

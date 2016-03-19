@@ -14,6 +14,7 @@ using System.Data.SqlClient;
 using POS_Business;
 using System.Collections;
 using MegabiteEntityLayer;
+using log4net;
 
 namespace Hotel_POS
 {
@@ -22,6 +23,9 @@ namespace Hotel_POS
     /// </summary>
     public partial class ChangePasswordWindow : Window
     {
+
+        private static readonly ILog _logger =
+   LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         BL_UserMaster obj = new BL_UserMaster();
         public Int32 User_ID;
         public Int32 Role_ID;
@@ -54,9 +58,8 @@ namespace Hotel_POS
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
 
         }
@@ -112,9 +115,8 @@ namespace Hotel_POS
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
 
         }
@@ -153,9 +155,8 @@ namespace Hotel_POS
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
         }
 

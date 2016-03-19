@@ -16,13 +16,15 @@ using System.Collections;
 using MegabiteEntityLayer;
 using System.Text.RegularExpressions;
 using System.Windows.Media.Animation;
+using log4net;
 
 namespace Hotel_POS
 {
 
     public partial class UsersWindow : Window
     {
-
+        private static readonly ILog _logger =
+       LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         BL_UserMaster obj = new BL_UserMaster();
         public Int32 User_ID;
         public Int32 Role_ID;
@@ -30,37 +32,46 @@ namespace Hotel_POS
         #region Events
         public UsersWindow()
         {
-            this.Cursor = Cursors.Arrow;
-            this.InitializeComponent();
-
-
-
-            BindRoles();
-            BindUsers();
-            Bind_CompanyList();
+            try
+            {
+                this.Cursor = Cursors.Arrow;
+                this.InitializeComponent();
+                BindRoles();
+                BindUsers();
+                Bind_CompanyList();
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
+            }
 
         }
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                EnableDisable_controls(false);
+                pbPassword.IsEnabled = false;
+                pbPassword.IsEnabled = false;
+                pbConfirmPassword.IsEnabled = false;
 
+                btnUpdate.Visibility = System.Windows.Visibility.Collapsed;
+                btnSave.Visibility = System.Windows.Visibility.Collapsed;
+                btnEdit.Visibility = System.Windows.Visibility.Collapsed;
+                btnNewUser.Visibility = System.Windows.Visibility.Visible;
 
+                row_ConfirmPassword.Height = new GridLength(0);
+                row_password.Height = new GridLength(0);
 
-            EnableDisable_controls(false);
-            pbPassword.IsEnabled = false;
-            pbPassword.IsEnabled = false;
-            pbConfirmPassword.IsEnabled = false;
-
-            btnUpdate.Visibility = System.Windows.Visibility.Collapsed;
-            btnSave.Visibility = System.Windows.Visibility.Collapsed;
-            btnEdit.Visibility = System.Windows.Visibility.Collapsed;
-            btnNewUser.Visibility = System.Windows.Visibility.Visible;
-
-            row_ConfirmPassword.Height = new GridLength(0);
-            row_password.Height = new GridLength(0);
-
-            User_ID = Convert.ToInt32(((Label)(this.Owner.FindName("lblUserID"))).Content.ToString());
-            Role_ID = Convert.ToInt32(((Label)(this.Owner.FindName("lblRoleID"))).Content.ToString());
-
+                User_ID = Convert.ToInt32(((Label)(this.Owner.FindName("lblUserID"))).Content.ToString());
+                Role_ID = Convert.ToInt32(((Label)(this.Owner.FindName("lblRoleID"))).Content.ToString());
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
+            }
 
         }
 
@@ -76,27 +87,40 @@ namespace Hotel_POS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
 
         }
 
         private void txtUserNsme_PriviewKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Space)
+            try
             {
-                e.Handled = true;
+                if (e.Key == Key.Space)
+                {
+                    e.Handled = true;
+                }
             }
-
-
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
+            }
         }
 
         public void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
-
-            Regex regex = new Regex("[^0-9a-zA-Z_@.]+");
-            e.Handled = regex.IsMatch(e.Text);
+            try
+            {
+                Regex regex = new Regex("[^0-9a-zA-Z_@.]+");
+                e.Handled = regex.IsMatch(e.Text);
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
+            }
         }
 
 
@@ -145,12 +169,12 @@ namespace Hotel_POS
                                 User_Master objuser = new User_Master();
                                 objuser.User_Name = txtUserName.Text.Trim();
                                 objuser.Real_Name = txtFullName.Text.Trim();
-                                objuser.Role_ID = Convert.ToInt32(cmbRole.SelectedValue);                                
+                                objuser.Role_ID = Convert.ToInt32(cmbRole.SelectedValue);
                                 objuser.Password = obj.CreateSHAHash(pbPassword.Password);
                                 objuser.Created_By = User_ID;
                                 objuser.Created_DateTime = DateTime.Now;
                                 objuser.Updated_DateTime = DateTime.Now;
-                                objuser.Company_ID = Convert.ToInt32(cmbCompany.SelectedValue);  
+                                objuser.Company_ID = Convert.ToInt32(cmbCompany.SelectedValue);
                                 var count = obj.CreateUser(objuser);
                                 if (count > 0)
                                 {
@@ -181,7 +205,8 @@ namespace Hotel_POS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
 
 
@@ -216,6 +241,11 @@ namespace Hotel_POS
                             var count = obj.UpdateUser(objuser);
                             if (count > 0)
                             {
+                                //show role combo box.
+                                roleAstrix.Visibility = System.Windows.Visibility.Visible;
+                                roleLabel.Visibility = System.Windows.Visibility.Visible;
+                                cmbRole.Visibility = System.Windows.Visibility.Visible;
+
                                 MessageBox.Show("User Updated Succesfully.", "Megabite", MessageBoxButton.OK, MessageBoxImage.Information);
 
                                 BindUsers();
@@ -242,7 +272,8 @@ namespace Hotel_POS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
         }
         private void btnNewUser_Click(object sender, RoutedEventArgs e)
@@ -268,7 +299,8 @@ namespace Hotel_POS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
 
         }
@@ -281,11 +313,13 @@ namespace Hotel_POS
                 User_Master item = (User_Master)UsersGridView.SelectedValue;
                 if (item != null)
                 {
-                    EnableDisable_controls(true);
-
+                    //show role combo box.
+                    roleAstrix.Visibility = System.Windows.Visibility.Hidden;
+                    roleLabel.Visibility = System.Windows.Visibility.Hidden;
+                    cmbRole.Visibility = System.Windows.Visibility.Hidden;
+                    EnableDisable_controls(true);                    
                     pbPassword.IsEnabled = false;
                     pbConfirmPassword.IsEnabled = false;
-
                     EditgrdUser();
                     btnUpdate.Visibility = System.Windows.Visibility.Visible;
                     btnSave.Visibility = System.Windows.Visibility.Collapsed;
@@ -299,35 +333,41 @@ namespace Hotel_POS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
 
 
         }
         private void lstUser_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            EditgrdUser();
-            row_ConfirmPassword.Height = new GridLength(0);
-            row_password.Height = new GridLength(0);
-            if (UsersGridView.SelectedValue != null)
+            try
             {
-                btnUpdate.Visibility = System.Windows.Visibility.Collapsed;
-                btnSave.Visibility = System.Windows.Visibility.Collapsed;
-                btnEdit.Visibility = System.Windows.Visibility.Visible;
-                btnNewUser.Visibility = System.Windows.Visibility.Visible;
-                btnNewUser.IsEnabled = true;
+                EditgrdUser();
+                row_ConfirmPassword.Height = new GridLength(0);
+                row_password.Height = new GridLength(0);
+                if (UsersGridView.SelectedValue != null)
+                {
+                    btnUpdate.Visibility = System.Windows.Visibility.Collapsed;
+                    btnSave.Visibility = System.Windows.Visibility.Collapsed;
+                    btnEdit.Visibility = System.Windows.Visibility.Visible;
+                    btnNewUser.Visibility = System.Windows.Visibility.Visible;
+                    btnNewUser.IsEnabled = true;
+                }
+                else
+                {
+                    btnUpdate.Visibility = System.Windows.Visibility.Collapsed;
+                    btnSave.Visibility = System.Windows.Visibility.Collapsed;
+                    btnEdit.Visibility = System.Windows.Visibility.Collapsed;
+                    btnNewUser.Visibility = System.Windows.Visibility.Visible;
+                    btnNewUser.IsEnabled = true;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                btnUpdate.Visibility = System.Windows.Visibility.Collapsed;
-                btnSave.Visibility = System.Windows.Visibility.Collapsed;
-                btnEdit.Visibility = System.Windows.Visibility.Collapsed;
-                btnNewUser.Visibility = System.Windows.Visibility.Visible;
-                btnNewUser.IsEnabled = true;
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
-
-
-
 
         }
 
@@ -338,23 +378,26 @@ namespace Hotel_POS
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            Reset();
-            btnUpdate.Visibility = System.Windows.Visibility.Collapsed;
-            btnSave.Visibility = System.Windows.Visibility.Collapsed;
-            btnEdit.Visibility = System.Windows.Visibility.Collapsed;
-            btnNewUser.Visibility = System.Windows.Visibility.Visible;
-            btnNewUser.IsEnabled = true;
-
-
-
+            try
+            {
+                Reset();
+                btnUpdate.Visibility = System.Windows.Visibility.Collapsed;
+                btnSave.Visibility = System.Windows.Visibility.Collapsed;
+                btnEdit.Visibility = System.Windows.Visibility.Collapsed;
+                btnNewUser.Visibility = System.Windows.Visibility.Visible;
+                btnNewUser.IsEnabled = true;
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
+            }
         }
         /// <summary>
         ///This is for reseting the selected user password to 123
         /// </summary>
 
         #endregion
-
-
         #region Methods
         public int check_UserName()
         {
@@ -391,7 +434,6 @@ namespace Hotel_POS
                     pbPassword.IsEnabled = false;
                     pbConfirmPassword.IsEnabled = false;
                 }
-
             }
         }
         private void Bind_CompanyList()
@@ -399,12 +441,12 @@ namespace Hotel_POS
             BL_CompanyMaster obj = new BL_CompanyMaster();
             cmbCompany.ItemsSource = obj.GetAllCompanyMaster();
             cmbCompany.DisplayMemberPath = "Company_Name";
-//            cmbCompany.SetValue = "Company_ID";
+            //            cmbCompany.SetValue = "Company_ID";
         }
         private void BindUsers()
         {
             UsersGridView.ItemsSource = obj.BindUsers();
-            
+
 
         }
 
@@ -415,9 +457,9 @@ namespace Hotel_POS
                 cmbRole.ItemsSource = obj.GetAllUserRole();
                 cmbRole.DisplayMemberPath = "Role_Name";
             }
-            catch (SqlException)
+            catch (SqlException ex)
             {
-
+                _logger.Error(ex);
             }
 
         }
@@ -446,7 +488,8 @@ namespace Hotel_POS
             pbPassword.Password = "";
             pbConfirmPassword.Password = "";
             cmbRole.SelectedIndex = -1;
-            cmbCompany.SelectedIndex = -1;
+            if (cmbCompany.Items.Count > 0)
+                cmbCompany.SelectedIndex = 0;
             UsersGridView.SelectedIndex = -1;
             row_ConfirmPassword.Height = new GridLength(0);
             row_password.Height = new GridLength(0);
@@ -506,102 +549,10 @@ namespace Hotel_POS
                 return ((item as User_Master).User_Name.IndexOf(txtSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
         }
         #endregion
-
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
-        //#region Validation
-
-        //previewRegex["Required"] = @"^[a-zA-Z\s.,0-9@():'/?!_-]{1,30}$";
-        //  completionRegex["Required"] = @"^[a-zA-Z\s.,0-9@():'/?!_-]{1,50}$";
-        //  errorMessage["Required"] = "This Filed is Required.";
-
-
-
-
-        //  previewRegex["Email"] = @"";
-        //  completionRegex["Email"] = @"^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$";
-        //  errorMessage["Email"] = "Enter a valid email, eg. sven.svensson@gmail.com";
-
-        //  previewRegex["Mobile"] = @"^(\d)$";
-        //  completionRegex["Mobile"] = @"^([7896]\d{9})$"; // This regex needs some improvement!
-        //  errorMessage["Mobile"] = "Enter Valid Mobile Number";
-
-        //enum ValidationStates { OK, ERROR, WARNING };
-
-        //// Tables for regex and messages
-        //Hashtable previewRegex = new Hashtable();
-        //Hashtable completionRegex = new Hashtable();
-        //Hashtable errorMessage = new Hashtable();
-        //Hashtable validationState = new Hashtable();
-
-        //const string fieldRequired = "This field is required";
-        //private void KeypressValidation(object sender, TextCompositionEventArgs e)
-        //{
-        //    // Handle to the textbox tjhat should be validated..
-        //    TextBox tbox = (TextBox)sender;
-        //    // Fetch regex..
-        //    Regex regex = new Regex((string)previewRegex[(string)tbox.Tag]);
-        //    // Check match and put error styles and messages..
-        //    if (regex.IsMatch(e.Text))
-        //    {
-        //        if ((ValidationStates)validationState[tbox.Name] != ValidationStates.OK) tbox.Style = (Style)FindResource("textBoxNormalStyle");
-        //        validationState[tbox.Name] = ValidationStates.OK;
-        //    }
-        //    else
-        //    {
-        //        if ((ValidationStates)validationState[tbox.Name] != ValidationStates.WARNING)
-        //        {
-        //            BrushConverter bc = new BrushConverter();
-        //            Brush brush = (Brush)bc.ConvertFrom("#FF0000");
-        //            brush.Freeze();
-        //            tbox.BorderBrush = brush;
-        //            validationState[tbox.Name] = ValidationStates.WARNING;
-        //            tbox.UpdateLayout(); // Very important if want to use Template.FindName when changing style dynamically!
-        //        }
-        //        // Fetch the errorimage in the tbox:s control template.. 
-
-        //        // And set its tooltip to the errormessage of the textboxs validation code..
-        //        tbox.ToolTip = (string)errorMessage[(string)tbox.Tag];
-        //        // Use this if you dont want the user to enter something in textbox that invalidates it.
-        //        e.Handled = true;
-        //    }
-        //}
-
-        //private void CompletionValidation(object sender, RoutedEventArgs e)
-        //{
-        //    TextBox tbox = (TextBox)sender;
-        //    Regex regex = new Regex((string)completionRegex[(string)tbox.Tag]);
-        //    if (regex.IsMatch(tbox.Text))
-        //    {
-        //        if ((ValidationStates)validationState[tbox.Name] != ValidationStates.OK) tbox.Style = (Style)FindResource("textBoxNormalStyle");
-        //        validationState[tbox.Name] = ValidationStates.OK;
-        //    }
-        //    else
-        //    {
-        //        if ((ValidationStates)validationState[tbox.Name] != ValidationStates.ERROR)
-        //        {
-        //            BrushConverter bc = new BrushConverter();
-        //            Brush brush = (Brush)bc.ConvertFrom("#FF0000");
-        //            brush.Freeze();
-        //            tbox.BorderBrush = brush;
-        //            tbox.UpdateLayout();
-        //        }
-
-        //    }
-        //}
-
-        //private void InitValidation(object sender, RoutedEventArgs e)
-        //{
-        //    TextBox tbox = (TextBox)sender;
-        //    if (validationState[tbox.Name] == null) validationState[tbox.Name] = ValidationStates.OK;
-        //}
-
-        //#endregion
-
-
     }
 
 

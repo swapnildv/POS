@@ -201,12 +201,12 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <BitmapImage x:Key="error"
-                 UriSource="error.png"></BitmapImage>
+    <!--<BitmapImage x:Key="error"
+                 UriSource="Images\error.png"></BitmapImage>
     <BitmapImage x:Key="info"
                  UriSource="info_.png"></BitmapImage>
     <BitmapImage x:Key="infogif"
-                 UriSource="info.gif"></BitmapImage>
+                 UriSource="info.gif"></BitmapImage>-->
     <!--Info-style textbox-->
     <Style x:Key="textBoxInfoStyle"
            TargetType="{x:Type TextBox}">

@@ -37,4 +37,6 @@ namespace Hotel_POS.Resource
 
         public enum user_roles { adminRole = 4, operatorRole };
     }
+
+
 }

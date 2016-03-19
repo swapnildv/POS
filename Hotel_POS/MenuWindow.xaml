@@ -12,7 +12,7 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner"
         Loaded="Window_Loaded_1"
-        Icon="/Hotel_POS;component/Images/Restaurant%20Blue.ico">
+        Icon="/Bunkerz;component/Images/Restaurant%20Blue.ico">
 
     <Window.RenderTransform>
         <TransformGroup>

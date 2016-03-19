@@ -14,7 +14,7 @@
         SizeToContent="WidthAndHeight"
         ResizeMode="NoResize"
         Loaded="TransactionReport_Loaded"
-        Icon="/Hotel_POS;component/Images/Restaurant%20Blue.ico">
+        Icon="/Bunkerz;component/Images/Restaurant%20Blue.ico">
    
     <Window.Triggers>
         <EventTrigger RoutedEvent="FrameworkElement.Loaded">

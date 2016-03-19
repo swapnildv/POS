@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Hotel_POS.Resource;
 using MegabiteEntityLayer;
+using MegabiteEntityLayer.Helpers;
 
 namespace POS_DAL
 {
@@ -186,7 +187,7 @@ namespace POS_DAL
             Transaction_Details objTD = new Transaction_Details();
             List<Transaction_Details> lstTD = new List<Transaction_Details>();
             if (DAL_Item_Master.MenuCart.Count <= 0)
-                throw new Exception("Invalid Order.");
+                throw new FieldException("Invalid Order.");
 
             objTM.Transaction_Date = DateTime.Now;
             objTM.Transaction_Amount = DAL_Item_Master.MenuCart.Sum(a => a.Item_Total);

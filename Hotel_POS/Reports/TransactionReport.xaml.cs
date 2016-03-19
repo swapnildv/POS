@@ -15,6 +15,7 @@ using MegabiteEntityLayer;
 using System.Collections;
 using System.ComponentModel;
 using Hotel_POS.Resource;
+using log4net;
 namespace Hotel_POS.Reports
 {
     /// <summary>
@@ -25,10 +26,10 @@ namespace Hotel_POS.Reports
     public partial class TransactionReport : Window
     {
         #region Variables
+        private static readonly ILog _logger =
+    LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         BL_EmployeeMaster objEM = new BL_EmployeeMaster();
         BL_Transaction objTM = new BL_Transaction();
-
-
 
         public TransactionReport()
         {
@@ -36,12 +37,14 @@ namespace Hotel_POS.Reports
         }
         #endregion
 
-
-
         private void TransactionReport_Loaded(object sender, RoutedEventArgs e)
         {
-            FromDate.SelectedDate = DateTime.Now;
-            ToDate.SelectedDate = DateTime.Now;
+            try
+            {
+                FromDate.SelectedDate = DateTime.Now;
+                ToDate.SelectedDate = DateTime.Now;
+            }
+            catch (Exception ex) { _logger.Error(ex); }
         }
 
         private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -53,8 +56,7 @@ namespace Hotel_POS.Reports
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
-
+                _logger.Error(ex);
             }
 
         }
@@ -74,7 +76,8 @@ namespace Hotel_POS.Reports
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
         }
 
@@ -86,7 +89,8 @@ namespace Hotel_POS.Reports
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
         }
 
@@ -106,7 +110,8 @@ namespace Hotel_POS.Reports
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
         }
 

@@ -16,6 +16,7 @@ using POS_Business;
 using System.Collections;
 using MegabiteEntityLayer;
 using System.Text.RegularExpressions;
+using log4net;
 
 namespace Hotel_POS
 {
@@ -25,7 +26,8 @@ namespace Hotel_POS
     public partial class MenuWindow : Window
     {
         #region Variables
-
+        private static readonly ILog _logger =
+        LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public BL_Menu objitemMaster = new BL_Menu();
         public MyValidation objValidation = new MyValidation();
         public Int32 Company_ID, User_ID;
@@ -71,15 +73,11 @@ namespace Hotel_POS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-
-
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
 
         }
-
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -142,15 +140,12 @@ namespace Hotel_POS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
 
             }
 
         }
-
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -166,15 +161,11 @@ namespace Hotel_POS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-
-
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
 
         }
-
         private void lstMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -200,11 +191,8 @@ namespace Hotel_POS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-
-
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
 
         }
@@ -242,16 +230,12 @@ namespace Hotel_POS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-
-
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
 
 
         }
-
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -266,17 +250,12 @@ namespace Hotel_POS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-
-
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
 
 
         }
-
-
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -339,11 +318,8 @@ namespace Hotel_POS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-
-
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
 
         }
@@ -351,7 +327,6 @@ namespace Hotel_POS
         {
             this.Close();
         }
-
         private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
@@ -364,11 +339,8 @@ namespace Hotel_POS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Megabite", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-
-
+                _logger.Error(ex);
+                MessageHelper.MessageBox.ShowError(this);
             }
 
         }

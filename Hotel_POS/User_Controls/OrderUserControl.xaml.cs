@@ -13,7 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Hotel_POS.Resource;
+using log4net;
 using MegabiteEntityLayer;
+using MegabiteEntityLayer.Helpers;
 using POS_Business;
 
 namespace Hotel_POS.User_Controls
@@ -23,14 +25,21 @@ namespace Hotel_POS.User_Controls
     /// </summary>
     public partial class OrderUserControl : UserControl
     {
+        MainWindow mainWindow;
+        private static readonly ILog _logger =
+       LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public OrderUserControl()
         {
-            InitializeComponent();
-            bwPlaceOrder.WorkerReportsProgress = true;
-            bwPlaceOrder.WorkerSupportsCancellation = true;
-            bwPlaceOrder.DoWork += bwPlaceOrder_DoWork;
-            bwPlaceOrder.ProgressChanged += bwPlaceOrder_ProgressChanged;
-            bwPlaceOrder.RunWorkerCompleted += bwPlaceOrder_RunWorkerCompleted;
+            try
+            {
+                InitializeComponent();
+                bwPlaceOrder.WorkerReportsProgress = true;
+                bwPlaceOrder.WorkerSupportsCancellation = true;
+                bwPlaceOrder.DoWork += bwPlaceOrder_DoWork;
+                bwPlaceOrder.ProgressChanged += bwPlaceOrder_ProgressChanged;
+                bwPlaceOrder.RunWorkerCompleted += bwPlaceOrder_RunWorkerCompleted;
+            }
+            catch (Exception ex) { _logger.Error(ex); }
         }
 
         /// <summary>
@@ -42,6 +51,7 @@ namespace Hotel_POS.User_Controls
         {
             try
             {
+                mainWindow = (MainWindow)Window.GetWindow(this);
                 //BL_Menu obj = new BL_Menu();
                 MainMenuListBox.ItemsSource = new BL_Menu().get_Item_Group_List().Where(c => c.Is_Active == true);
                 MenuCartlistBox.ItemsSource = new BL_Menu().GetMenuCart();
@@ -49,8 +59,9 @@ namespace Hotel_POS.User_Controls
             }
             catch (Exception ex)
             {
-                Log.Write(ex);
-                MessageBox.Show(TerminalCommon.errorMessage, TerminalCommon.cafeName);
+                _logger.Error(ex);
+                if (mainWindow != null)
+                    MessageHelper.MessageBox.ShowError(mainWindow);
             }
         }
 
@@ -72,8 +83,9 @@ namespace Hotel_POS.User_Controls
             }
             catch (Exception ex)
             {
-                Log.Write(ex);
-                MessageBox.Show(TerminalCommon.errorMessage, TerminalCommon.cafeName);
+                _logger.Error(ex);
+                if (mainWindow != null)
+                    MessageHelper.MessageBox.ShowError(mainWindow);
             }
         }
 
@@ -88,8 +100,9 @@ namespace Hotel_POS.User_Controls
             }
             catch (Exception ex)
             {
-                Log.Write(ex);
-                MessageBox.Show(TerminalCommon.errorMessage, TerminalCommon.cafeName);
+                _logger.Error(ex);
+                if (mainWindow != null)
+                    MessageHelper.MessageBox.ShowError(mainWindow);
             }
         }
 
@@ -105,8 +118,9 @@ namespace Hotel_POS.User_Controls
             }
             catch (Exception ex)
             {
-                Log.Write(ex);
-                MessageBox.Show(TerminalCommon.errorMessage, TerminalCommon.cafeName);
+                _logger.Error(ex);
+                if (mainWindow != null)
+                    MessageHelper.MessageBox.ShowError(mainWindow);
             }
 
         }
@@ -121,11 +135,13 @@ namespace Hotel_POS.User_Controls
 
                 itemQuantity.Focus();
                 itemQuantity.SelectAll();
-                
+
             }
             catch (Exception ex)
             {
-                Log.Write(ex);
+                _logger.Error(ex);
+                if (mainWindow != null)
+                    MessageHelper.MessageBox.ShowError(mainWindow);
             }
         }
 
@@ -144,8 +160,9 @@ namespace Hotel_POS.User_Controls
             }
             catch (Exception ex)
             {
-                Log.Write(ex);
-                MessageBox.Show(TerminalCommon.errorMessage, TerminalCommon.cafeName);
+                _logger.Error(ex);
+                if (mainWindow != null)
+                    MessageHelper.MessageBox.ShowError(mainWindow);
             }
         }
 
@@ -159,7 +176,9 @@ namespace Hotel_POS.User_Controls
             }
             catch (Exception ex)
             {
-                Log.Write(ex);
+                _logger.Error(ex);
+                if (mainWindow != null)
+                    MessageHelper.MessageBox.ShowError(mainWindow);
             }
         }
 
@@ -175,7 +194,6 @@ namespace Hotel_POS.User_Controls
         {
             try
             {
-                int s = int.Parse("d");
                 //Set customer 
                 if (TerminalCommon.currentCustomer == null)
                     TerminalCommon.currentCustomer = new Customer_Master()
@@ -193,7 +211,9 @@ namespace Hotel_POS.User_Controls
             }
             catch (Exception ex)
             {
-                MessageBox.Show(TerminalCommon.errorMessage, TerminalCommon.cafeName);
+                _logger.Error(ex);
+                if (mainWindow != null)
+                    MessageHelper.MessageBox.ShowError(mainWindow);
             }
         }
         private void cancelOrderButton_Click(object sender, RoutedEventArgs e)
@@ -206,33 +226,23 @@ namespace Hotel_POS.User_Controls
                 new BL_Menu().ClearMenuCart();
                 totalAmountTextBlock.Text = TerminalCommon.currency + " " + new BL_Menu().getTotatlCartValue().ToString();
                 itemQuantity.Text = "1";
+                customerMobileTextBox.Text = String.Empty;
+                customerNameTextBox.Text = String.Empty;
             }
             catch (Exception ex)
             {
-                Log.Write(ex);
-                MessageBox.Show(TerminalCommon.errorMessage, TerminalCommon.cafeName);
+                _logger.Error(ex);
+                if (mainWindow != null)
+                    MessageHelper.MessageBox.ShowError(mainWindow);
             }
         }
         void bwPlaceOrder_DoWork(object sender, DoWorkEventArgs e)
         {
-            try
-            {
-                BackgroundWorker worker = sender as BackgroundWorker;
-                if ((worker.CancellationPending == true))
-                {
-                    e.Cancel = true;
-                }
-                else
-                {
-                    e.Result = new BL_Transaction().SubmitOrder();
-
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.Write(ex);
-                MessageBox.Show(TerminalCommon.errorMessage, TerminalCommon.cafeName);
-            }
+            BackgroundWorker worker = sender as BackgroundWorker;
+            if ((worker.CancellationPending == true))
+                e.Cancel = true;
+            else
+                e.Result = new BL_Transaction().SubmitOrder();
 
         }
         void bwPlaceOrder_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -253,9 +263,9 @@ namespace Hotel_POS.User_Controls
 
                 else if (!(e.Error == null))
                 {
-                    //this.tbProgress.Text = ("Error: " + e.Error.Message);
+                    _logger.Error(e.Error.Message);
+                    MessageHelper.MessageBox.ShowError(mainWindow, e.Error.Message);
                 }
-
                 else
                 {
                     Printing.PrintPaymentSlip(e.Result.ToString());
@@ -270,8 +280,12 @@ namespace Hotel_POS.User_Controls
             }
             catch (Exception ex)
             {
-                Log.Write(ex);
-                MessageBox.Show(TerminalCommon.errorMessage, TerminalCommon.cafeName);
+                this.Dispatcher.BeginInvoke((Action)delegate()
+                 {
+                     _logger.Error(ex);
+                     if (mainWindow != null)
+                         MessageHelper.MessageBox.ShowError(mainWindow);
+                 });
             }
 
         }

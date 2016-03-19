@@ -6,7 +6,7 @@
         Title="Bunkerzz"
         Loaded="Window_Loaded"
         xmlns:local="clr-namespace:Hotel_POS.User_Controls"
-        Icon="/Hotel_POS;component/Images/bunkerzz_icon.ico">
+        Icon="/Bunkerz;component/Images/bunkerzz_icon.ico">
 
     <Window.Resources>
 

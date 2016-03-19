@@ -43,8 +43,6 @@ namespace POS_Business
             return obj.get_EmployeeWithCard_Details(emp_id, rfid);
         }
 
-
-
         public int Insert_Card_Master(Card_Master objCard)
         {
 

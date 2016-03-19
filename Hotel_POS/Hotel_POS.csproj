@@ -48,7 +48,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Hotel_POS</RootNamespace>
-    <AssemblyName>Hotel_POS</AssemblyName>
+    <AssemblyName>Bunkerz</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -126,17 +126,18 @@
     <Compile Include="ChangePasswordWindow.xaml.cs">
       <DependentUpon>ChangePasswordWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Common.cs" />
+    <Compile Include="Helpers\Common.cs" />
     <Compile Include="Converter\Converters.cs" />
+    <Compile Include="MessageHelper\ErrorBox.xaml.cs">
+      <DependentUpon>ErrorBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MessageHelper\MessageBox.cs" />
     <Compile Include="Reports\CustomerReport.xaml.cs">
       <DependentUpon>CustomerReport.xaml</DependentUpon>
     </Compile>
     <Compile Include="Resource\Log.cs" />
     <Compile Include="User_Controls\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="User_Controls\MovingCircles.xaml.cs">
-      <DependentUpon>MovingCircles.xaml</DependentUpon>
     </Compile>
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
@@ -147,22 +148,13 @@
     <Compile Include="MenuWindow.xaml.cs">
       <DependentUpon>MenuWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MyValidation.cs" />
-    <Compile Include="Printing.cs" />
-    <Compile Include="Reports\EmployeeReport.xaml.cs">
-      <DependentUpon>EmployeeReport.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Reports\LoadReport.xaml.cs">
-      <DependentUpon>LoadReport.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Helpers\MyValidation.cs" />
+    <Compile Include="Helpers\Printing.cs" />
     <Compile Include="Reports\TransactionReport.xaml.cs">
       <DependentUpon>TransactionReport.xaml</DependentUpon>
     </Compile>
     <Compile Include="UsersWindow.xaml.cs">
       <DependentUpon>UsersWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="User_Controls\OrderControl.xaml.cs">
-      <DependentUpon>OrderControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="User_Controls\OrderUserControl.xaml.cs">
       <DependentUpon>OrderUserControl.xaml</DependentUpon>
@@ -174,6 +166,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MessageHelper\ErrorBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Reports\CustomerReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -181,10 +177,6 @@
     <Page Include="User_Controls\Dashboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="User_Controls\MovingCircles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
@@ -210,14 +202,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Reports\EmployeeReport.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Reports\LoadReport.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Reports\TransactionReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -233,10 +217,6 @@
     <Page Include="UsersWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="User_Controls\OrderControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="User_Controls\OrderUserControl.xaml">
       <SubType>Designer</SubType>
@@ -330,6 +310,7 @@
   <ItemGroup>
     <Resource Include="bunkerzz_icon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

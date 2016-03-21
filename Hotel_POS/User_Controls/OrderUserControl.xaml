@@ -153,7 +153,23 @@
 
                 <Border Grid.Column="2" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
                     <StackPanel>
-                        <TextBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,10,0,0" TabIndex="5" Name="itemQuantity" Height="40" Width="80" FontSize="20"></TextBox>
+
+                        <Grid Width="80" Margin="0,6,0,0">
+                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" FontSize="16" Text="QTY" FontWeight="Bold" Foreground="{StaticResource brushWatermarkForeground}" >
+                                <TextBlock.Visibility>
+                                    <MultiBinding Converter="{StaticResource SearchBoxHelper}">
+                                        <Binding ElementName="itemQuantity" Path="Text.IsEmpty" />
+                                        <Binding ElementName="itemQuantity" Path="IsFocused" />
+                                    </MultiBinding>
+                                </TextBlock.Visibility>
+                            </TextBlock>
+                            <TextBox FontSize="20" FontWeight="Bold" Text="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="40" Name="itemQuantity" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" TextChanged="subMenuSearchTextBox_TextChanged"/>
+                        </Grid>
+
+                       
+
+
+                        <!--<TextBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,10,0,0" TabIndex="5" Name="itemQuantity" Height="40" Width="80" FontSize="20"></TextBox>-->
                         <Button Margin="10" TabIndex="6"  Name="AddItemButton" Content="Update" Height="40" FontSize="18" Width="85" Click="AddItemButton_Click"></Button>
                     </StackPanel>
                 </Border>
@@ -207,8 +223,20 @@
 
         </StackPanel>
         <Grid VerticalAlignment="Bottom" Name="Footer" Margin="0,10,20,10">
-            <Button Name="proceedOrderButton" FontSize="18" Content="Proceed" HorizontalAlignment="Left" Width="100" Height="45" Margin="20,0,110,0" Click="proceedOrderButton_Click"></Button>
-            <Button Name="cancelOrderButton" FontSize="18" Content="Clear Selection" HorizontalAlignment="Left" Width="150" Height="45" Margin="150,0,0,0" Click="cancelOrderButton_Click"></Button>
+
+            <Grid HorizontalAlignment="Left" Width="80" Margin="20,0,0,0" VerticalAlignment="Center">
+                <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" FontSize="16" Text="Disc %" FontWeight="Bold" Foreground="{StaticResource brushWatermarkForeground}" >
+                    <TextBlock.Visibility>
+                        <MultiBinding Converter="{StaticResource SearchBoxHelper}">
+                            <Binding ElementName="discountTextBox" Path="Text.IsEmpty" />
+                            <Binding ElementName="discountTextBox" Path="IsFocused" />
+                        </MultiBinding>
+                    </TextBlock.Visibility>
+                </TextBlock>
+                <TextBox FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="40" Name="discountTextBox" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" TextChanged="discountTextBox_TextChanged"/>
+            </Grid>
+            <Button Name="proceedOrderButton" FontSize="18" Content="Proceed" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Height="45" Margin="120,0,110,0" Click="proceedOrderButton_Click"></Button>
+            <Button Name="cancelOrderButton" FontSize="18" Content="Clear Selection" HorizontalAlignment="Left" Width="150" Height="45" Margin="250,0,0,0" Click="cancelOrderButton_Click"></Button>
 
             <TextBlock FontFamily="{StaticResource MainFont}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="670,0,0,0" FontSize="25" FontWeight="Bold">
                 <Run Text="Total : "/>

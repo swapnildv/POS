@@ -28,6 +28,8 @@ namespace Hotel_POS.User_Controls
         MainWindow mainWindow;
         private static readonly ILog _logger =
        LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        private decimal discountInput = 0;
         public OrderUserControl()
         {
             try
@@ -280,12 +282,40 @@ namespace Hotel_POS.User_Controls
             }
             catch (Exception ex)
             {
-                this.Dispatcher.BeginInvoke((Action)delegate()
+                this.Dispatcher.BeginInvoke((Action)delegate ()
                  {
                      _logger.Error(ex);
                      if (mainWindow != null)
                          MessageHelper.MessageBox.ShowError(mainWindow);
                  });
+            }
+
+        }
+
+        private void discountTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                decimal disc = 0;
+                try { disc = decimal.Parse(discountTextBox.Text); }
+                catch (Exception) { disc = 0; }
+
+                if (disc > 100 || disc < 0)
+                    return;
+
+                decimal totalValue = Convert.ToDecimal(new BL_Menu().getTotatlCartValue());
+
+                totalValue = totalValue * (1 - (disc / 100));
+                
+                if (totalValue > 0)
+                    totalAmountTextBlock.Text = TerminalCommon.currency + " " + totalValue.ToString("00.00");
+
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+                //if (mainWindow != null)
+                //    MessageHelper.MessageBox.ShowError(mainWindow);
             }
 
         }

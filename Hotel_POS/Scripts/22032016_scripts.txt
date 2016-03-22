@@ -1,0 +1,9 @@
+﻿
+//22/03/2016
+ALTER TABLE user_master
+  ADD IsDiscount bit NOT NULL DEFAULT(0)
+
+1) update the Discount Functionality.
+2) Align IsDiscount Box in User Window.
+3) Do Some rigourus testing of discount functionality.
+4) Design New button style for order User Control

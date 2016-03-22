@@ -1095,6 +1095,10 @@
                                           RecognizesAccessKey="True" />
                     </Grid>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="true">
+                            <Setter Property="BorderBrush" Value="White" />
+                            <Setter Property="BorderThickness" Value="3" />
+                        </Trigger>
                         <Trigger Property="IsKeyboardFocused"
                                  Value="true" />
                         <Trigger Property="IsMouseOver"

@@ -175,6 +175,8 @@ namespace Hotel_POS
                                 objuser.Created_DateTime = DateTime.Now;
                                 objuser.Updated_DateTime = DateTime.Now;
                                 objuser.Company_ID = Convert.ToInt32(cmbCompany.SelectedValue);
+                                objuser.IsDiscount = Boolean.Parse(cmbDiscount.SelectionBoxItem.ToString());
+
                                 var count = obj.CreateUser(objuser);
                                 if (count > 0)
                                 {
@@ -237,6 +239,7 @@ namespace Hotel_POS
                             objuser.User_ID = item.User_ID;
                             objuser.Updated_By = User_ID;
                             objuser.Updated_DateTime = DateTime.Now;
+                            objuser.IsDiscount = Boolean.Parse(cmbDiscount.SelectionBoxItem.ToString());
 
                             var count = obj.UpdateUser(objuser);
                             if (count > 0)
@@ -317,7 +320,7 @@ namespace Hotel_POS
                     roleAstrix.Visibility = System.Windows.Visibility.Hidden;
                     roleLabel.Visibility = System.Windows.Visibility.Hidden;
                     cmbRole.Visibility = System.Windows.Visibility.Hidden;
-                    EnableDisable_controls(true);                    
+                    EnableDisable_controls(true);
                     pbPassword.IsEnabled = false;
                     pbConfirmPassword.IsEnabled = false;
                     EditgrdUser();
@@ -325,6 +328,8 @@ namespace Hotel_POS
                     btnSave.Visibility = System.Windows.Visibility.Collapsed;
                     btnEdit.Visibility = System.Windows.Visibility.Collapsed;
                     btnNewUser.Visibility = System.Windows.Visibility.Visible;
+
+
                 }
                 else
                 {
@@ -431,6 +436,7 @@ namespace Hotel_POS
                     pbConfirmPassword.Password = "12345";
                     cmbRole.SelectedValue = Convert.ToInt32(item.Role_ID);
                     cmbCompany.SelectedValue = Convert.ToInt32(item.Company_ID);
+                    cmbDiscount.SelectedIndex = item.IsDiscount == true ? 0 : 1;
                     pbPassword.IsEnabled = false;
                     pbConfirmPassword.IsEnabled = false;
                 }

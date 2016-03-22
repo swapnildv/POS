@@ -289,6 +289,7 @@
           <Property Name="Role_ID" Type="int" />
           <Property Name="Created_By" Type="int" />
           <Property Name="Updated_By" Type="int" />
+          <Property Name="IsDiscount" Type="bit" Nullable="false" />
         </EntityType>
         <Function Name="sp_favorite_items" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
       </Schema></edmx:StorageModels>
@@ -573,6 +574,7 @@
           <Property Name="Role_ID" Type="Int32" />
           <Property Name="Created_By" Type="Int32" />
           <Property Name="Updated_By" Type="Int32" />
+          <Property Type="Boolean" Name="IsDiscount" Nullable="false" />
         </EntityType>
         <EntityType Name="Customer_Master">
           <Key>
@@ -838,6 +840,7 @@
           <EntitySetMapping Name="User_Master">
             <EntityTypeMapping TypeName="CafeteriaModel.User_Master">
               <MappingFragment StoreEntitySet="User_Master">
+                <ScalarProperty Name="IsDiscount" ColumnName="IsDiscount" />
                 <ScalarProperty Name="User_ID" ColumnName="User_ID" />
                 <ScalarProperty Name="User_Name" ColumnName="User_Name" />
                 <ScalarProperty Name="Real_Name" ColumnName="Real_Name" />
@@ -901,7 +904,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="entityMegabite" ZoomLevel="47">
+      <Diagram Name="entityMegabite" ZoomLevel="71">
         <EntityTypeShape EntityType="CafeteriaModel.Card_Details" Width="1.5" PointX="0.75" PointY="0.75" Height="3.7109993489583326" IsExpanded="true" />
         <EntityTypeShape EntityType="CafeteriaModel.Card_Ledger" Width="1.5" PointX="4.75" PointY="0.75" Height="4.2879036458333335" IsExpanded="true" />
         <EntityTypeShape EntityType="CafeteriaModel.Card_Master" Width="1.5" PointX="6.75" PointY="0.75" Height="3.5186979166666656" IsExpanded="true" />

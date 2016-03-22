@@ -4842,11 +4842,13 @@ namespace MegabiteEntityLayer
         /// </summary>
         /// <param name="user_ID">Initial value of the User_ID property.</param>
         /// <param name="company_ID">Initial value of the Company_ID property.</param>
-        public static User_Master CreateUser_Master(global::System.Int32 user_ID, global::System.Int64 company_ID)
+        /// <param name="isDiscount">Initial value of the IsDiscount property.</param>
+        public static User_Master CreateUser_Master(global::System.Int32 user_ID, global::System.Int64 company_ID, global::System.Boolean isDiscount)
         {
             User_Master user_Master = new User_Master();
             user_Master.User_ID = user_ID;
             user_Master.Company_ID = company_ID;
+            user_Master.IsDiscount = isDiscount;
             return user_Master;
         }
 
@@ -5171,6 +5173,30 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int32> _Updated_By;
         partial void OnUpdated_ByChanging(Nullable<global::System.Int32> value);
         partial void OnUpdated_ByChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IsDiscount
+        {
+            get
+            {
+                return _IsDiscount;
+            }
+            set
+            {
+                OnIsDiscountChanging(value);
+                ReportPropertyChanging("IsDiscount");
+                _IsDiscount = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsDiscount");
+                OnIsDiscountChanged();
+            }
+        }
+        private global::System.Boolean _IsDiscount;
+        partial void OnIsDiscountChanging(global::System.Boolean value);
+        partial void OnIsDiscountChanged();
 
         #endregion
 

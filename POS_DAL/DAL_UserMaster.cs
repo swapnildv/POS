@@ -40,7 +40,8 @@ namespace POS_DAL
                            u.Email,
                            u.User_ID,
                            u.User_Name,
-                           u.Updated_DateTime
+                           u.Updated_DateTime,
+                           u.IsDiscount
                        }).ToList();
 
             foreach (var item in qry)
@@ -58,6 +59,7 @@ namespace POS_DAL
                 objUM.Email = item.Email;
                 objUM.User_ID = item.User_ID;
                 objUM.User_Name = item.User_Name;
+                objUM.IsDiscount = item.IsDiscount;
                 objUM.Updated_DateTime = item.Updated_DateTime;
 
                 lstUsers.Add(objUM);
@@ -97,6 +99,7 @@ namespace POS_DAL
             UpdateUsers.User_Name = objupdateuser.User_Name;
             UpdateUsers.Real_Name = objupdateuser.Real_Name;
             UpdateUsers.Role_ID = objupdateuser.Role_ID;
+            UpdateUsers.IsDiscount = objupdateuser.IsDiscount;
             //UpdateUsers.Company_ID = objupdateuser.Company_ID;
             UpdateUsers.Updated_By = objupdateuser.Updated_By;
             UpdateUsers.Updated_DateTime = objupdateuser.Updated_DateTime;

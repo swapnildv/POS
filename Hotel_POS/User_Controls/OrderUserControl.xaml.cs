@@ -29,6 +29,9 @@ namespace Hotel_POS.User_Controls
         private static readonly ILog _logger =
        LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        public static RoutedCommand commonCommand = 
+            new RoutedCommand("btnBetCommand", typeof(MainWindow));
+
         private decimal discountInput = 0;
         public OrderUserControl()
         {
@@ -53,6 +56,11 @@ namespace Hotel_POS.User_Controls
         {
             try
             {
+                if (TerminalCommon.LoggedInUser != null)
+                {
+                    DiscountGrid.Visibility = TerminalCommon.LoggedInUser.IsDiscount == true ? 
+                        System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed;
+                }
                 mainWindow = (MainWindow)Window.GetWindow(this);
                 //BL_Menu obj = new BL_Menu();
                 MainMenuListBox.ItemsSource = new BL_Menu().get_Item_Group_List().Where(c => c.Is_Active == true);
@@ -133,10 +141,14 @@ namespace Hotel_POS.User_Controls
             try
             {
                 if (MenuCartlistBox.SelectedItem != null)
-                    _selectedItemId = ((MenuCart)MenuCartlistBox.SelectedItem).Item_ID;
+                {
+                    var item = (MenuCart)MenuCartlistBox.SelectedItem;
+                    _selectedItemId = item.Item_ID;
+                    itemQuantity.Text = item.Quantity.ToString();
+                }
 
-                itemQuantity.Focus();
-                itemQuantity.SelectAll();
+                //itemQuantity.Focus();
+                //itemQuantity.SelectAll();
 
             }
             catch (Exception ex)
@@ -159,6 +171,7 @@ namespace Hotel_POS.User_Controls
                     new BL_Menu().AddMenuCartItem(_selectedItemId, int.Parse(itemQuantity.Text.ToString()));
                 }
                 totalAmountTextBlock.Text = TerminalCommon.currency + " " + new BL_Menu().getTotatlCartValue().ToString();
+                MenuCartlistBox.Focus();
             }
             catch (Exception ex)
             {
@@ -230,6 +243,7 @@ namespace Hotel_POS.User_Controls
                 itemQuantity.Text = "1";
                 customerMobileTextBox.Text = String.Empty;
                 customerNameTextBox.Text = String.Empty;
+                customerMobileTextBox.Focus();
             }
             catch (Exception ex)
             {
@@ -318,6 +332,40 @@ namespace Hotel_POS.User_Controls
                 //    MessageHelper.MessageBox.ShowError(mainWindow);
             }
 
+        }
+
+        
+
+
+        //This method is used to give shortcuts to controls on Main window page.
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            try
+            {
+                var menucartItem = (MenuCart)MenuCartlistBox.SelectedItem;
+                new BL_Menu().RemoveCartItem(menucartItem.Item_ID);
+                totalAmountTextBlock.Text = TerminalCommon.currency + " " + new BL_Menu().getTotatlCartValue().ToString();
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+            }
+        }
+
+        private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            try
+            {
+                if (MenuCartlistBox.SelectedItem != null)
+                    e.CanExecute = true;
+                else
+                    e.CanExecute = false;
+
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+            }
         }
     }
 }

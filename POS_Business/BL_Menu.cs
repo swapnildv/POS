@@ -208,6 +208,11 @@ namespace POS_Business
             return new DAL_Item_Master().GetMenuCart();
         }
 
+        public void RemoveCartItem(long itemid)
+        {
+            new DAL_Item_Master().RemoveCartItem(itemid);
+        }
+
         public void ClearMenuCart()
         {
            new DAL_Item_Master().ClearMenuCart();

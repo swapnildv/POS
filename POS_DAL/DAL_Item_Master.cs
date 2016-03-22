@@ -214,6 +214,13 @@ namespace POS_DAL
             MenuCart.Clear();
         }
 
+        public void RemoveCartItem(long item)
+        {
+
+            var itemtoremove  = menuCart.Where(a=>a.Item_ID == item).SingleOrDefault();
+            MenuCart.Remove(itemtoremove);
+        }
+
         public void AddMenuCart(long submenuId, int qty)
         {
 

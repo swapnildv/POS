@@ -270,6 +270,8 @@
           <Property Name="Updated_DateTime" Type="datetime" />
           <Property Name="Updated_By" Type="int" />
           <Property Name="cust_id" Type="int" />
+          <Property Name="Discount_Perc" Type="float" Nullable="false" />
+          <Property Name="Discount_Value" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="User_Master">
           <Key>
@@ -555,6 +557,8 @@
           <Property Name="Updated_DateTime" Type="DateTime" Precision="3" />
           <Property Name="Updated_By" Type="Int32" />
           <Property Type="Int32" Name="cust_id" />
+          <Property Type="Double" Name="Discount_Perc" Nullable="false" />
+          <Property Type="Double" Name="Discount_Value" Nullable="false" />
         </EntityType>
         <EntityType Name="User_Master">
           <Key>
@@ -817,6 +821,8 @@
           <EntitySetMapping Name="Transaction_Master">
             <EntityTypeMapping TypeName="CafeteriaModel.Transaction_Master">
               <MappingFragment StoreEntitySet="Transaction_Master">
+                <ScalarProperty Name="Discount_Value" ColumnName="Discount_Value" />
+                <ScalarProperty Name="Discount_Perc" ColumnName="Discount_Perc" />
                 <ScalarProperty Name="cust_id" ColumnName="cust_id" />
                 <ScalarProperty Name="Transaction_Master_ID" ColumnName="Transaction_Master_ID" />
                 <ScalarProperty Name="Transaction_Date" ColumnName="Transaction_Date" />

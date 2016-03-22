@@ -4394,13 +4394,17 @@ namespace MegabiteEntityLayer
         /// <param name="transaction_Date">Initial value of the Transaction_Date property.</param>
         /// <param name="created_DateTime">Initial value of the Created_DateTime property.</param>
         /// <param name="company_ID">Initial value of the Company_ID property.</param>
-        public static Transaction_Master CreateTransaction_Master(global::System.Int64 transaction_Master_ID, global::System.DateTime transaction_Date, global::System.DateTime created_DateTime, global::System.Int32 company_ID)
+        /// <param name="discount_Perc">Initial value of the Discount_Perc property.</param>
+        /// <param name="discount_Value">Initial value of the Discount_Value property.</param>
+        public static Transaction_Master CreateTransaction_Master(global::System.Int64 transaction_Master_ID, global::System.DateTime transaction_Date, global::System.DateTime created_DateTime, global::System.Int32 company_ID, global::System.Double discount_Perc, global::System.Double discount_Value)
         {
             Transaction_Master transaction_Master = new Transaction_Master();
             transaction_Master.Transaction_Master_ID = transaction_Master_ID;
             transaction_Master.Transaction_Date = transaction_Date;
             transaction_Master.Created_DateTime = created_DateTime;
             transaction_Master.Company_ID = company_ID;
+            transaction_Master.Discount_Perc = discount_Perc;
+            transaction_Master.Discount_Value = discount_Value;
             return transaction_Master;
         }
 
@@ -4821,6 +4825,54 @@ namespace MegabiteEntityLayer
         private Nullable<global::System.Int32> _cust_id;
         partial void Oncust_idChanging(Nullable<global::System.Int32> value);
         partial void Oncust_idChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Double Discount_Perc
+        {
+            get
+            {
+                return _Discount_Perc;
+            }
+            set
+            {
+                OnDiscount_PercChanging(value);
+                ReportPropertyChanging("Discount_Perc");
+                _Discount_Perc = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Discount_Perc");
+                OnDiscount_PercChanged();
+            }
+        }
+        private global::System.Double _Discount_Perc;
+        partial void OnDiscount_PercChanging(global::System.Double value);
+        partial void OnDiscount_PercChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Double Discount_Value
+        {
+            get
+            {
+                return _Discount_Value;
+            }
+            set
+            {
+                OnDiscount_ValueChanging(value);
+                ReportPropertyChanging("Discount_Value");
+                _Discount_Value = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Discount_Value");
+                OnDiscount_ValueChanged();
+            }
+        }
+        private global::System.Double _Discount_Value;
+        partial void OnDiscount_ValueChanging(global::System.Double value);
+        partial void OnDiscount_ValueChanged();
 
         #endregion
 

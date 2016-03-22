@@ -197,7 +197,7 @@
                                     </MultiBinding>
                                 </TextBlock.Visibility>
                             </TextBlock>
-                            <TextBox TabIndex="6" FontSize="20" FontWeight="Bold" Text="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="40" Name="itemQuantity" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" TextChanged="subMenuSearchTextBox_TextChanged"/>
+                            <TextBox TabIndex="6" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="40" Name="itemQuantity" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" TextChanged="subMenuSearchTextBox_TextChanged"/>
                         </Grid>
 
 
@@ -272,41 +272,41 @@
         <Grid VerticalAlignment="Bottom" Name="Footer" Margin="0,10,20,10">
 
             <StackPanel Orientation="Horizontal">
-            <Grid Name="DiscountGrid" HorizontalAlignment="Left" Width="80" Margin="20,0,0,0" VerticalAlignment="Center" Visibility="Collapsed">
-                <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" FontSize="16" Text="Disc %" FontWeight="Bold" Foreground="{StaticResource brushWatermarkForeground}" >
-                    <TextBlock.Visibility>
-                        <MultiBinding Converter="{StaticResource SearchBoxHelper}">
-                            <Binding ElementName="discountTextBox" Path="Text.IsEmpty" />
-                            <Binding ElementName="discountTextBox" Path="IsFocused" />
-                        </MultiBinding>
-                    </TextBlock.Visibility>
-                </TextBlock>
-                <TextBox TabIndex="9" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="40" Name="discountTextBox" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" TextChanged="discountTextBox_TextChanged"/>
-            </Grid>
-            <Button Margin="20,0,0,0" TabIndex="10" Name="proceedOrderButton" FontSize="18" Content="Proceed" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Height="45" Click="proceedOrderButton_Click">
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Style.Triggers>
-                            <Trigger Property="IsFocused" Value="true">
-                                <Setter Property="BorderBrush" Value="Green" />
-                                <Setter Property="BorderThickness" Value="2" />
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-            </Button>
-            <Button Margin="20,0,0,0" TabIndex="11" Name="cancelOrderButton" FontSize="18" Content="Clear Selection" HorizontalAlignment="Left" Width="150" Height="45" Click="cancelOrderButton_Click">
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Style.Triggers>
-                            <Trigger Property="IsFocused" Value="true">
-                                <Setter Property="BorderBrush" Value="Green" />
-                                <Setter Property="BorderThickness" Value="2" />
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-            </Button>
+                <Grid Name="DiscountGrid" HorizontalAlignment="Left" Width="80" Margin="20,0,0,0" VerticalAlignment="Center" Visibility="Collapsed">
+                    <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" FontSize="16" Text="Disc %" FontWeight="Bold" Foreground="{StaticResource brushWatermarkForeground}" >
+                        <TextBlock.Visibility>
+                            <MultiBinding Converter="{StaticResource SearchBoxHelper}">
+                                <Binding ElementName="discountTextBox" Path="Text.IsEmpty" />
+                                <Binding ElementName="discountTextBox" Path="IsFocused" />
+                            </MultiBinding>
+                        </TextBlock.Visibility>
+                    </TextBlock>
+                    <TextBox TabIndex="9" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="40" Name="discountTextBox" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" TextChanged="discountTextBox_TextChanged"/>
+                </Grid>
+                <Button Margin="20,0,0,0" TabIndex="10" Name="proceedOrderButton" FontSize="18" Content="Proceed" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Height="45" Click="proceedOrderButton_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Style.Triggers>
+                                <Trigger Property="IsFocused" Value="true">
+                                    <Setter Property="BorderBrush" Value="Green" />
+                                    <Setter Property="BorderThickness" Value="2" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Margin="20,0,0,0" TabIndex="11" Name="cancelOrderButton" FontSize="18" Content="Clear Selection" HorizontalAlignment="Left" Width="150" Height="45" Click="cancelOrderButton_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Style.Triggers>
+                                <Trigger Property="IsFocused" Value="true">
+                                    <Setter Property="BorderBrush" Value="Green" />
+                                    <Setter Property="BorderThickness" Value="2" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
             </StackPanel>
             <TextBlock FontFamily="{StaticResource MainFont}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="670,0,0,0" FontSize="25" FontWeight="Bold">
                 <Run Text="Total : "/>

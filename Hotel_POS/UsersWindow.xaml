@@ -114,9 +114,9 @@
                 <Label Name="roleLabel"
                     Content="Role :"
                    Grid.Column="0"
-                   Grid.Row="4" />
+                   Grid.Row="5" />
                 <ComboBox Grid.Column="1"
-                      Grid.Row="4"
+                      Grid.Row="5"
                       x:Name="cmbRole"
                       Foreground="Black"
                       DisplayMemberPath="Role_Name"
@@ -124,7 +124,7 @@
                 <Label Name="roleAstrix" Content="*"
                    Foreground="Red"
                    Grid.Column="2"
-                   Grid.Row="4" />
+                   Grid.Row="5" />
                 <Label Content="Company :"
                    Grid.Column="0"
                    Grid.Row="5" Visibility="Collapsed" />
@@ -141,9 +141,9 @@
 
                 <Label Content="Enable Discount :"
                    Grid.Column="0"
-                   Grid.Row="5"/>
+                   Grid.Row="4"/>
                 <ComboBox Grid.Column="1"
-                      Grid.Row="5"
+                      Grid.Row="4"
                       x:Name="cmbDiscount"
                       Foreground="Black" SelectedIndex="1">
                     <ComboBoxItem >True</ComboBoxItem>
@@ -152,7 +152,7 @@
                 <Label Content="*"
                    Foreground="Red"
                    Grid.Column="2"
-                   Grid.Row="5" Visibility="Collapsed" />
+                   Grid.Row="4"  />
 
             </Grid>
             <StackPanel Orientation="Horizontal"

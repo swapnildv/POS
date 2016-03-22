@@ -176,6 +176,7 @@ namespace POS_DAL
         #region RevisedCode
         public String SubmitOrder()
         {
+            //double discount, double discounted_value
             //Add customer Entry.
             var cust = dc.Customer_Master.Where(a => a.cust_MobileNo == TerminalCommon.currentCustomer.cust_MobileNo).SingleOrDefault();
             if (cust == null && TerminalCommon.currentCustomer.cust_MobileNo != "")

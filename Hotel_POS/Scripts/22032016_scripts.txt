@@ -1,5 +1,7 @@
 ﻿
 //22/03/2016
+
+//Query to add enable discount column in user_master.
 ALTER TABLE user_master
   ADD IsDiscount bit NOT NULL DEFAULT(0)
 
@@ -7,3 +9,9 @@ ALTER TABLE user_master
 2) Align IsDiscount Box in User Window.
 3) Do Some rigourus testing of discount functionality.
 4) Design New button style for order User Control
+
+
+//Query to add discount values in transaction_master table.
+ALTER TABLE Transaction_Master
+  ADD  Discount_Perc float NOT NULL DEFAULT(0),
+	    Discount_Value float NOT NULL DEFAULT(0)

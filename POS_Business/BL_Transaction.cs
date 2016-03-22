@@ -37,9 +37,9 @@ namespace POS_Business
 
 
         #region RevisedCode
-        public String SubmitOrder()
+        public String SubmitOrder(double discount)
         {
-            return new DAL_Transaction().SubmitOrder();
+            return new DAL_Transaction().SubmitOrder(discount);
         }
 
         public double getTodaysSale()

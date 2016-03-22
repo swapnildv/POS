@@ -15,3 +15,6 @@ ALTER TABLE user_master
 ALTER TABLE Transaction_Master
   ADD  Discount_Perc float NOT NULL DEFAULT(0),
 	    Discount_Value float NOT NULL DEFAULT(0)
+
+1) Update printing slips for discounts
+2) Update transaction report for discounts.

@@ -29,10 +29,10 @@ namespace Hotel_POS.User_Controls
         private static readonly ILog _logger =
        LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public static RoutedCommand commonCommand = 
+        public static RoutedCommand commonCommand =
             new RoutedCommand("btnBetCommand", typeof(MainWindow));
 
-        private decimal discountInput = 0;
+        private double totalAmount = 0;
         public OrderUserControl()
         {
             try
@@ -58,7 +58,7 @@ namespace Hotel_POS.User_Controls
             {
                 if (TerminalCommon.LoggedInUser != null)
                 {
-                    DiscountGrid.Visibility = TerminalCommon.LoggedInUser.IsDiscount == true ? 
+                    DiscountGrid.Visibility = TerminalCommon.LoggedInUser.IsDiscount == true ?
                         System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed;
                 }
                 mainWindow = (MainWindow)Window.GetWindow(this);
@@ -171,6 +171,8 @@ namespace Hotel_POS.User_Controls
                     new BL_Menu().AddMenuCartItem(_selectedItemId, int.Parse(itemQuantity.Text.ToString()));
                 }
                 totalAmountTextBlock.Text = TerminalCommon.currency + " " + new BL_Menu().getTotatlCartValue().ToString();
+
+
                 MenuCartlistBox.Focus();
             }
             catch (Exception ex)
@@ -243,6 +245,7 @@ namespace Hotel_POS.User_Controls
                 itemQuantity.Text = "1";
                 customerMobileTextBox.Text = String.Empty;
                 customerNameTextBox.Text = String.Empty;
+                discountTextBox.Text = string.Empty;
                 customerMobileTextBox.Focus();
             }
             catch (Exception ex)
@@ -258,7 +261,15 @@ namespace Hotel_POS.User_Controls
             if ((worker.CancellationPending == true))
                 e.Cancel = true;
             else
-                e.Result = new BL_Transaction().SubmitOrder();
+            {
+                double discount = 0;
+                this.Dispatcher.BeginInvoke((Action)delegate ()
+                {
+                    try { discount = double.Parse(discountTextBox.Text.Trim()); }
+                    catch (Exception) { discount = 0; }
+                });
+                e.Result = new BL_Transaction().SubmitOrder(discount);
+            }
 
         }
         void bwPlaceOrder_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -287,6 +298,7 @@ namespace Hotel_POS.User_Controls
                     Printing.PrintPaymentSlip(e.Result.ToString());
                     new BL_Menu().ClearMenuCart();
                     customerMobileTextBox.Text = string.Empty;
+                    discountTextBox.Text = string.Empty;
                     customerNameTextBox.Text = string.Empty;
                     TerminalCommon.currentCustomer = null;
                     MainMenuListBox.SelectedIndex = 0;
@@ -320,7 +332,7 @@ namespace Hotel_POS.User_Controls
                 decimal totalValue = Convert.ToDecimal(new BL_Menu().getTotatlCartValue());
 
                 totalValue = totalValue * (1 - (disc / 100));
-                
+
                 if (totalValue > 0)
                     totalAmountTextBlock.Text = TerminalCommon.currency + " " + totalValue.ToString("00.00");
 
@@ -334,7 +346,7 @@ namespace Hotel_POS.User_Controls
 
         }
 
-        
+
 
 
         //This method is used to give shortcuts to controls on Main window page.

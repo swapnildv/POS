@@ -174,9 +174,12 @@ namespace POS_DAL
         }
 
         #region RevisedCode
-        public String SubmitOrder()
+        public String SubmitOrder(double discount)
         {
-            //double discount, double discounted_value
+            //Calculte discounted value.
+            double total_value = DAL_Item_Master.MenuCart.Sum(a => a.Item_Total);
+            total_value = total_value * (1 - (discount / 100));
+
             //Add customer Entry.
             var cust = dc.Customer_Master.Where(a => a.cust_MobileNo == TerminalCommon.currentCustomer.cust_MobileNo).SingleOrDefault();
             if (cust == null && TerminalCommon.currentCustomer.cust_MobileNo != "")
@@ -197,6 +200,8 @@ namespace POS_DAL
             objTM.Updated_By = TerminalCommon.LoggedInUser.User_ID;
             objTM.Updated_DateTime = DateTime.Now;
             objTM.Company_ID = Convert.ToInt32(TerminalCommon.LoggedInUser.Company_ID);
+            objTM.Discount_Perc = discount;
+            objTM.Discount_Value = total_value;
 
             foreach (var item in DAL_Item_Master.MenuCart)
             {

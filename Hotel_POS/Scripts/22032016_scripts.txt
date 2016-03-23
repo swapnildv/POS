@@ -1,5 +1,5 @@
 ﻿
-//22/03/2016
+//* 22/03/2016
 
 //Query to add enable discount column in user_master.
 ALTER TABLE user_master

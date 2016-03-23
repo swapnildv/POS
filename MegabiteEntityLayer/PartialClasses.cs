@@ -110,10 +110,13 @@ namespace MegabiteEntityLayer
 
         public double Transaction_Amount { get; set; }
 
+        public double Discount_Perc { get; set; }
+
+        public double Discount_Value { get; set; }
+        
 
 
-
-
+            
 
     }
 

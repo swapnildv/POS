@@ -15,7 +15,7 @@
         ResizeMode="NoResize"
         Loaded="TransactionReport_Loaded"
         Icon="/Bunkerz;component/Images/Restaurant%20Blue.ico">
-   
+
     <Window.Triggers>
         <EventTrigger RoutedEvent="FrameworkElement.Loaded">
             <BeginStoryboard Storyboard="{DynamicResource StoryboardEntrance}" />
@@ -117,27 +117,30 @@
                     <TextBlock VerticalAlignment="Center" Text="Total : " Foreground="Black" FontWeight="Bold" FontSize="20"></TextBlock>
                     <TextBlock x:Name="totalSalesTextBlock" FontSize="25" Margin="150,0,0,0" Text="Rs.0"></TextBlock>
                 </Grid>
-            
-            <ScrollViewer  
+
+                <ScrollViewer  
                                VerticalAlignment="Top"
                                HorizontalAlignment="Center"
                                CanContentScroll="True"
                                Margin="10"
                                HorizontalScrollBarVisibility="Auto"
                                VerticalScrollBarVisibility="Auto">
-                <DataGrid HorizontalAlignment="Left" IsReadOnly="True" Name="lv_TransactionReport" Margin="0,20,0,0"  AutoGenerateColumns="False" RowHeight="20" Height="250">
-                    <DataGrid.ColumnHeaderStyle>
-                        <Style TargetType="DataGridColumnHeader">
-                            <Setter Property="FontSize" Value="16"/>
-                        </Style>
-                    </DataGrid.ColumnHeaderStyle>
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Date" Binding="{Binding Transaction_Date}" Width="150" FontSize="12"/>
-                        <DataGridTextColumn Header="Order" Binding="{Binding Order_No}" Width="150" FontSize="12"/>
-                        <DataGridTextColumn Header="Amount (Rs.)" Binding="{Binding Transaction_Amount}" Width="150" FontSize="12"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </ScrollViewer>
+                    <DataGrid HorizontalAlignment="Left" IsReadOnly="True" Name="lv_TransactionReport" Margin="0,20,0,0"  AutoGenerateColumns="False" RowHeight="20" Height="250">
+                        <DataGrid.ColumnHeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="FontSize" Value="16"/>
+                            </Style>
+                        </DataGrid.ColumnHeaderStyle>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Date" Binding="{Binding Transaction_Date}" Width="150" FontSize="12"/>
+                            <DataGridTextColumn Header="Order" Binding="{Binding Order_No}" Width="150" FontSize="12"/>
+                            <DataGridTextColumn Header="Total (Rs.)" Binding="{Binding Transaction_Amount}" Width="150" FontSize="12"/>
+                            <DataGridTextColumn Header="Disc (%)" Binding="{Binding Discount_Perc}" Width="150" FontSize="12"/>
+                            <DataGridTextColumn Header="Grand Total ( Rs.)" Binding="{Binding Discount_Value}" Width="150" FontSize="12"/>
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </ScrollViewer>
             </StackPanel>
         </Border>
     </StackPanel>

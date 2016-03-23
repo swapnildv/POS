@@ -18,13 +18,13 @@ using System.Printing;
 using MegabiteEntityLayer;
 using System.Management;
 using POS_Business;
+using Hotel_POS.Resource;
 
 namespace Hotel_POS
 {
     public static class Printing
     {
         private static double slipWidth = 180;
-
         private static void PrintSlip(Panel printElement)
         {
             PrintDialog printDialog = new PrintDialog();
@@ -32,10 +32,9 @@ namespace Hotel_POS
             printElement.Arrange(new Rect(new Point(0, 0), printElement.DesiredSize));
             for (int i = 0; i < 2; i++)
             {
-                printDialog.PrintVisual(printElement, "Printing....");    
+                printDialog.PrintVisual(printElement, "Printing....");
             }
         }
-
         public static void CheckPrinterStaus()
         {
             // Set management scope
@@ -66,132 +65,15 @@ namespace Hotel_POS
                 }
             }
         }
-        private static void AddLogo(Panel printElement)
-        {
-            BitmapImage logo = new BitmapImage();
-            logo.BeginInit();
-            //C:\Program Files (x86)\Microsoft\MegabiteSetup\Images
-            //C:\Program Files (x86)\DIIPL\Megabite\
-            logo.StreamSource = new MemoryStream(File.ReadAllBytes("C:\\Program Files (x86)\\DIIPL\\Megabite\\Images\\mega-bite.bmp"));
-            //mega-bite.png
-            logo.EndInit();
-            Image logoImage = new Image() { Source = logo, Stretch = Stretch.Uniform, Width = 140, Height = 70, HorizontalAlignment = HorizontalAlignment.Center };
-            printElement.Children.Add(logoImage);
-
-            //TextBlock hotelName = new TextBlock() { Text = "Megabite", HorizontalAlignment = HorizontalAlignment.Center, FontSize = 12, FontWeight = FontWeights.Bold };
-            //printElement.Children.Add(hotelName);
-
-        }
-
-        private static void AddSlipEnd(Panel printElement)
-        {
-            printElement.Children.Add(new TextBlock() { Height = 15 });
-            printElement.Children.Add(new TextBlock() { Height = 15 });
-
-            TextBlock text = new TextBlock() { Text = "-x-", HorizontalAlignment = HorizontalAlignment.Center, FontSize = 10 };
-            printElement.Children.Add(text);
-        }
-
-        private static void AddCardDetails(Panel printElement, Transaction_Master tm)
-        {
-            TextBlock txtCardHeader = new TextBlock() { Text = "Card Details ", FontWeight = FontWeights.Bold, HorizontalAlignment = HorizontalAlignment.Left, FontSize = 10 };
-            printElement.Children.Add(txtCardHeader);
-
-            TextBlock txtCardNumber = new TextBlock() { Text = "Card : " + tm.RFID_No, HorizontalAlignment = HorizontalAlignment.Left, FontSize = 10 };
-            printElement.Children.Add(txtCardNumber);
-
-
-            TextBlock txtRemaining = new TextBlock() { Text = "Remaining Bal : " + tm.Card_Closing_Balance, HorizontalAlignment = HorizontalAlignment.Left, FontSize = 10 };
-            printElement.Children.Add(txtRemaining);
-
-            TextBlock line2 = new TextBlock() { Text = "----------------------------------------------------------------", FontSize = 10 };
-
-            printElement.Children.Add(line2);
-        }
-
-        public static void PrintPaymentSlip(List<MenuCart> lstTD, Transaction_Master tm, Boolean isCustomer, String EmpName)
-        {
-            StackPanel printPanel = new StackPanel() { Width = slipWidth, Margin = new Thickness(15, 10, 10, 10) };
-
-            TextBlock Order_No = new TextBlock() { Text = "Order: " + tm.Order_No, HorizontalAlignment = HorizontalAlignment.Left, Width = slipWidth * 0.30, FontSize = 8, FontWeight = FontWeights.Bold };
-            TextBlock txtDateTime = new TextBlock() { Text = "Date : " + DateTime.Now.ToString(), HorizontalAlignment = HorizontalAlignment.Right, Width = slipWidth * 0.70, FontSize = 7, Margin = new Thickness(5, 0, 0, 0) };
-
-            StackPanel pnlOrderDate = new StackPanel() { Orientation = Orientation.Horizontal, Width = slipWidth };
-            pnlOrderDate.Children.Add(Order_No);
-            pnlOrderDate.Children.Add(txtDateTime);
-            printPanel.Children.Add(pnlOrderDate);
-
-            TextBlock horizontalLine = new TextBlock() { FontSize = 10, Text = "----------------------------------------------------------------" };
-            printPanel.Children.Add(horizontalLine);
-
-            foreach (MenuCart item in lstTD)
-            {
-                TextBlock MenuName = new TextBlock() { Text = item.Item_Name, Width = slipWidth * 0.40, FontSize = 8, FontWeight = FontWeights.Bold };
-                TextBlock MenuQuanity = new TextBlock() { Text = item.Quantity.ToString(), Width = slipWidth * 0.20, FontSize = 8, FontWeight = FontWeights.Bold };
-                TextBlock MenuPrice = new TextBlock() { Text = item.Item_Unit_Price.ToString("0.00"), Width = slipWidth * 0.20, FontSize = 8, FontWeight = FontWeights.Bold };
-                TextBlock MenuTotal = new TextBlock() { Text = item.Item_Total.ToString("0.00"), Width = slipWidth * 0.20, FontSize = 8, FontWeight = FontWeights.Bold };
-
-                StackPanel displayMenus = new StackPanel() { Orientation = Orientation.Horizontal };
-                displayMenus.Children.Add(MenuName);
-                displayMenus.Children.Add(MenuQuanity);
-                displayMenus.Children.Add(MenuPrice);
-                displayMenus.Children.Add(MenuTotal);
-
-                printPanel.Children.Add(displayMenus);
-
-
-            }
-            TextBlock line = new TextBlock() { Text = "----------------------------------------------------------------", FontSize = 10 };
-            printPanel.Children.Add(line);
-
-            TextBlock totalStake = new TextBlock() { Text = "Total :", Width = slipWidth * 0.80, FontSize = 10, FontWeight = FontWeights.Bold };
-            TextBlock totalStakeValue = new TextBlock() { Text = " " + Convert.ToDouble(tm.Transaction_Amount).ToString("0.00"), Width = slipWidth * 0.20, FontSize = 10, FontWeight = FontWeights.Bold };
-            StackPanel totalStakeWithValue = new StackPanel() { Orientation = Orientation.Horizontal };
-            totalStakeWithValue.Children.Add(totalStake);
-            totalStakeWithValue.Children.Add(totalStakeValue);
-            printPanel.Children.Add(totalStakeWithValue);
-
-            TextBlock line1 = new TextBlock() { Text = "----------------------------------------------------------------", FontSize = 10 };
-
-            printPanel.Children.Add(line1);
-
-            if (EmpName != "")
-            {
-                TextBlock txtEmpName = new TextBlock() { Text = "Name : " + EmpName, HorizontalAlignment = HorizontalAlignment.Left, FontSize = 10 };
-                printPanel.Children.Add(txtEmpName);
-            }
-
-            if (isCustomer)
-            {
-                if (tm.PaidBy_Card == true)
-                {
-                    Printing.AddCardDetails(printPanel, tm);
-                }
-
-            }
-            else
-            {
-                TextBlock txtSign = new TextBlock() { Text = "Sign :________________ ", HorizontalAlignment = HorizontalAlignment.Left, FontSize = 10 };
-                printPanel.Children.Add(txtSign);
-            }
-
-
-
-
-
-
-            TextBlock promoText = new TextBlock() { Margin = new Thickness(0, 10, 0, 0), Text = "---Thank You, Visit Again---", HorizontalAlignment = HorizontalAlignment.Center, FontSize = 10 };
-            printPanel.Children.Add(promoText);
-
-            Printing.PrintSlip(printPanel);
-        }
-
-        #region RevisedCode
-        public static void PrintPaymentSlip(String OrderNum)
+        public static void PrintPaymentSlip(Transaction_Master order)
         {
             StackPanel printPanel = new StackPanel() { Width = slipWidth, Margin = new Thickness(12, 0, 10, 10) };
-            printPanel.Children.Add(new TextBlock() { Text = "", Height = 10 });
-            TextBlock Order_No = new TextBlock() { Text = "Order: " + OrderNum, HorizontalAlignment = HorizontalAlignment.Left,FontSize = 9, FontWeight = FontWeights.Bold };
+            printPanel.Children.Add(new TextBlock() { Height = 5 });
+            printPanel.Children.Add(new TextBlock() { Text = TerminalCommon.cafeName, HorizontalAlignment = HorizontalAlignment.Center, FontSize = 5, FontWeight = FontWeights.Bold, Margin = new Thickness(5, 0, 0, 0) });
+            printPanel.Children.Add(new TextBlock() { Text = TerminalCommon.cafeAddress1, HorizontalAlignment = HorizontalAlignment.Center, FontSize = 5, FontWeight = FontWeights.Bold, TextWrapping = TextWrapping.Wrap });
+            printPanel.Children.Add(new TextBlock() { Text = TerminalCommon.cafeAddress2, HorizontalAlignment = HorizontalAlignment.Center, FontSize = 5, FontWeight = FontWeights.Bold, TextWrapping = TextWrapping.Wrap });
+            printPanel.Children.Add(new TextBlock() { Height = 5 });
+            TextBlock Order_No = new TextBlock() { Text = "Order: " + order.Order_No, HorizontalAlignment = HorizontalAlignment.Left, FontSize = 9, FontWeight = FontWeights.Bold };
             TextBlock txtDateTime = new TextBlock() { Text = "Date : " + DateTime.Now.ToString(), FontSize = 9 };
             printPanel.Children.Add(Order_No);
             printPanel.Children.Add(txtDateTime);
@@ -200,7 +82,7 @@ namespace Hotel_POS
             var menuCart = new BL_Menu().GetMenuCart();
             foreach (MenuCart item in menuCart)
             {
-                TextBlock MenuName = new TextBlock() { Text = item.Item_Name, Width = slipWidth * 0.60, FontSize = 9 ,TextWrapping = TextWrapping.WrapWithOverflow};
+                TextBlock MenuName = new TextBlock() { Text = item.Item_Name, Width = slipWidth * 0.60, FontSize = 9, TextWrapping = TextWrapping.WrapWithOverflow };
                 TextBlock MenuPrice = new TextBlock() { Text = item.Quantity.ToString() + " x " + item.Item_Unit_Price.ToString("0.00"), Width = slipWidth * 0.25, FontSize = 8 };
                 TextBlock MenuTotal = new TextBlock() { Text = item.Item_Total.ToString("0.00"), Width = slipWidth * 0.15, FontSize = 8 };
 
@@ -210,12 +92,20 @@ namespace Hotel_POS
                 displayMenus.Children.Add(MenuTotal);
                 printPanel.Children.Add(displayMenus);
             }
-            TextBlock totalStake = new TextBlock() { Text = "Total :", Width = slipWidth * 0.70, FontSize = 9, FontWeight = FontWeights.Bold };
-            TextBlock totalStakeValue = new TextBlock() { Text = " " + Convert.ToDouble(menuCart.Sum(a => a.Item_Total)).ToString("0.00"), Width = slipWidth * 0.30, FontSize = 9, FontWeight = FontWeights.Bold };
+
+            TextBlock totalStake = new TextBlock() { Text = "Total :", Width = slipWidth * 0.60, FontSize = 8, FontWeight = FontWeights.Bold };
             StackPanel totalStakeWithValue = new StackPanel() { Orientation = Orientation.Horizontal };
             totalStakeWithValue.Children.Add(totalStake);
-            totalStakeWithValue.Children.Add(totalStakeValue);
+            StackPanel discountStack = new StackPanel() { Width = slipWidth * 0.40 };
+            discountStack.Children.Add(new TextBlock() { Text = " " + order.Transaction_Amount.Value.ToString("0.00"), Width = slipWidth * 0.40, FontSize = 9, FontWeight = FontWeights.Bold });
+            if (order.Discount_Perc > 0)
+            {
+                discountStack.Children.Add(new TextBlock() { Text = "- " + order.Discount_Perc + " % ", FontSize = 8, FontWeight = FontWeights.Bold });
+                discountStack.Children.Add(new TextBlock() { Text = order.Discount_Value.ToString("0.00"), FontSize = 8, FontWeight = FontWeights.Bold });
+            }
+            totalStakeWithValue.Children.Add(discountStack);
             printPanel.Children.Add(totalStakeWithValue);
+
             TextBlock promoText = new TextBlock() { Margin = new Thickness(0, 2, 0, 0), Text = "---Thank You, Visit Again---", HorizontalAlignment = HorizontalAlignment.Center, FontSize = 7 };
             printPanel.Children.Add(promoText);
 
@@ -223,6 +113,5 @@ namespace Hotel_POS
 
             Printing.PrintSlip(printPanel);
         }
-        #endregion
     }
 }

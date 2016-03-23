@@ -9,7 +9,9 @@ namespace Hotel_POS.Resource
     public static class TerminalCommon
     {
         public static string errorMessage { get { return "An Error occured"; } }
-        public static string cafeName { get { return "Bunkerz"; } }
+        public static string cafeName { get { return "Bunkerzzz Cafe"; } }
+        public static string cafeAddress1 { get { return "Shop no 1,padm manohar apt,hari pandav path,"; } }
+        public static string cafeAddress2 { get { return "beside Hdfc bank,Uran.Call on : 022-27220145"; } }
         public static User_Master LoggedInUser { get; set; }
         public static Customer_Master currentCustomer { get; set; }
         public static Dictionary<string, List<String>> menuDictionary = new Dictionary<string, List<string>>() { 

@@ -71,7 +71,7 @@ namespace Hotel_POS.Reports
                 if (report.Count > 0)
                 {
                     lv_TransactionReport.ItemsSource = report;
-                    totalSalesTextBlock.Text = TerminalCommon.currency + " " + report.Sum(a => a.Transaction_Amount).ToString();
+                    totalSalesTextBlock.Text = TerminalCommon.currency + " " + report.Sum(a => a.Discount_Value).ToString();
                 }
             }
             catch (Exception ex)

@@ -33,6 +33,8 @@ namespace Hotel_POS.User_Controls
             new RoutedCommand("btnBetCommand", typeof(MainWindow));
 
         private double totalAmount = 0;
+        private double discount = 0;
+
         public OrderUserControl()
         {
             try
@@ -171,9 +173,7 @@ namespace Hotel_POS.User_Controls
                     new BL_Menu().AddMenuCartItem(_selectedItemId, int.Parse(itemQuantity.Text.ToString()));
                 }
                 totalAmountTextBlock.Text = TerminalCommon.currency + " " + new BL_Menu().getTotatlCartValue().ToString();
-
-
-                MenuCartlistBox.Focus();
+                MainMenuListBox.Focus();
             }
             catch (Exception ex)
             {
@@ -261,16 +261,7 @@ namespace Hotel_POS.User_Controls
             if ((worker.CancellationPending == true))
                 e.Cancel = true;
             else
-            {
-                double discount = 0;
-                this.Dispatcher.BeginInvoke((Action)delegate ()
-                {
-                    try { discount = double.Parse(discountTextBox.Text.Trim()); }
-                    catch (Exception) { discount = 0; }
-                });
                 e.Result = new BL_Transaction().SubmitOrder(discount);
-            }
-
         }
         void bwPlaceOrder_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
@@ -295,7 +286,7 @@ namespace Hotel_POS.User_Controls
                 }
                 else
                 {
-                    Printing.PrintPaymentSlip(e.Result.ToString());
+                    Printing.PrintPaymentSlip(e.Result as Transaction_Master);
                     new BL_Menu().ClearMenuCart();
                     customerMobileTextBox.Text = string.Empty;
                     discountTextBox.Text = string.Empty;
@@ -308,7 +299,7 @@ namespace Hotel_POS.User_Controls
             }
             catch (Exception ex)
             {
-                this.Dispatcher.BeginInvoke((Action)delegate ()
+                this.Dispatcher.BeginInvoke((Action)delegate()
                  {
                      _logger.Error(ex);
                      if (mainWindow != null)
@@ -322,18 +313,18 @@ namespace Hotel_POS.User_Controls
         {
             try
             {
-                decimal disc = 0;
-                try { disc = decimal.Parse(discountTextBox.Text); }
-                catch (Exception) { disc = 0; }
+                discount = 0;
+                try { discount = double.Parse(discountTextBox.Text); }
+                catch (Exception) { discount = 0; }
 
-                if (disc > 100 || disc < 0)
-                    return;
+                if (discount > 100 || discount <= 0)
+                    discount = 0;
 
-                decimal totalValue = Convert.ToDecimal(new BL_Menu().getTotatlCartValue());
+                double totalValue = new BL_Menu().getTotatlCartValue();
 
-                totalValue = totalValue * (1 - (disc / 100));
+                totalValue = totalValue * (1 - (discount / 100));
 
-                if (totalValue > 0)
+                if (totalValue >= 0)
                     totalAmountTextBlock.Text = TerminalCommon.currency + " " + totalValue.ToString("00.00");
 
             }

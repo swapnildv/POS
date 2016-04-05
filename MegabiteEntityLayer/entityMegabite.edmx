@@ -4,32 +4,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="CafeteriaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-        <EntityContainer Name="CafeteriaModelStoreContainer">
-          <EntitySet Name="Card_Details" EntityType="CafeteriaModel.Store.Card_Details" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Card_Ledger" EntityType="CafeteriaModel.Store.Card_Ledger" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Card_Master" EntityType="CafeteriaModel.Store.Card_Master" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Card_Status_Master" EntityType="CafeteriaModel.Store.Card_Status_Master" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Company_Master" EntityType="CafeteriaModel.Store.Company_Master" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Customer_Master" EntityType="CafeteriaModel.Store.Customer_Master" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Employee_Master" EntityType="CafeteriaModel.Store.Employee_Master" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Grade_Master" EntityType="CafeteriaModel.Store.Grade_Master" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Item_Group_Master" EntityType="CafeteriaModel.Store.Item_Group_Master" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Item_Master" EntityType="CafeteriaModel.Store.Item_Master" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Role_Master" EntityType="CafeteriaModel.Store.Role_Master" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="schema_info" EntityType="CafeteriaModel.Store.schema_info" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="scope_config" EntityType="CafeteriaModel.Store.scope_config" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="scope_info" EntityType="CafeteriaModel.Store.scope_info" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Transaction_Details" EntityType="CafeteriaModel.Store.Transaction_Details" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Transaction_Master" EntityType="CafeteriaModel.Store.Transaction_Master" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="User_Master" EntityType="CafeteriaModel.Store.User_Master" store:Type="Tables" Schema="dbo" />
-        </EntityContainer>
+    <Schema Namespace="CafeteriaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityType Name="Card_Details">
           <Key>
             <PropertyRef Name="Card_Detail_ID" />
             <PropertyRef Name="Company_ID" />
           </Key>
-          <Property Name="Card_Detail_ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Card_Detail_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Card_ID" Type="bigint" />
           <Property Name="Amount_Loaded" Type="float" />
           <Property Name="Loaded_Datetime" Type="datetime" />
@@ -49,7 +30,7 @@
             <PropertyRef Name="ID" />
             <PropertyRef Name="Company_ID" />
           </Key>
-          <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RFID_NO" Type="varchar" MaxLength="50" />
           <Property Name="Employee_ID" Type="int" />
           <Property Name="TR_Remark" Type="varchar" MaxLength="150" />
@@ -72,7 +53,7 @@
             <PropertyRef Name="Card_ID" />
             <PropertyRef Name="Company_ID" />
           </Key>
-          <Property Name="Card_ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Card_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RFID_No" Type="varchar" MaxLength="50" />
           <Property Name="Employee_ID" Type="int" />
           <Property Name="Current_Balance" Type="float" />
@@ -91,7 +72,7 @@
             <PropertyRef Name="Card_Status_ID" />
             <PropertyRef Name="Company_ID" />
           </Key>
-          <Property Name="Card_Status_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Card_Status_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Card_Status" Type="varchar" MaxLength="50" />
           <Property Name="Company_ID" Type="int" Nullable="false" />
         </EntityType>
@@ -99,7 +80,7 @@
           <Key>
             <PropertyRef Name="Company_ID" />
           </Key>
-          <Property Name="Company_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Company_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Company_Name" Type="varchar" MaxLength="100" />
           <Property Name="Company_Address" Type="varchar" MaxLength="150" />
           <Property Name="Company_Logo" Type="image" />
@@ -122,16 +103,17 @@
           <Key>
             <PropertyRef Name="cust_id" />
           </Key>
-          <Property Name="cust_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="cust_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="cust_Name" Type="varchar" MaxLength="50" />
           <Property Name="cust_MobileNo" Type="varchar" MaxLength="50" />
+          <Property Name="cust_Address" Type="varchar" MaxLength="300" Nullable="false" />
         </EntityType>
         <EntityType Name="Employee_Master">
           <Key>
             <PropertyRef Name="Employee_ID" />
             <PropertyRef Name="Company_ID" />
           </Key>
-          <Property Name="Employee_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Employee_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Employee_Name" Type="varchar" MaxLength="100" />
           <Property Name="Company_ID" Type="int" Nullable="false" />
           <Property Name="Department" Type="varchar" MaxLength="50" />
@@ -153,7 +135,7 @@
             <PropertyRef Name="Grade_ID" />
             <PropertyRef Name="Company_ID" />
           </Key>
-          <Property Name="Grade_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Grade_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Grade_Name" Type="varchar" MaxLength="20" />
           <Property Name="Grade_Limit" Type="float" />
           <Property Name="Company_ID" Type="int" Nullable="false" />
@@ -163,7 +145,7 @@
             <PropertyRef Name="Item_Group_ID" />
             <PropertyRef Name="Company_ID" />
           </Key>
-          <Property Name="Item_Group_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Item_Group_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Item_Group_Name" Type="varchar" MaxLength="50" />
           <Property Name="Is_Active" Type="bit" />
           <Property Name="Item_Group_GUID" Type="uniqueidentifier" />
@@ -178,7 +160,7 @@
             <PropertyRef Name="Item_ID" />
             <PropertyRef Name="Company_ID" />
           </Key>
-          <Property Name="Item_ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Item_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Item_Name" Type="varchar" MaxLength="50" />
           <Property Name="Item_Unit_Price" Type="float" />
           <Property Name="Is_Active" Type="bit" />
@@ -195,7 +177,7 @@
             <PropertyRef Name="Role_ID" />
             <PropertyRef Name="Company_ID" />
           </Key>
-          <Property Name="Role_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Role_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Role_Name" Type="varchar" MaxLength="50" />
           <Property Name="Company_ID" Type="int" Nullable="false" />
         </EntityType>
@@ -206,7 +188,7 @@
           </Key>
           <Property Name="schema_major_version" Type="int" Nullable="false" />
           <Property Name="schema_minor_version" Type="int" Nullable="false" />
-          <Property Name="schema_extended_info" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="schema_extended_info" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="scope_config">
           <Key>
@@ -220,9 +202,9 @@
           <Key>
             <PropertyRef Name="sync_scope_name" />
           </Key>
-          <Property Name="scope_local_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="scope_local_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="scope_id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="sync_scope_name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="sync_scope_name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="scope_sync_knowledge" Type="varbinary(max)" />
           <Property Name="scope_tombstone_cleanup_knowledge" Type="varbinary(max)" />
           <Property Name="scope_timestamp" Type="timestamp" StoreGeneratedPattern="Computed" />
@@ -235,7 +217,7 @@
             <PropertyRef Name="Transaction_Detail_ID" />
             <PropertyRef Name="Company_ID" />
           </Key>
-          <Property Name="Transaction_Detail_ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Transaction_Detail_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Transaction_Master_ID" Type="bigint" />
           <Property Name="Item_ID" Type="bigint" />
           <Property Name="Item_Unit_Price" Type="float" />
@@ -253,7 +235,7 @@
             <PropertyRef Name="Transaction_Master_ID" />
             <PropertyRef Name="Company_ID" />
           </Key>
-          <Property Name="Transaction_Master_ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Transaction_Master_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Transaction_Date" Type="datetime" Nullable="false" />
           <Property Name="Order_No" Type="varchar" MaxLength="50" />
           <Property Name="Card_ID" Type="bigint" />
@@ -278,7 +260,7 @@
             <PropertyRef Name="User_ID" />
             <PropertyRef Name="Company_ID" />
           </Key>
-          <Property Name="User_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="User_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="User_Name" Type="varchar" MaxLength="100" />
           <Property Name="Real_Name" Type="varchar" MaxLength="150" />
           <Property Name="Mobile" Type="varchar" MaxLength="15" />
@@ -294,6 +276,25 @@
           <Property Name="IsDiscount" Type="bit" Nullable="false" />
         </EntityType>
         <Function Name="sp_favorite_items" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="CafeteriaModelStoreContainer">
+          <EntitySet Name="Card_Details" EntityType="Self.Card_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Card_Ledger" EntityType="Self.Card_Ledger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Card_Master" EntityType="Self.Card_Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Card_Status_Master" EntityType="Self.Card_Status_Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company_Master" EntityType="Self.Company_Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer_Master" EntityType="Self.Customer_Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee_Master" EntityType="Self.Employee_Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grade_Master" EntityType="Self.Grade_Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item_Group_Master" EntityType="Self.Item_Group_Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item_Master" EntityType="Self.Item_Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role_Master" EntityType="Self.Role_Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="schema_info" EntityType="Self.schema_info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="scope_config" EntityType="Self.scope_config" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="scope_info" EntityType="Self.scope_info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transaction_Details" EntityType="Self.Transaction_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transaction_Master" EntityType="Self.Transaction_Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Master" EntityType="Self.User_Master" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -587,6 +588,7 @@
           <Property Type="Int32" Name="cust_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="cust_Name" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Type="String" Name="cust_MobileNo" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="cust_Address" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
         </EntityType>
         <ComplexType Name="sp_favorite_items_Result">
           <Property Type="Int64" Name="Item_ID" Nullable="true" />
@@ -866,6 +868,7 @@
           <EntitySetMapping Name="Customer_Master">
             <EntityTypeMapping TypeName="CafeteriaModel.Customer_Master">
               <MappingFragment StoreEntitySet="Customer_Master">
+                <ScalarProperty Name="cust_Address" ColumnName="cust_Address" />
                 <ScalarProperty Name="cust_MobileNo" ColumnName="cust_MobileNo" />
                 <ScalarProperty Name="cust_Name" ColumnName="cust_Name" />
                 <ScalarProperty Name="cust_id" ColumnName="cust_id" />
@@ -906,6 +909,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

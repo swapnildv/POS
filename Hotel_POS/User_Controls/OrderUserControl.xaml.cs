@@ -216,7 +216,8 @@ namespace Hotel_POS.User_Controls
                     TerminalCommon.currentCustomer = new Customer_Master()
                     {
                         cust_MobileNo = customerMobileTextBox.Text.Trim(),
-                        cust_Name = customerNameTextBox.Text.Trim()
+                        cust_Name = customerNameTextBox.Text.Trim(),
+                        cust_Address = new TextRange(customerAddressTextBox.Document.ContentStart, customerAddressTextBox.Document.ContentEnd).Text
                     };
                 if (bwPlaceOrder.IsBusy != true)
                 {
@@ -245,6 +246,7 @@ namespace Hotel_POS.User_Controls
                 itemQuantity.Text = "1";
                 customerMobileTextBox.Text = String.Empty;
                 customerNameTextBox.Text = String.Empty;
+                customerAddressTextBox.Document.Blocks.Clear();
                 discountTextBox.Text = string.Empty;
                 customerMobileTextBox.Focus();
             }
@@ -291,6 +293,7 @@ namespace Hotel_POS.User_Controls
                     customerMobileTextBox.Text = string.Empty;
                     discountTextBox.Text = string.Empty;
                     customerNameTextBox.Text = string.Empty;
+                    customerAddressTextBox.Document.Blocks.Clear();
                     TerminalCommon.currentCustomer = null;
                     MainMenuListBox.SelectedIndex = 0;
                     customerMobileTextBox.Focus();

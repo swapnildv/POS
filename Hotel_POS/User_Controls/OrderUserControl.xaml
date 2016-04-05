@@ -16,12 +16,24 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <Style x:Key="ActiveRichStyle" TargetType="{x:Type RichTextBox}">
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="true">
+                    <Setter Property="BorderBrush" Value="Green" />
+                    <Setter Property="BorderThickness" Value="3" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
 
         <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource ActiveStyle}">
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="BorderBrush" Value="Gray" />
         </Style>
 
+        <Style TargetType="{x:Type RichTextBox}" BasedOn="{StaticResource ActiveRichStyle}">
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="Gray" />
+        </Style>
 
         <local:CurrencyConcatConverter x:Key="currencyConcatConverter"/>
         <Style x:Key="placeHolder" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
@@ -67,8 +79,11 @@
                 <TextBox Margin="20,0,0,0" TabIndex="1" Name="customerMobileTextBox" Width="200" Height="45" HorizontalAlignment="Right" VerticalAlignment="Top" FontFamily="{StaticResource MainFont}" FontSize="22"/>
                 <TextBlock Margin="20,0,0,0" Text="Name" VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="{StaticResource MainFont}" FontSize="25"></TextBlock>
                 <TextBox Margin="20,0,0,0" TabIndex="2" Name="customerNameTextBox" Width="200" Height="45" HorizontalAlignment="Right" VerticalAlignment="Top" FontFamily="{StaticResource MainFont}" FontSize="22" GotFocus="customerNameTextBox_GotFocus"></TextBox>
+                <TextBlock Margin="20,0,0,0" Text="Address" VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="{StaticResource MainFont}" FontSize="25"></TextBlock>
+                <RichTextBox Margin="20,0,0,0" TabIndex="3" Name="customerAddressTextBox" Width="200" Height="60" HorizontalAlignment="Right" VerticalAlignment="Top" FontFamily="{StaticResource MainFont}" FontSize="13"/>
+                
             </StackPanel>
-            <Grid Margin="20,10,0,0" ShowGridLines="False" Height="500">
+            <Grid Margin="20,10,0,0" ShowGridLines="False" Height="450">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="220"/>
                     <ColumnDefinition Width="300"/>
@@ -93,7 +108,7 @@
                 </Border>
 
                 <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1">
-                    <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" TabIndex="3" HorizontalAlignment="Left" Background="Transparent" Name="MainMenuListBox" SelectionChanged="MainMenuListBox_SelectionChanged">
+                    <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" TabIndex="4" HorizontalAlignment="Left" Background="Transparent" Name="MainMenuListBox" SelectionChanged="MainMenuListBox_SelectionChanged">
                         <ListBox.Resources>
                             <Style TargetType="{x:Type ListBoxItem}">
                                 <Style.Triggers>
@@ -141,7 +156,7 @@
                 <Border  Grid.Column="1" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
                     <StackPanel>
                         <Grid>
-                            <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" FontSize="16" Text="Search..." Foreground="{StaticResource brushWatermarkForeground}" >
+                            <TextBlock  Margin="10,0,0,0" VerticalAlignment="Center" FontSize="16" Text="Search..." Foreground="{StaticResource brushWatermarkForeground}" >
                                 <TextBlock.Visibility>
                                     <MultiBinding Converter="{StaticResource SearchBoxHelper}">
                                         <Binding ElementName="subMenuSearchTextBox" Path="Text.IsEmpty" />
@@ -149,9 +164,9 @@
                                     </MultiBinding>
                                 </TextBlock.Visibility>
                             </TextBlock>
-                            <TextBox TabIndex="4" FontSize="17" Height="30" Name="subMenuSearchTextBox" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" TextChanged="subMenuSearchTextBox_TextChanged"/>
+                            <TextBox TabIndex="5" FontSize="17" Height="30" Name="subMenuSearchTextBox" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" TextChanged="subMenuSearchTextBox_TextChanged"/>
                         </Grid>
-                        <ListBox Height="418" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Disabled" TabIndex="5" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent" Name="SubMainMenuListBox"  SelectionChanged="SubMainMenuListBox_SelectionChanged">
+                        <ListBox Height="418" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Disabled" TabIndex="6" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent" Name="SubMainMenuListBox"  SelectionChanged="SubMainMenuListBox_SelectionChanged">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <RadioButton GroupName="subMenuGroup" Cursor="Hand"  
@@ -197,14 +212,14 @@
                                     </MultiBinding>
                                 </TextBlock.Visibility>
                             </TextBlock>
-                            <TextBox TabIndex="6" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="40" Name="itemQuantity" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" TextChanged="subMenuSearchTextBox_TextChanged"/>
+                            <TextBox TabIndex="7" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="40" Name="itemQuantity" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" TextChanged="subMenuSearchTextBox_TextChanged"/>
                         </Grid>
 
 
 
 
                         <!--<TextBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,10,0,0" TabIndex="5" Name="itemQuantity" Height="40" Width="80" FontSize="20"></TextBox>-->
-                        <Button Margin="10" TabIndex="7"  Name="AddItemButton" Content="Update" Height="40" FontSize="18" Width="85" Click="AddItemButton_Click">
+                        <Button Margin="10" TabIndex="8"  Name="AddItemButton" Content="Update" Height="40" FontSize="18" Width="85" Click="AddItemButton_Click">
                             <Button.Style>
                                 <Style TargetType="Button">
                                     <Style.Triggers>
@@ -220,7 +235,7 @@
                 </Border>
 
                 <Border Grid.Column="3" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
-                    <ListBox TabIndex="8" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Right" BorderThickness="0" Background="Transparent" Name="MenuCartlistBox" SelectionChanged="MenuCartlistBox_SelectionChanged">
+                    <ListBox TabIndex="9" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Right" BorderThickness="0" Background="Transparent" Name="MenuCartlistBox" SelectionChanged="MenuCartlistBox_SelectionChanged">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <RadioButton GroupName="menuCartGroup" Cursor="Hand"  
@@ -281,9 +296,9 @@
                             </MultiBinding>
                         </TextBlock.Visibility>
                     </TextBlock>
-                    <TextBox TabIndex="9" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="40" Name="discountTextBox" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" TextChanged="discountTextBox_TextChanged"/>
+                    <TextBox TabIndex="10" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="40" Name="discountTextBox" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" TextChanged="discountTextBox_TextChanged"/>
                 </Grid>
-                <Button Margin="20,0,0,0" TabIndex="10" Name="proceedOrderButton" FontSize="18" Content="Proceed" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Height="45" Click="proceedOrderButton_Click">
+                <Button Margin="20,0,0,0" TabIndex="11" Name="proceedOrderButton" FontSize="18" Content="Proceed" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Height="45" Click="proceedOrderButton_Click">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Style.Triggers>
@@ -295,7 +310,7 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button Margin="20,0,0,0" TabIndex="11" Name="cancelOrderButton" FontSize="18" Content="Clear Selection" HorizontalAlignment="Left" Width="150" Height="45" Click="cancelOrderButton_Click">
+                <Button Margin="20,0,0,0" TabIndex="12" Name="cancelOrderButton" FontSize="18" Content="Clear Selection" HorizontalAlignment="Left" Width="150" Height="45" Click="cancelOrderButton_Click" VerticalAlignment="Bottom">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Style.Triggers>

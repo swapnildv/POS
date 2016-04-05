@@ -12,6 +12,5 @@ namespace POS_Business
         {
             return new POS_DAL.DAL_Cusomter().getCustomers();
         }
-
     }
 }

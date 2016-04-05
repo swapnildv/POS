@@ -18,3 +18,12 @@ ALTER TABLE Transaction_Master
 
 1) Update printing slips for discounts
 2) Update transaction report for discounts.
+
+
+// *05/04/2016
+Changes :
+1) Add address column in Customer_master table.
+2) Print slip changes.
+
+ALTER TABLE customer_master
+  ADD cust_Address varchar(300) NOT NULL 

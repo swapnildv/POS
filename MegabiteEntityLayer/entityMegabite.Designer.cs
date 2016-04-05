@@ -2264,10 +2264,12 @@ namespace MegabiteEntityLayer
         /// Create a new Customer_Master object.
         /// </summary>
         /// <param name="cust_id">Initial value of the cust_id property.</param>
-        public static Customer_Master CreateCustomer_Master(global::System.Int32 cust_id)
+        /// <param name="cust_Address">Initial value of the cust_Address property.</param>
+        public static Customer_Master CreateCustomer_Master(global::System.Int32 cust_id, global::System.String cust_Address)
         {
             Customer_Master customer_Master = new Customer_Master();
             customer_Master.cust_id = cust_id;
+            customer_Master.cust_Address = cust_Address;
             return customer_Master;
         }
 
@@ -2349,6 +2351,30 @@ namespace MegabiteEntityLayer
         private global::System.String _cust_MobileNo;
         partial void Oncust_MobileNoChanging(global::System.String value);
         partial void Oncust_MobileNoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String cust_Address
+        {
+            get
+            {
+                return _cust_Address;
+            }
+            set
+            {
+                Oncust_AddressChanging(value);
+                ReportPropertyChanging("cust_Address");
+                _cust_Address = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("cust_Address");
+                Oncust_AddressChanged();
+            }
+        }
+        private global::System.String _cust_Address;
+        partial void Oncust_AddressChanging(global::System.String value);
+        partial void Oncust_AddressChanged();
 
         #endregion
 

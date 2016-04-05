@@ -24,7 +24,7 @@ namespace Hotel_POS
 {
     public static class Printing
     {
-        private static double slipWidth = 180;
+        private static double slipWidth = 250;
         private static void PrintSlip(Panel printElement)
         {
             PrintDialog printDialog = new PrintDialog();
@@ -68,23 +68,28 @@ namespace Hotel_POS
         public static void PrintPaymentSlip(Transaction_Master order)
         {
             StackPanel printPanel = new StackPanel() { Width = slipWidth, Margin = new Thickness(12, 0, 10, 10) };
+            printPanel.Children.Add(new TextBlock() { Text = TerminalCommon.cafeName, HorizontalAlignment = HorizontalAlignment.Center, FontSize = 13, FontWeight = FontWeights.Bold, Margin = new Thickness(5, 0, 0, 0) });
+            printPanel.Children.Add(new TextBlock() { Text = TerminalCommon.cafeAddress1, HorizontalAlignment = HorizontalAlignment.Center, FontSize = 10, TextWrapping = TextWrapping.Wrap });
+            printPanel.Children.Add(new TextBlock() { Text = TerminalCommon.cafeAddress2, HorizontalAlignment = HorizontalAlignment.Center, FontSize = 10, TextWrapping = TextWrapping.Wrap });
             printPanel.Children.Add(new TextBlock() { Height = 5 });
-            printPanel.Children.Add(new TextBlock() { Text = TerminalCommon.cafeName, HorizontalAlignment = HorizontalAlignment.Center, FontSize = 5, FontWeight = FontWeights.Bold, Margin = new Thickness(5, 0, 0, 0) });
-            printPanel.Children.Add(new TextBlock() { Text = TerminalCommon.cafeAddress1, HorizontalAlignment = HorizontalAlignment.Center, FontSize = 5, FontWeight = FontWeights.Bold, TextWrapping = TextWrapping.Wrap });
-            printPanel.Children.Add(new TextBlock() { Text = TerminalCommon.cafeAddress2, HorizontalAlignment = HorizontalAlignment.Center, FontSize = 5, FontWeight = FontWeights.Bold, TextWrapping = TextWrapping.Wrap });
-            printPanel.Children.Add(new TextBlock() { Height = 5 });
-            TextBlock Order_No = new TextBlock() { Text = "Order: " + order.Order_No, HorizontalAlignment = HorizontalAlignment.Left, FontSize = 9, FontWeight = FontWeights.Bold };
-            TextBlock txtDateTime = new TextBlock() { Text = "Date : " + DateTime.Now.ToString(), FontSize = 9 };
+            TextBlock Order_No = new TextBlock() { Text = "Order: " + order.Order_No, HorizontalAlignment = HorizontalAlignment.Left, FontSize = 11, FontWeight = FontWeights.Bold };
+            TextBlock txtDateTime = new TextBlock() { Text = "Date : " + DateTime.Now.ToString(), FontSize = 11 };
             printPanel.Children.Add(Order_No);
             printPanel.Children.Add(txtDateTime);
-
+            //Get customer details.
+            if (TerminalCommon.currentCustomer != null)
+            {
+                printPanel.Children.Add(new TextBlock() { Text = TerminalCommon.currentCustomer.cust_Name + " " + TerminalCommon.currentCustomer.cust_MobileNo, FontSize = 11 });
+                if (TerminalCommon.currentCustomer.cust_Address.Trim() != "")
+                    printPanel.Children.Add(new TextBlock() { Text = TerminalCommon.currentCustomer.cust_Address.Trim(), FontSize = 10, TextWrapping = TextWrapping.Wrap });
+            }
             printPanel.Children.Add(new TextBlock() { Text = "----------------------------------------------------------------", FontSize = 10 });
             var menuCart = new BL_Menu().GetMenuCart();
             foreach (MenuCart item in menuCart)
             {
-                TextBlock MenuName = new TextBlock() { Text = item.Item_Name, Width = slipWidth * 0.60, FontSize = 9, TextWrapping = TextWrapping.WrapWithOverflow };
-                TextBlock MenuPrice = new TextBlock() { Text = item.Quantity.ToString() + " x " + item.Item_Unit_Price.ToString("0.00"), Width = slipWidth * 0.25, FontSize = 8 };
-                TextBlock MenuTotal = new TextBlock() { Text = item.Item_Total.ToString("0.00"), Width = slipWidth * 0.15, FontSize = 8 };
+                TextBlock MenuName = new TextBlock() { Text = item.Item_Name, Width = slipWidth * 0.60, FontSize = 11, TextWrapping = TextWrapping.WrapWithOverflow };
+                TextBlock MenuPrice = new TextBlock() { Text = item.Quantity.ToString() + " x " + item.Item_Unit_Price.ToString("0.00"), Width = slipWidth * 0.25, FontSize = 10 };
+                TextBlock MenuTotal = new TextBlock() { Text = item.Item_Total.ToString("0.00"), Width = slipWidth * 0.15, FontSize = 10 };
 
                 StackPanel displayMenus = new StackPanel() { Orientation = Orientation.Horizontal };
                 displayMenus.Children.Add(MenuName);
@@ -93,20 +98,23 @@ namespace Hotel_POS
                 printPanel.Children.Add(displayMenus);
             }
 
-            TextBlock totalStake = new TextBlock() { Text = "Total :", Width = slipWidth * 0.60, FontSize = 8, FontWeight = FontWeights.Bold };
+            TextBlock totalStake = new TextBlock() { Text = "Total :", Width = slipWidth * 0.60, FontSize = 10, FontWeight = FontWeights.Bold };
             StackPanel totalStakeWithValue = new StackPanel() { Orientation = Orientation.Horizontal };
             totalStakeWithValue.Children.Add(totalStake);
             StackPanel discountStack = new StackPanel() { Width = slipWidth * 0.40 };
-            discountStack.Children.Add(new TextBlock() { Text = " " + order.Transaction_Amount.Value.ToString("0.00"), Width = slipWidth * 0.40, FontSize = 9, FontWeight = FontWeights.Bold });
+            discountStack.Children.Add(new TextBlock() { Text = " " + order.Transaction_Amount.Value.ToString("0.00"), Width = slipWidth * 0.40, FontSize = 11, FontWeight = FontWeights.Bold });
             if (order.Discount_Perc > 0)
             {
-                discountStack.Children.Add(new TextBlock() { Text = "- " + order.Discount_Perc + " % ", FontSize = 8, FontWeight = FontWeights.Bold });
-                discountStack.Children.Add(new TextBlock() { Text = order.Discount_Value.ToString("0.00"), FontSize = 8, FontWeight = FontWeights.Bold });
+                discountStack.Children.Add(new TextBlock() { Text = "- " + order.Discount_Perc + " % ", FontSize = 10, FontWeight = FontWeights.Bold });
+                discountStack.Children.Add(new TextBlock() { Text = order.Discount_Value.ToString("0.00"), FontSize = 10, FontWeight = FontWeights.Bold });
             }
             totalStakeWithValue.Children.Add(discountStack);
             printPanel.Children.Add(totalStakeWithValue);
+            printPanel.Children.Add(new TextBlock() { Text = "----------------------------------------------------------------", FontSize = 10 });
 
-            TextBlock promoText = new TextBlock() { Margin = new Thickness(0, 2, 0, 0), Text = "---Thank You, Visit Again---", HorizontalAlignment = HorizontalAlignment.Center, FontSize = 7 };
+            
+
+            TextBlock promoText = new TextBlock() { Margin = new Thickness(0, 2, 0, 0), Text = "---Thank You, Visit Again---", HorizontalAlignment = HorizontalAlignment.Center, FontSize = 8 };
             printPanel.Children.Add(promoText);
 
 

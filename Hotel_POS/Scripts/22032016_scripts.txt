@@ -27,3 +27,12 @@ Changes :
 
 ALTER TABLE customer_master
   ADD cust_Address varchar(300) NOT NULL 
+
+
+// 18/052016
+//script to resolve customer data export issue.
+
+update Customer_Master
+set cust_Address = ' '
+where cust_Address is null
+
